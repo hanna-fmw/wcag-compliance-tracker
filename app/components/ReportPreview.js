@@ -1,8 +1,74 @@
 'use client'
-import React from 'react'
+import React, { useRef } from 'react'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 
 export default function ReportPreview({ auditData, onClose }) {
+	const reportRef = useRef(null)
 	if (!auditData) return null
+
+	const handleDownloadJSON = () => {
+		const jsonString = JSON.stringify(auditData, null, 2)
+		const blob = new Blob([jsonString], { type: 'application/json' })
+		const url = URL.createObjectURL(blob)
+		const a = document.createElement('a')
+		a.href = url
+		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}-${
+			new Date().toISOString().split('T')[0]
+		}.json`
+		document.body.appendChild(a)
+		a.click()
+		document.body.removeChild(a)
+		URL.revokeObjectURL(url)
+	}
+
+	const handleDownloadHTML = () => {
+		const htmlContent = reportRef.current.innerHTML
+		const blob = new Blob([htmlContent], { type: 'text/html' })
+		const url = URL.createObjectURL(blob)
+		const a = document.createElement('a')
+		a.href = url
+		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}-${
+			new Date().toISOString().split('T')[0]
+		}.html`
+		document.body.appendChild(a)
+		a.click()
+		document.body.removeChild(a)
+		URL.revokeObjectURL(url)
+	}
+
+	const handleDownloadPDF = async () => {
+		if (!reportRef.current) return
+
+		try {
+			const canvas = await html2canvas(reportRef.current, {
+				scale: 2,
+				useCORS: true,
+				logging: false,
+				backgroundColor: '#ffffff',
+			})
+
+			const imgData = canvas.toDataURL('image/png')
+			const pdf = new jsPDF({
+				orientation: 'portrait',
+				unit: 'mm',
+				format: 'a4',
+			})
+
+			const pdfWidth = pdf.internal.pageSize.getWidth()
+			const pdfHeight = (canvas.height * pdfWidth) / canvas.width
+
+			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
+			pdf.save(
+				`wcag-audit-${auditData.clientName || 'unnamed'}-${
+					new Date().toISOString().split('T')[0]
+				}.pdf`
+			)
+		} catch (error) {
+			console.error('Error generating PDF:', error)
+			alert('There was an error generating the PDF. Please try again.')
+		}
+	}
 
 	return (
 		<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'>
@@ -14,7 +80,7 @@ export default function ReportPreview({ auditData, onClose }) {
 					</button>
 				</div>
 
-				<div className='p-4'>
+				<div className='p-4' ref={reportRef}>
 					<section className='mb-8'>
 						<h2 className='text-xl font-semibold mb-4'>About the Evaluation</h2>
 						<p className='mb-4'>
@@ -154,26 +220,17 @@ export default function ReportPreview({ auditData, onClose }) {
 
 				<div className='p-4 border-t flex justify-end gap-4'>
 					<button
-						onClick={() => {
-							// TODO: Implement PDF download
-							console.log('Download PDF')
-						}}
+						onClick={handleDownloadPDF}
 						className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
 						Download PDF
 					</button>
 					<button
-						onClick={() => {
-							// TODO: Implement HTML download
-							console.log('Download HTML')
-						}}
+						onClick={handleDownloadHTML}
 						className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600'>
 						Download HTML
 					</button>
 					<button
-						onClick={() => {
-							// TODO: Implement JSON download
-							console.log('Download JSON')
-						}}
+						onClick={handleDownloadJSON}
 						className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600'>
 						Download JSON
 					</button>
