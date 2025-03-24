@@ -654,16 +654,19 @@ export default function WCAGCriteriaPage() {
 	const [dateCreated, setDateCreated] = useState(new Date().toISOString())
 	const [showPreview, setShowPreview] = useState(false)
 	const [previewData, setPreviewData] = useState(null)
+	const [executiveSummary, setExecutiveSummary] = useState('')
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
 		const savedData = localStorage.getItem('wcagAuditData')
 		if (savedData) {
-			const { clientName, clientId, observations, dateCreated } = JSON.parse(savedData)
+			const { clientName, clientId, observations, dateCreated, executiveSummary } =
+				JSON.parse(savedData)
 			setClientName(clientName || '')
 			setClientId(clientId || '')
 			setObservations(observations || {})
 			setDateCreated(dateCreated || new Date().toISOString())
+			setExecutiveSummary(executiveSummary || '')
 		}
 	}, [])
 
@@ -674,9 +677,10 @@ export default function WCAGCriteriaPage() {
 			clientId,
 			observations,
 			dateCreated,
+			executiveSummary,
 		}
 		localStorage.setItem('wcagAuditData', JSON.stringify(auditData))
-	}, [clientName, clientId, observations, dateCreated])
+	}, [clientName, clientId, observations, dateCreated, executiveSummary])
 
 	const handleObservationChange = (criterion, value) => {
 		setObservations((prev) => ({
@@ -703,6 +707,7 @@ export default function WCAGCriteriaPage() {
 			clientId,
 			observations: observationsWithDetails,
 			dateCreated,
+			executiveSummary,
 		}
 
 		setPreviewData(auditData)
@@ -785,6 +790,36 @@ export default function WCAGCriteriaPage() {
 						</button>
 					</div>
 				</div>
+			</div>
+			<div className='mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200'>
+				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
+				<p className='text-sm text-gray-600 mb-4'>
+					Enter a summary based on the observations you have entered in the table below. This
+					summary will appear in the PDF report and should highlight key findings, major issues, and
+					general recommendations.
+				</p>
+				<textarea
+					value={executiveSummary}
+					onChange={(e) => setExecutiveSummary(e.target.value)}
+					className='w-full p-4 border rounded-md focus:ring-blue-500 focus:border-blue-500 min-h-[200px]'
+					placeholder='Example:
+					
+Overall Evaluation:
+- The site demonstrates good accessibility practices in [areas]...
+- Several critical issues were identified...
+
+Critical Issues:
+- Issue 1...
+- Issue 2...
+
+Moderate Issues:
+- Issue 1...
+- Issue 2...
+
+Minor Issues:
+- Issue 1...
+- Issue 2...'
+				/>
 			</div>
 			<div className='overflow-x-auto'>
 				<table className='min-w-full bg-white border border-gray-300 text-black'>
