@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import ReportPreview from './components/ReportPreview'
-
+import Link from 'next/link'
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
 	// Extract numbers from criterion strings (e.g., "1.2.3" from "1.2.3 Audio Description")
@@ -723,78 +723,102 @@ export default function WCAGCriteriaPage() {
 		<div className='container mx-auto p-4'>
 			<div className='mb-6 flex flex-col gap-4'>
 				<h1 className='text-2xl font-bold'>WCAG Criteria</h1>
-				<div className='flex gap-4'>
+				<div className='py-6 border-b'>
+					<h2 className='text-lg font-bold'>Instructions</h2>
+					<ul className='list-disc list-inside text-sm'>
+						<li>Select Pages Homepage + 3-5 critical pages (e.g., contact, services, forms).</li>
+						<li>
+							Pick an automated tool, eg Silktide Accessibility Checker, Lighthouse, WAVE, etc.
+							(also see Tool/Method column)
+						</li>
+						<li>
+							Enter Observations in the Observations column, eg. "The form is not accessible because
+							there is no label for the input field."
+						</li>
+						<li>
+							See How to Check and Where to Check columns for more information on how to check the
+							criteria.
+						</li>
+						<li>Export the audit data to a PDF, HTML, or JSON file.</li>
+						<li>Clear the data to start over and create a new audit.</li>
+					</ul>
+					<div className='py-6'>
+						For Basic Test Checklist, Automated Tools, Manual Checks, etc.,{' '}
+						<Link href='/basic-tests' className='text-blue-500 hover:text-blue-700'>
+							click here
+						</Link>
+						.
+					</div>
+				</div>
+
+				<div className='flex gap-4 py-6'>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>Client Name</label>
+						<label className='block text-sm font-bold'>Client Name</label>
 						<input
 							type='text'
 							value={clientName}
 							onChange={(e) => setClientName(e.target.value)}
-							className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+							className='mt-1 block w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500'
 							placeholder='Enter client name'
 						/>
 					</div>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>Client ID</label>
+						<label className='block text-sm font-bold'>Client ID</label>
 						<input
 							type='text'
 							value={clientId}
 							onChange={(e) => setClientId(e.target.value)}
-							className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+							className='mt-1 block w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500'
 							placeholder='Enter client ID'
 						/>
 					</div>
 					<div className='flex items-end gap-2'>
 						<button
 							onClick={handleExport}
-							className='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
+							className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
 							Export Audit
 						</button>
 						<button
 							onClick={handleClearData}
-							className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>
+							className='bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>
 							Clear Data
 						</button>
 					</div>
 				</div>
 			</div>
 			<div className='overflow-x-auto'>
-				<table className='min-w-full bg-white border border-gray-300 text-gray-900'>
+				<table className='min-w-full bg-white border border-gray-300 text-black'>
 					<thead>
-						<tr className='bg-gray-100'>
-							<th className='border p-2 text-gray-900'>Criterion</th>
-							<th className='border p-2 text-gray-900'>Category</th>
-							<th className='border p-2 text-gray-900'>Level</th>
-							<th className='border p-2 text-gray-900'>Description</th>
-							<th className='border p-2 text-gray-900'>Observations</th>
-							<th className='border p-2 text-gray-900'>How to Check</th>
-							<th className='border p-2 text-gray-900'>Tool/Method</th>
-							<th className='border p-2 text-gray-900'>Where to Check</th>
+						<tr>
+							<th className='border p-2 text-md'>Criterion</th>
+							<th className='border p-2 text-md'>Category</th>
+							<th className='border p-2 text-md'>Level</th>
+							<th className='border p-2 text-md'>Description</th>
+							<th className='border p-2 text-md'>Observations</th>
+							<th className='border p-2 text-md'>How to Check</th>
+							<th className='border p-2 text-md'>Tool/Method</th>
+							<th className='border p-2 text-md'>Where to Check</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className='text-sm'>
 						{wcagCriteria.map((criterion, index) => (
 							<tr key={index} className='border-b'>
-								<td className='border p-2 text-gray-900'>{criterion.criterion}</td>
-								<td className='border p-2 text-gray-900'>{criterion.category}</td>
-								<td className='border p-2 text-gray-900'>{criterion.level}</td>
-								<td className='border p-2 text-gray-900'>{criterion.description}</td>
+								<td className='border p-2'>{criterion.criterion}</td>
+								<td className='border p-2'>{criterion.category}</td>
+								<td className='border p-2'>{criterion.level}</td>
+								<td className='border p-2'>{criterion.description}</td>
 								<td className='border p-2'>
 									<textarea
 										value={observations[criterion.criterion] || ''}
 										onChange={(e) => handleObservationChange(criterion.criterion, e.target.value)}
-										className='w-full p-1 border rounded focus:ring-blue-500 focus:border-blue-500'
+										className='w-full p-1 border rounded focus:ring-blue-500 focus:border-blue-500 '
 										rows={3}
 										placeholder='Enter observations...'
 									/>
 								</td>
-								<td className='border p-2 whitespace-pre-line text-gray-900'>
-									{criterion.howToCheck}
-								</td>
-								<td className='border p-2 text-gray-900'>{criterion.toolMethod}</td>
-								<td className='border p-2 whitespace-pre-line text-gray-900'>
-									{criterion.whereToCheck}
-								</td>
+								<td className='border p-2 whitespace-pre-line'>{criterion.howToCheck}</td>
+								<td className='border p-2'>{criterion.toolMethod}</td>
+								<td className='border p-2 whitespace-pre-line'>{criterion.whereToCheck}</td>
 							</tr>
 						))}
 					</tbody>
