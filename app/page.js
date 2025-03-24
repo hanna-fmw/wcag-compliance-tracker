@@ -721,6 +721,7 @@ export default function WCAGCriteriaPage() {
 			setClientId('')
 			setObservations({})
 			setDateCreated(new Date().toISOString())
+			setExecutiveSummary('')
 		}
 	}
 
