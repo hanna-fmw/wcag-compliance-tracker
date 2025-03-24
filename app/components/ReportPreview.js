@@ -87,8 +87,8 @@ export default function ReportPreview({ auditData, onClose }) {
 	return (
 		<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'>
 			<div className='bg-gray-200 text-black rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto'>
-				<div className='p-4 border-b flex justify-between items-center'>
-					<h1 className='text-xl font-semibold'>WCAG Accessibility Audit Report Preview</h1>
+				<div className='p-4 border-b flex justify-between items-center bg-gray-700 text-white'>
+					<h1 className='text-xl font-semibold'>Report Preview</h1>
 					<button onClick={onClose} className='text-gray-500 hover:text-gray-700'>
 						✕
 					</button>
@@ -96,8 +96,12 @@ export default function ReportPreview({ auditData, onClose }) {
 
 				<div className='p-4' ref={reportRef}>
 					<section className='mb-8'>
+						<h1 className='text-xl font-semibold border-b py-4 mb-4'>
+							WCAG Accessibility Audit Report
+						</h1>
+
 						<h2 className='text-xl font-semibold mb-4'>About the Evaluation</h2>
-						<p className='mb-4'>
+						<p className='mb-4 p-4'>
 							The aim of this audit is to evaluate the conformance of {auditData.clientName} with
 							W3C's Web Content Accessibility Guidelines (WCAG) 2.2 at level AA and the European
 							Accessibility Act. The assessment includes automated testing, manual review, and
