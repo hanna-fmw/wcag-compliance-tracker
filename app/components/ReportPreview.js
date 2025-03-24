@@ -47,31 +47,25 @@ export default function ReportPreview({ auditData, onClose }) {
 				logging: false,
 				backgroundColor: '#ffffff',
 				windowWidth: reportRef.current.scrollWidth,
-				windowHeight: reportRef.current.scrollHeight,
+				height: reportRef.current.scrollHeight,
+				width: reportRef.current.scrollWidth,
 			})
 
 			const imgData = canvas.toDataURL('image/png')
 			const pdf = new jsPDF({
 				orientation: 'portrait',
 				unit: 'mm',
-				format: 'a4',
+				format: [canvas.width * 0.264583, canvas.height * 0.264583],
 			})
 
-			const pdfWidth = pdf.internal.pageSize.getWidth()
-			const pdfHeight = (canvas.height * pdfWidth) / canvas.width
-
-			// Calculate how many pages we need
-			const pageCount = Math.ceil(pdfHeight / pdf.internal.pageSize.getHeight())
-
-			// Add each page
-			for (let i = 0; i < pageCount; i++) {
-				if (i > 0) {
-					pdf.addPage()
-				}
-
-				const yOffset = -i * pdf.internal.pageSize.getHeight()
-				pdf.addImage(imgData, 'PNG', 0, yOffset, pdfWidth, pdfHeight)
-			}
+			pdf.addImage(
+				imgData,
+				'PNG',
+				0,
+				0,
+				pdf.internal.pageSize.getWidth(),
+				pdf.internal.pageSize.getHeight()
+			)
 
 			pdf.save(
 				`wcag-audit-${auditData.clientName || 'unnamed'}-${
