@@ -826,35 +826,39 @@ Minor Issues:
 				<table className='min-w-full bg-white border border-gray-300 text-black'>
 					<thead>
 						<tr>
-							<th className='border p-2 text-md'>Criterion</th>
-							<th className='border p-2 text-md'>Category</th>
-							<th className='border p-2 text-md'>Level</th>
-							<th className='border p-2 text-md'>Description</th>
-							<th className='border p-2 text-md'>Observations</th>
-							<th className='border p-2 text-md'>How to Check</th>
-							<th className='border p-2 text-md'>Tool/Method</th>
-							<th className='border p-2 text-md'>Where to Check</th>
+							<th className='border p-2 text-md w-[10%] text-left align-top'>Criterion</th>
+							<th className='border p-2 text-md w-[8%] text-left align-top'>Category</th>
+							<th className='border p-2 text-md w-[5%] text-left align-top'>Level</th>
+							<th className='border p-2 text-md w-[15%] text-left align-top'>Description</th>
+							<th className='border p-2 text-md w-[25%] text-left align-top'>Observations</th>
+							<th className='border p-2 text-md w-[15%] text-left align-top'>How to Check</th>
+							<th className='border p-2 text-md w-[10%] text-left align-top'>Tool/Method</th>
+							<th className='border p-2 text-md w-[12%] text-left align-top'>Where to Check</th>
 						</tr>
 					</thead>
 					<tbody className='text-sm'>
 						{wcagCriteria.map((criterion, index) => (
 							<tr key={index} className='border-b'>
-								<td className='border p-2'>{criterion.criterion}</td>
-								<td className='border p-2'>{criterion.category}</td>
-								<td className='border p-2'>{criterion.level}</td>
-								<td className='border p-2'>{criterion.description}</td>
-								<td className='border p-2'>
+								<td className='border p-2 w-[10%] text-left align-top'>{criterion.criterion}</td>
+								<td className='border p-2 w-[8%] text-left align-top'>{criterion.category}</td>
+								<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
+								<td className='border p-2 w-[15%] text-left align-top'>{criterion.description}</td>
+								<td className='border p-2 w-[25%] text-left align-top'>
 									<textarea
 										value={observations[criterion.criterion] || ''}
 										onChange={(e) => handleObservationChange(criterion.criterion, e.target.value)}
-										className='w-full p-1 border rounded focus:ring-blue-500 focus:border-blue-500 '
+										className='w-full p-1 border rounded focus:ring-blue-500 focus:border-blue-500'
 										rows={3}
 										placeholder='Enter observations...'
 									/>
 								</td>
-								<td className='border p-2 whitespace-pre-line'>{criterion.howToCheck}</td>
-								<td className='border p-2'>{criterion.toolMethod}</td>
-								<td className='border p-2 whitespace-pre-line'>{criterion.whereToCheck}</td>
+								<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
+									{criterion.howToCheck}
+								</td>
+								<td className='border p-2 w-[10%] text-left align-top'>{criterion.toolMethod}</td>
+								<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
+									{criterion.whereToCheck}
+								</td>
 							</tr>
 						))}
 					</tbody>
