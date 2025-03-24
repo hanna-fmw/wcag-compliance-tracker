@@ -775,12 +775,12 @@ export default function WCAGCriteriaPage() {
 					<div className='flex items-end gap-2'>
 						<button
 							onClick={handleExport}
-							className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
+							className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer'>
 							Export Audit
 						</button>
 						<button
 							onClick={handleClearData}
-							className='bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>
+							className='bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 hover:cursor-pointer'>
 							Clear Data
 						</button>
 					</div>

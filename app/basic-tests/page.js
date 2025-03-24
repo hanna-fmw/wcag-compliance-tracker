@@ -59,7 +59,11 @@ export default function Home() {
 			<h1 className='text-4xl font-bold mb-8 text-gray-900'>
 				Internal Accessibility WCAG Audit Guide
 			</h1>
-
+			<div className='flex justify-between items-center mb-8'>
+				<Link href='/' className='text-blue-500 hover:text-gray-600'>
+					Back to Home
+				</Link>
+			</div>
 			<div className='space-y-12'>
 				{/* Step 1 */}
 				<section
