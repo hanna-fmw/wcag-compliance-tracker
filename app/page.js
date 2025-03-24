@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import ReportPreview from './components/ReportPreview'
 
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
@@ -651,6 +652,8 @@ export default function WCAGCriteriaPage() {
 	const [clientId, setClientId] = useState('')
 	const [observations, setObservations] = useState({})
 	const [dateCreated, setDateCreated] = useState(new Date().toISOString())
+	const [showPreview, setShowPreview] = useState(false)
+	const [previewData, setPreviewData] = useState(null)
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
@@ -702,18 +705,8 @@ export default function WCAGCriteriaPage() {
 			dateCreated,
 		}
 
-		// Create a downloadable JSON file
-		const blob = new Blob([JSON.stringify(auditData, null, 2)], { type: 'application/json' })
-		const url = URL.createObjectURL(blob)
-		const a = document.createElement('a')
-		a.href = url
-		a.download = `wcag-audit-${clientName || 'unnamed'}-${
-			new Date().toISOString().split('T')[0]
-		}.json`
-		document.body.appendChild(a)
-		a.click()
-		document.body.removeChild(a)
-		URL.revokeObjectURL(url)
+		setPreviewData(auditData)
+		setShowPreview(true)
 	}
 
 	const handleClearData = () => {
@@ -807,6 +800,10 @@ export default function WCAGCriteriaPage() {
 					</tbody>
 				</table>
 			</div>
+
+			{showPreview && (
+				<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
+			)}
 		</div>
 	)
 }
