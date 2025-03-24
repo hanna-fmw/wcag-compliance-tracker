@@ -792,7 +792,7 @@ export default function WCAGCriteriaPage() {
 					</div>
 				</div>
 			</div>
-			<div className='mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200'>
+			<div className='mb-8 py-6'>
 				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
 				<p className='text-sm text-gray-600 mb-4'>
 					Enter a summary based on the observations you have entered in the table below. This
@@ -802,7 +802,7 @@ export default function WCAGCriteriaPage() {
 				<textarea
 					value={executiveSummary}
 					onChange={(e) => setExecutiveSummary(e.target.value)}
-					className='w-full p-4 border rounded-md focus:ring-blue-500 focus:border-blue-500 min-h-[200px]'
+					className='w-full p-4 border focus:ring-blue-500 focus:border-blue-500 min-h-[200px]'
 					placeholder={`Example:
 
 Overall Evaluation:
