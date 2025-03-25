@@ -41,31 +41,36 @@ export default function ReportPreview({ auditData, onClose }) {
 		if (!reportRef.current) return
 
 		try {
+			// Get the full height of the content
+			const contentHeight = reportRef.current.scrollHeight
+			const contentWidth = reportRef.current.scrollWidth
+
 			const canvas = await html2canvas(reportRef.current, {
 				scale: 2,
 				useCORS: true,
 				logging: false,
 				backgroundColor: '#ffffff',
-				windowWidth: reportRef.current.scrollWidth,
-				height: reportRef.current.scrollHeight,
-				width: reportRef.current.scrollWidth,
+				// Explicitly set dimensions to match content
+				height: contentHeight,
+				width: contentWidth,
+				// Ensure full content capture
+				windowHeight: contentHeight,
+				windowWidth: contentWidth,
 			})
 
 			const imgData = canvas.toDataURL('image/png')
+
+			// Calculate PDF dimensions to fit content
+			const pdfWidth = 210 // A4 width in mm
+			const pdfHeight = (canvas.height * pdfWidth) / canvas.width
+
 			const pdf = new jsPDF({
-				orientation: 'portrait',
+				orientation: pdfHeight > pdfWidth ? 'portrait' : 'landscape',
 				unit: 'mm',
-				format: [canvas.width * 0.264583, canvas.height * 0.264583],
+				format: [pdfWidth, pdfHeight],
 			})
 
-			pdf.addImage(
-				imgData,
-				'PNG',
-				0,
-				0,
-				pdf.internal.pageSize.getWidth(),
-				pdf.internal.pageSize.getHeight()
-			)
+			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
 
 			pdf.save(
 				`wcag-audit-${auditData.clientName || 'unnamed'}-${
