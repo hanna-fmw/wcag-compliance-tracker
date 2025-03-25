@@ -22,7 +22,43 @@ const checkTypeDisplayNames = {
 	bodyText: 'Body Text',
 	screenReader: 'Screen Reader',
 	tables: 'Tables',
-	otherTests: 'Other Tests',
+	otherTests: 'Additional Tests',
+}
+
+// Add this after the checkTypeDisplayNames object
+const checkDescriptions = {
+	imageAlt:
+		'Image alternative text ("alt text") is a short description that conveys the purpose of an image, essential for screen reader users and those with visual impairments.',
+	pageTitle:
+		'Page titles are shown in browser windows, tabs, and search results, helping users understand page content and navigate between pages.',
+	headings:
+		'Headings communicate the organization of content on the page, helping users navigate and understand the content structure.',
+	colorContrast:
+		'Color contrast between text and background must be sufficient to ensure readability for all users, including those with visual impairments.',
+	skipLink:
+		'Skip links allow keyboard users to bypass repetitive navigation and jump directly to main content.',
+	keyboardFocus:
+		'Visible keyboard focus indicators help keyboard users understand their current position on the page.',
+	language:
+		'Proper language declaration ensures correct pronunciation by screen readers and accurate translation by browser tools.',
+	zoom: 'Content must remain functional and readable when zoomed up to 200% to accommodate users who need enlarged text.',
+	captions:
+		'Captions provide text alternatives for audio content in videos, essential for deaf or hard-of-hearing users.',
+	transcripts:
+		'Transcripts provide text versions of audio/video content, beneficial for deaf users and those who prefer reading.',
+	audioDescription:
+		'Audio descriptions provide verbal explanations of important visual content for blind or visually impaired users.',
+	formLabels:
+		'Form labels clearly identify input fields and their purpose for all users, especially those using screen readers.',
+	requiredFields:
+		'Clear indication of required form fields helps users complete forms accurately and efficiently.',
+	bodyText:
+		'Body text should be well-structured and easy to understand, with clear hierarchy and readable content.',
+	screenReader:
+		'Content should be properly structured and meaningful when accessed through screen readers.',
+	tables:
+		'Data tables should be properly structured with clear relationships between headers and data cells.',
+	otherTests: 'Supplementary accessibility checks and observations',
 }
 
 export default function Home() {
@@ -100,11 +136,11 @@ export default function Home() {
 	const handleExport = () => {
 		const observationsWithDetails = Object.entries(basicTestObservations).map(
 			([checkId, observation]) => ({
-				criterion: checkTypeDisplayNames[checkId] || checkId, // Use the display name, fallback to checkId if not found
+				criterion: checkTypeDisplayNames[checkId] || checkId,
 				observation,
 				category: 'Basic Test',
 				level: 'A/AA',
-				description: 'Basic accessibility test observation',
+				description: checkDescriptions[checkId] || 'Basic accessibility test observation',
 			})
 		)
 
