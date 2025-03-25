@@ -4,6 +4,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ReportPreview from '../components/ReportPreview'
 
+// Add this mapping object at the top of the file, after the imports
+const checkTypeDisplayNames = {
+	imageAlt: 'Image Alternative Text',
+	pageTitle: 'Page Title',
+	headings: 'Headings',
+	colorContrast: 'Color Contrast',
+	skipLink: 'Skip Link',
+	keyboardFocus: 'Keyboard Focus',
+	language: 'Language',
+	zoom: 'Zoom',
+	captions: 'Multimedia (Captions)',
+	transcripts: 'Multimedia (Transcripts)',
+	audioDescription: 'Multimedia (Audio Description)',
+	formLabels: 'Forms (Labels)',
+	requiredFields: 'Forms (Required Fields)',
+	bodyText: 'Body Text',
+	screenReader: 'Screen Reader',
+	tables: 'Tables',
+	otherTests: 'Other Tests',
+}
+
 export default function Home() {
 	const [expandedSections, setExpandedSections] = useState({
 		step1: false,
@@ -77,10 +98,9 @@ export default function Home() {
 
 	// Add export handler
 	const handleExport = () => {
-		// Create an array of observations with additional fields
 		const observationsWithDetails = Object.entries(basicTestObservations).map(
 			([checkId, observation]) => ({
-				criterion: checkId,
+				criterion: checkTypeDisplayNames[checkId] || checkId, // Use the display name, fallback to checkId if not found
 				observation,
 				category: 'Basic Test',
 				level: 'A/AA',
@@ -185,7 +205,7 @@ export default function Home() {
 
 			{/* Client info and buttons section */}
 			<div className='flex gap-4 py-6'>
-			<div>
+				<div>
 					<label className='block text-sm font-bold'>Client</label>
 					<input
 						type='text'
@@ -205,7 +225,7 @@ export default function Home() {
 						placeholder='Enter website URL'
 					/>
 				</div>
-				
+
 				<div className='flex items-end gap-2'>
 					<button
 						onClick={handleExport}
