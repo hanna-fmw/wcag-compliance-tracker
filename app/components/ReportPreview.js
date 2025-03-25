@@ -130,8 +130,7 @@ export default function ReportPreview({ auditData, onClose }) {
 					<section className='mb-8'>
 						<h2 className='text-xl font-semibold mb-4'>Executive Summary</h2>
 						<div className='space-y-4'>
-							<p>{auditData.executiveSummary}</p>
-
+							<p className='whitespace-pre-wrap'>{auditData.executiveSummary}</p>
 							<p>More details on these findings can be found below.</p>
 						</div>
 					</section>
