@@ -96,29 +96,121 @@ export default function ReportPreview({ auditData, onClose }) {
 				</div>
 
 				<div className='p-4' ref={reportRef}>
-					<section className='mb-8'>
-						<h1 className='text-xl font-semibold border-b py-4 mb-4'>
-							WCAG Accessibility Audit Report
-						</h1>
+					<style>
+						{`
+							/* Base styles for the report */
+							body, .report-container {
+								font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+								padding: 1rem;
+								line-height: 1.5;
+								color: #111827;
+							}
+							
+							/* Section spacing */
+							.report-section {
+								margin-bottom: 2rem;
+							}
+							
+							/* Headings */
+							.report-heading {
+								font-size: 1.25rem;
+								font-weight: 600;
+								padding-bottom: 1rem;
+								margin-bottom: 1rem;
+								border-bottom: 1px solid #e5e7eb;
+							}
+							
+							/* Text styles */
+							.report-text {
+								margin-bottom: 1rem;
+							}
+							
+							/* Lists */
+							.report-list {
+								list-style-type: disc;
+								padding-left: 1.25rem;
+							}
+							
+							/* Observation cards */
+							.observation-card {
+								border: 1px solid #e5e7eb;
+								border-radius: 0.375rem;
+								padding: 1rem;
+							}
+							
+							.observation-header {
+								display: flex;
+								justify-content: space-between;
+								align-items: flex-start;
+								margin-bottom: 0.5rem;
+							}
+							
+							.observation-title {
+								font-weight: 600;
+							}
+							
+							.observation-level {
+								font-size: 0.875rem;
+							}
+							
+							.observation-description {
+								font-size: 0.875rem;
+								margin-bottom: 0.5rem;
+							}
+							
+							.observation-label {
+								font-weight: 600;
+								margin-bottom: 0.5rem;
+							}
+							
+							.observation-content {
+								font-size: 0.875rem;
+								white-space: pre-wrap;
+							}
 
-						<h2 className='text-xl font-semibold mb-4'>About the Audit</h2>
-						<p className='mb-4'>
+							/* Links */
+							.report-link {
+								color: #2563eb;
+								text-decoration: none;
+							}
+							
+							.report-link:hover {
+								text-decoration: underline;
+							}
+
+							/* Executive Summary */
+							.executive-summary {
+								white-space: pre-wrap;
+							}
+
+							/* Space between observation cards */
+							.observations-container > div + div {
+								margin-top: 1.5rem;
+							}
+						`}
+					</style>
+
+					<section className='report-section'>
+						<h1 className='report-heading'>WCAG Accessibility Audit Report</h1>
+
+						<h2 className='report-heading'>About the Audit</h2>
+						<p className='report-text'>
 							The aim of this audit is to evaluate the conformance of {auditData.clientName} with
 							W3C's Web Content Accessibility Guidelines (WCAG) 2.2 at level AA and the European
 							Accessibility Act. The assessment includes automated testing, manual review, and
 							assistive technology simulations to identify barriers affecting users with
 							disabilities.
 						</p>
-						<p>
+						<p className='report-text'>
 							The evaluation results in this report are based on evaluations conducted on the
 							following date(s): {new Date(auditData.dateCreated).toLocaleDateString()}. The website
 							may have changed since that time.
 						</p>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Scope of the Audit</h2>
-						<ul className='list-disc pl-5'>
+					<section className='report-section'>
+						<h2 className='report-heading'>Scope of the Audit</h2>
+						<ul className='report-list'>
 							<li>Website: {auditData.clientName}</li>
 							<li>Client: {auditData.clientId}</li>
 							<li>WCAG Version: 2.2</li>
@@ -127,24 +219,24 @@ export default function ReportPreview({ auditData, onClose }) {
 						</ul>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Executive Summary</h2>
-						<div className='space-y-4'>
-							<p className='whitespace-pre-wrap'>{auditData.executiveSummary}</p>
+					<section className='report-section'>
+						<h2 className='report-heading'>Executive Summary</h2>
+						<div className='report-text'>
+							<p className='executive-summary'>{auditData.executiveSummary}</p>
 							<p>More details on these findings can be found below.</p>
 						</div>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Review Process</h2>
-						<p className='mb-4'>
+					<section className='report-section'>
+						<h2 className='report-heading'>Review Process</h2>
+						<p className='report-text'>
 							To evaluate the website's accessibility, we conducted a combination of automated
 							testing, manual review, and assistive technology simulations. This approach ensures a
 							thorough assessment of potential barriers affecting users with disabilities.
 						</p>
 
 						<h3 className='text-lg font-semibold mt-6 mb-3'>Automated Testing</h3>
-						<p className='mb-4'>
+						<p className='report-text'>
 							Automated tools can quickly scan a website for common accessibility issues. However,
 							they should always be complemented with manual testing. Among others, we use tools
 							like Lighthouse (Chrome DevTools), WAVE Evaluation Tool, Pa11y (CLI tool), ARIA
@@ -152,7 +244,7 @@ export default function ReportPreview({ auditData, onClose }) {
 						</p>
 
 						<h3 className='text-lg font-semibold mt-6 mb-3'>Manual Testing & Visual Inspection</h3>
-						<ul className='list-disc pl-5 mb-4'>
+						<ul className='report-list mb-4'>
 							<li>
 								Light proof-reading (spot-check) to catch readability issues, inconsistencies,
 								spelling mistakes, and grammatical errors
@@ -162,33 +254,33 @@ export default function ReportPreview({ auditData, onClose }) {
 						</ul>
 
 						<h3 className='text-lg font-semibold mt-6 mb-3'>Assistive Technology & Simulations</h3>
-						<ul className='list-disc pl-5 mb-4'>
+						<ul className='report-list mb-4'>
 							<li>Screen reader testing for navigation and content accessibility</li>
 							<li>Color blindness simulation tools to assess contrast and usability</li>
 							<li>Keyboard navigation checks to ensure users can interact with all elements</li>
 						</ul>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Observations</h2>
-						<div className='space-y-6'>
+					<section className='report-section'>
+						<h2 className='report-heading'>Observations</h2>
+						<div className='observations-container'>
 							{auditData.observations.map((obs, index) => (
-								<div key={index} className='border rounded p-4'>
-									<div className='flex justify-between items-start mb-2'>
-										<h3 className='font-semibold'>{obs.criterion}</h3>
-										<span className='text-sm'>{obs.level}</span>
+								<div key={index} className='observation-card'>
+									<div className='observation-header'>
+										<h3 className='observation-title'>{obs.criterion}</h3>
+										<span className='observation-level'>{obs.level}</span>
 									</div>
-									<p className='text-sm mb-2'>{obs.description}</p>
-									<h4 className='font-semibold mb-2'>Evaluation</h4>
-									<p className='text-sm whitespace-pre-wrap'>{obs.observation}</p>
+									<p className='observation-description'>{obs.description}</p>
+									<h4 className='observation-label'>Evaluation</h4>
+									<p className='observation-content'>{obs.observation}</p>
 								</div>
 							))}
 						</div>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Next Steps & Recommended Actions</h2>
-						<p className='mb-4'>
+					<section className='report-section'>
+						<h2 className='report-heading'>Next Steps & Recommended Actions</h2>
+						<p className='report-text'>
 							Based on our findings, we recommend implementing the necessary fixes to improve
 							accessibility. Our developers and designers will review the identified issues, assess
 							their impact, and determine how they should be addressed. Some adjustments may be
@@ -201,32 +293,28 @@ export default function ReportPreview({ auditData, onClose }) {
 						</p>
 					</section>
 
-					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>References</h2>
-						<ul className='space-y-2'>
+					<section className='report-section'>
+						<h2 className='report-heading'>References</h2>
+						<ul className='report-list space-y-2'>
 							<li>
-								<a
-									href='https://www.w3.org/WAI/standards-guidelines/wcag/'
-									className='text-blue-600 hover:underline'>
+								<a href='https://www.w3.org/WAI/standards-guidelines/wcag/' className='report-link'>
 									Web Content Accessibility Guidelines (WCAG) Overview
 								</a>
 							</li>
 							<li>
-								<a href='https://www.w3.org/TR/WCAG22/' className='text-blue-600 hover:underline'>
+								<a href='https://www.w3.org/TR/WCAG22/' className='report-link'>
 									Web Content Accessibility Guidelines 2.2
 								</a>
 							</li>
 							<li>
-								<a
-									href='https://www.w3.org/WAI/WCAG22/Techniques/'
-									className='text-blue-600 hover:underline'>
+								<a href='https://www.w3.org/WAI/WCAG22/Techniques/' className='report-link'>
 									Techniques for WCAG 2
 								</a>
 							</li>
 							<li>
 								<a
 									href='https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en'
-									className='text-blue-600 hover:underline'>
+									className='report-link'>
 									European Accessibility Act
 								</a>
 							</li>
