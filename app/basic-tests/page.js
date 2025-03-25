@@ -34,6 +34,7 @@ export default function Home() {
 		bodyText: false,
 		screenReader: false,
 		tables: false,
+		otherTests: false,
 	})
 
 	const [basicTestObservations, setBasicTestObservations] = useState({})
@@ -139,35 +140,69 @@ export default function Home() {
 
 	return (
 		<main className='min-h-screen p-8 max-w-4xl mx-auto bg-white'>
-			<h1 className='text-4xl font-bold mb-8 text-gray-900'>
-				Internal Accessibility WCAG Audit Guide
-			</h1>
+			<h1 className='text-4xl font-bold mb-8 text-gray-900'>Basic Tests</h1>
 			<div className='flex justify-between items-center mb-8'>
 				<Link href='/' className='text-blue-500 hover:text-gray-900'>
 					Back to Home
 				</Link>
 			</div>
 
-			{/* Client info and buttons section */}
-			<div className='flex gap-4 py-6 border-b'>
+			{/* Move Step 1 content here as a regular section */}
+			<div className='py-6 border-b'>
+				<h2 className='text-2xl font-semibold text-gray-900 mb-4'>Step 1: Determine the Scope</h2>
+				<div className='mt-4'>
+					<p className='text-gray-600'>
+						Instead of evaluating every page, choose the pages and functionalities that represent
+						the broader experience of the website. For example:
+					</p>
+					<ul className='list-disc pl-6 space-y-2 text-gray-600'>
+						<li>Most popular pages</li>
+						<li>Range of template types</li>
+						<li>At least one service end-to-end (where possible)</li>
+						<li>Other pages your stakeholders (or you) thinks really need to be tested</li>
+					</ul>
+					<p className='text-gray-600'>Try to limit the amount of pages (8-10).</p>
+					<p className='text-gray-600'>
+						When writing down issues you'll need to refer to screens (and sometimes specific
+						states), so it helps to list the URLs and to take screenshots of all the pages and
+						create an overview in FigJam or Miro to refer to.
+					</p>
+				</div>
+			</div>
+			<div className='py-6'>
+				<h2 className='text-2xl font-semibold text-gray-900'>Step 2: Audit</h2>
 				<div>
-					<label className='block text-sm font-bold'>Client Name</label>
+					<p className='text-gray-600'>
+						Write the issues in a short and consistent way. If relevant, add page URL and
+						screenshot.
+					</p>
+					<ul className='list-disc pl-6 space-y-2 text-gray-600'>
+						<li>&lt;Element&gt;&lt;Location on page&gt;&lt;Issue&gt;</li>
+						<li>When &lt;action&gt;&lt;location on page&gt;&lt;result&gt;&lt;issue&gt;</li>
+					</ul>
+				</div>
+			</div>
+
+			{/* Client info and buttons section */}
+			<div className='flex gap-4 py-6'>
+				<div>
+					<label className='block text-sm font-bold'>Website URL</label>
 					<input
 						type='text'
 						value={clientName}
 						onChange={(e) => setClientName(e.target.value)}
 						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-						placeholder='Enter client name'
+						placeholder='Enter website URL'
 					/>
 				</div>
 				<div>
-					<label className='block text-sm font-bold'>Client ID</label>
+					<label className='block text-sm font-bold'>Client</label>
 					<input
 						type='text'
 						value={clientId}
 						onChange={(e) => setClientId(e.target.value)}
 						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-						placeholder='Enter client ID'
+						placeholder='Enter client name'
 					/>
 				</div>
 				<div className='flex items-end gap-2'>
@@ -185,7 +220,7 @@ export default function Home() {
 			</div>
 
 			{/* Executive summary section */}
-			<div className='mb-8 py-6 border-b'>
+			<div className='mb-8 py-6'>
 				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
 				<p className='text-sm mb-4'>
 					Enter a summary based on the observations you have entered in the table below. This
@@ -216,51 +251,17 @@ Minor Issues:
 				/>
 			</div>
 
-			{/* Move Step 1 content here as a regular section */}
-			<div className='mb-8 py-6 border-b'>
-				<h2 className='text-2xl font-semibold text-gray-900 mb-4'>Step 1: Determine the Scope</h2>
-				<div className='mt-4'>
-					<p className='text-gray-600'>
-						Instead of evaluating every page, choose the pages and functionalities that represent
-						the broader experience of the website. For example:
-					</p>
-					<ul className='list-disc pl-6 space-y-2 text-gray-600'>
-						<li>Most popular pages</li>
-						<li>Range of template types</li>
-						<li>At least one service end-to-end (where possible)</li>
-						<li>Other pages your stakeholders (or you) thinks really need to be tested</li>
-					</ul>
-					<p className='text-gray-600'>Try to limit the amount of pages (8-10).</p>
-					<p className='text-gray-600'>
-						When writing down issues you'll need to refer to screens (and sometimes specific
-						states), so it helps to list the URLs and to take screenshots of all the pages and
-						create an overview in FigJam or Miro to refer to.
-					</p>
-				</div>
-			</div>
-
 			<div className='space-y-12'>
 				{/* Step 2 */}
 				<div className='space-y-4'>
-					<h2 className='text-2xl font-semibold text-gray-900'>Step 2: Audit</h2>
-					<div>
-						<p className='text-gray-600'>
-							Write the issues in a short and consistent way. Here are 2 formats we like but find
-							something that works for you. Some people like to also include a potential solution.
-							It's up to you and your team.
-						</p>
-						<ul className='list-disc pl-6 space-y-2 text-gray-600'>
-							<li>&lt;Element&gt;&lt;Location on page&gt;&lt;Issue&gt;</li>
-							<li>When &lt;action&gt;&lt;location on page&gt;&lt;result&gt;&lt;issue&gt;</li>
-						</ul>
-					</div>
-
 					<div className='mt-4 space-y-8'>
 						<div className='py-6'>
 							<button
 								onClick={() => toggleSection('step2a')}
 								className='flex justify-between items-center w-full text-left group'>
-								<h3 className='text-xl font-semibold text-orange-500'>Basic Checks</h3>
+								<h3 className='text-xl font-semibold text-orange-500'>
+									Audit Form for Basic Checks
+								</h3>
 								<span
 									className={`transform transition-transform text-gray-700 cursor-pointer ${
 										expandedSections.step2a ? 'rotate-90' : ''
@@ -918,10 +919,13 @@ Minor Issues:
 													</td>
 													<td className='border p-2'>
 														Test with appropriate screen reader for your system: • Mac users:
-														VoiceOver (built-in) • PC users: NVDA (free) or JAWS Check for: • Proper
-														reading order • Accurate pronunciation • Dynamic content updates •
-														Interactive element behavior • Form field labels and instructions •
-														Table structure and navigation • Image descriptions • Heading hierarchy
+														<a href='#' className='text-blue-500 hover:underline'>
+															VoiceOver (built-in)
+														</a>
+														• PC users: NVDA (free) or JAWS Check for: • Proper reading order •
+														Accurate pronunciation • Dynamic content updates • Interactive element
+														behavior • Form field labels and instructions • Table structure and
+														navigation • Image descriptions • Heading hierarchy
 													</td>
 													<td className='border p-2'>
 														Screen reader software: • Mac:{' '}
@@ -941,6 +945,46 @@ Minor Issues:
 														• Page structure and navigation • Interactive elements • Forms and
 														controls • Dynamic content • Tables and lists • Images and media • Error
 														messages • Status updates
+													</td>
+												</tr>
+
+												{/* Add Other Tests row */}
+												<tr>
+													<td className='border p-2'>Other Tests</td>
+													<td className='border p-2'>
+														Additional testing helps identify issues with various content types and
+														functionalities. This is important for: • Users accessing PDF documents
+														• People navigating through complex workflows • Users interacting with
+														third-party content • Mobile users • People using different browsers and
+														assistive technologies • Anyone encountering error states or
+														authentication flows
+													</td>
+													<td className='border p-2'>
+														<textarea
+															value={basicTestObservations['otherTests'] || ''}
+															onChange={(e) =>
+																handleBasicTestObservationChange('otherTests', e.target.value)
+															}
+															className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+															rows={3}
+															placeholder='Enter observations...'
+														/>
+													</td>
+													<td className='border p-2'>
+														Check for: • PDF accessibility (tags, reading order, alt text) • Broken
+														or empty links • Third-party widget behavior • Mobile-specific issues •
+														Cross-browser compatibility • Custom component accessibility •
+														Authentication flow accessibility • Error handling and messaging • Any
+														other relevant aspects not covered by previous tests
+													</td>
+													<td className='border p-2'>
+														Manual testing, PDF accessibility tools, Mobile devices, Multiple
+														browsers, Screen readers
+													</td>
+													<td className='border p-2'>
+														• PDF documents • External links • Third-party content • Mobile views •
+														Different browsers • Custom components • Login/signup flows • Error
+														states • Other unique features
 													</td>
 												</tr>
 											</tbody>
