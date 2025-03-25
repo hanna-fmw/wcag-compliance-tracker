@@ -233,17 +233,17 @@ export default function ReportPreview({ auditData, onClose }) {
 				<div className='p-4 border-t flex justify-end gap-4'>
 					<button
 						onClick={handleDownloadPDF}
-						className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
+						className='bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900'>
 						Download PDF
 					</button>
 					<button
 						onClick={handleDownloadHTML}
-						className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600'>
+						className='bg-green-800 text-white px-4 py-2 rounded hover:bg-green-900'>
 						Download HTML
 					</button>
 					<button
 						onClick={handleDownloadJSON}
-						className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600'>
+						className='bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900'>
 						Download JSON
 					</button>
 				</div>

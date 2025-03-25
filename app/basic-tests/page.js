@@ -60,7 +60,7 @@ export default function Home() {
 				Internal Accessibility WCAG Audit Guide
 			</h1>
 			<div className='flex justify-between items-center mb-8'>
-				<Link href='/' className='text-blue-500 hover:text-gray-600'>
+				<Link href='/' className='text-blue-500 hover:text-gray-900'>
 					Back to Home
 				</Link>
 			</div>

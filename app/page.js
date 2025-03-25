@@ -764,7 +764,7 @@ export default function WCAGCriteriaPage() {
 							type='text'
 							value={clientName}
 							onChange={(e) => setClientName(e.target.value)}
-							className='mt-1 block w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+							className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
 							placeholder='Enter client name'
 						/>
 					</div>
@@ -774,19 +774,19 @@ export default function WCAGCriteriaPage() {
 							type='text'
 							value={clientId}
 							onChange={(e) => setClientId(e.target.value)}
-							className='mt-1 block w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+							className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
 							placeholder='Enter client ID'
 						/>
 					</div>
 					<div className='flex items-end gap-2'>
 						<button
 							onClick={handleExport}
-							className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer'>
+							className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
 							Export Audit
 						</button>
 						<button
 							onClick={handleClearData}
-							className='bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 hover:cursor-pointer'>
+							className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
 							Clear Data
 						</button>
 					</div>
@@ -794,7 +794,7 @@ export default function WCAGCriteriaPage() {
 			</div>
 			<div className='mb-8 py-6'>
 				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
-				<p className='text-sm text-gray-600 mb-4'>
+				<p className='text-sm mb-4'>
 					Enter a summary based on the observations you have entered in the table below. This
 					summary will appear in the PDF report and should highlight key findings, major issues, and
 					general recommendations.
@@ -802,7 +802,7 @@ export default function WCAGCriteriaPage() {
 				<textarea
 					value={executiveSummary}
 					onChange={(e) => setExecutiveSummary(e.target.value)}
-					className='w-full p-4 border focus:ring-blue-500 focus:border-blue-500 min-h-[200px]'
+					className='w-full text-sm p-4 border focus:ring-gray-500 focus:border-gray-500 min-h-[200px]'
 					placeholder={`Example:
 
 Overall Evaluation:
@@ -847,7 +847,7 @@ Minor Issues:
 									<textarea
 										value={observations[criterion.criterion] || ''}
 										onChange={(e) => handleObservationChange(criterion.criterion, e.target.value)}
-										className='w-full p-1 border rounded focus:ring-blue-500 focus:border-blue-500'
+										className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
 										rows={3}
 										placeholder='Enter observations...'
 									/>
