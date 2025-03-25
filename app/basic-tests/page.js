@@ -1,7 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import ReportPreview from '../components/ReportPreview'
 
 export default function Home() {
 	const [expandedSections, setExpandedSections] = useState({
@@ -36,6 +37,76 @@ export default function Home() {
 	})
 
 	const [basicTestObservations, setBasicTestObservations] = useState({})
+
+	// Add new state variables for report preview
+	const [showPreview, setShowPreview] = useState(false)
+	const [previewData, setPreviewData] = useState(null)
+	const [executiveSummary, setExecutiveSummary] = useState('')
+
+	// Add dateCreated state
+	const [dateCreated, setDateCreated] = useState(new Date().toISOString())
+	const [clientName, setClientName] = useState('')
+	const [clientId, setClientId] = useState('')
+
+	// Modify useEffect to include new fields
+	useEffect(() => {
+		const savedData = localStorage.getItem('basicTestsAuditData')
+		if (savedData) {
+			const { clientName, clientId, observations, dateCreated, executiveSummary } = JSON.parse(savedData)
+			setBasicTestObservations(observations || {})
+			setDateCreated(dateCreated || new Date().toISOString())
+			setExecutiveSummary(executiveSummary || '')
+			setClientName(clientName || '')
+			setClientId(clientId || '')
+		}
+	}, [])
+
+	// Modify save effect to include new fields
+	useEffect(() => {
+		const auditData = {
+			clientName,
+			clientId,
+			observations: basicTestObservations,
+			dateCreated,
+			executiveSummary,
+		}
+		localStorage.setItem('basicTestsAuditData', JSON.stringify(auditData))
+	}, [basicTestObservations, dateCreated, executiveSummary, clientName, clientId])
+
+	// Add export handler
+	const handleExport = () => {
+		// Create an array of observations with additional fields
+		const observationsWithDetails = Object.entries(basicTestObservations).map(([checkId, observation]) => ({
+			criterion: checkId,
+			observation,
+			category: 'Basic Test',
+			level: 'A/AA',
+			description: 'Basic accessibility test observation'
+		}))
+
+		const auditData = {
+			clientName,
+			clientId,
+			observations: observationsWithDetails,
+			dateCreated,
+			executiveSummary,
+		}
+
+		setPreviewData(auditData)
+		setShowPreview(true)
+	}
+
+	// Add clear data handler
+	const handleClearData = () => {
+		if (window.confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+			localStorage.removeItem('basicTestsAuditData')
+			setBasicTestObservations({})
+			setDateCreated(new Date().toISOString())
+			setExecutiveSummary('')
+			setClientName('')
+			setClientId('')
+		}
+	}
 
 	const toggleSection = (section) => {
 		setExpandedSections((prev) => ({
@@ -1395,6 +1466,79 @@ export default function Home() {
 					)}
 				</section>
 			</div>
+
+			{/* Add client info and buttons section */}
+			<div className='flex gap-4 py-6'>
+				<div>
+					<label className='block text-sm font-bold'>Client Name</label>
+					<input
+						type='text'
+						value={clientName}
+						onChange={(e) => setClientName(e.target.value)}
+						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
+						placeholder='Enter client name'
+					/>
+				</div>
+				<div>
+					<label className='block text-sm font-bold'>Client ID</label>
+					<input
+						type='text'
+						value={clientId}
+						onChange={(e) => setClientId(e.target.value)}
+						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
+						placeholder='Enter client ID'
+					/>
+				</div>
+				<div className='flex items-end gap-2'>
+					<button
+						onClick={handleExport}
+						className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
+						Export Audit
+					</button>
+					<button
+						onClick={handleClearData}
+						className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
+						Clear Data
+					</button>
+				</div>
+			</div>
+
+			{/* Add executive summary section */}
+			<div className='mb-8 py-6'>
+				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
+				<p className='text-sm mb-4'>
+					Enter a summary based on the observations you have entered in the table below. This
+					summary will appear in the PDF report and should highlight key findings, major issues, and
+					general recommendations.
+				</p>
+				<textarea
+					value={executiveSummary}
+					onChange={(e) => setExecutiveSummary(e.target.value)}
+					className='w-full text-sm p-4 border focus:ring-gray-500 focus:border-gray-500 min-h-[200px]'
+					placeholder={`Example:
+
+Overall Evaluation:
+• The site demonstrates good accessibility practices in [areas]...
+• Several critical issues were identified...
+
+Critical Issues:
+• Issue 1...
+• Issue 2...
+
+Moderate Issues:
+• Issue 1...
+• Issue 2...
+
+Minor Issues:
+• Issue 1...
+• Issue 2...`}
+				/>
+			</div>
+
+			{/* Add ReportPreview component */}
+			{showPreview && (
+				<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
+			)}
 		</main>
 	)
 }
