@@ -758,7 +758,11 @@ export default function WCAGCriteriaPage() {
 							See How to Check and Where to Check columns for more information on how to check the
 							criteria.
 						</li>
-						<li>Export the audit data to a PDF, HTML, or JSON file.</li>
+						<li>
+							When done, click on Export and read through. Download as html. Open the html by
+							double-clicking on the file (where you saved it). Press Cmd + P to open the Print
+							dialog. Select Save to PDF in the drop-down. Send the PDF to the client.
+						</li>
 						<li>Clear the data to start over and create a new audit.</li>
 					</ul>
 					<div className='py-6'>
