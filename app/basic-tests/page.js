@@ -256,13 +256,11 @@ Minor Issues:
 					</div>
 
 					<div className='mt-4 space-y-8'>
-						<div className='border-t pt-6'>
+						<div className='py-6'>
 							<button
 								onClick={() => toggleSection('step2a')}
 								className='flex justify-between items-center w-full text-left group'>
-								<h3 className='text-xl font-semibold text-blue-500'>
-									Basic Checks (go to Start page for in-depth audit)
-								</h3>
+								<h3 className='text-xl font-semibold text-orange-500'>Basic Checks</h3>
 								<span
 									className={`transform transition-transform text-gray-700 cursor-pointer ${
 										expandedSections.step2a ? 'rotate-90' : ''
