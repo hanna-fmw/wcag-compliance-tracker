@@ -101,7 +101,7 @@ export default function ReportPreview({ auditData, onClose }) {
 							WCAG Accessibility Audit Report
 						</h1>
 
-						<h2 className='text-xl font-semibold mb-4'>About the Evaluation</h2>
+						<h2 className='text-xl font-semibold mb-4'>About the Audit</h2>
 						<p className='mb-4'>
 							The aim of this audit is to evaluate the conformance of {auditData.clientName} with
 							W3C's Web Content Accessibility Guidelines (WCAG) 2.2 at level AA and the European
@@ -117,13 +117,13 @@ export default function ReportPreview({ auditData, onClose }) {
 					</section>
 
 					<section className='mb-8'>
-						<h2 className='text-xl font-semibold mb-4'>Scope of the Evaluation</h2>
+						<h2 className='text-xl font-semibold mb-4'>Scope of the Audit</h2>
 						<ul className='list-disc pl-5'>
-							<li>Website Name: {auditData.clientName}</li>
-							<li>Client ID: {auditData.clientId}</li>
+							<li>Website: {auditData.clientName}</li>
+							<li>Client: {auditData.clientId}</li>
 							<li>WCAG Version: 2.2</li>
 							<li>Conformance Target: AA</li>
-							<li>Evaluation By: Stormfors</li>
+							<li>Audit By: Stormfors</li>
 						</ul>
 					</section>
 
