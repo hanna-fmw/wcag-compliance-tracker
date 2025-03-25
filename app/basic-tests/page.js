@@ -185,6 +185,16 @@ export default function Home() {
 
 			{/* Client info and buttons section */}
 			<div className='flex gap-4 py-6'>
+			<div>
+					<label className='block text-sm font-bold'>Client</label>
+					<input
+						type='text'
+						value={clientId}
+						onChange={(e) => setClientId(e.target.value)}
+						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
+						placeholder='Enter client name'
+					/>
+				</div>
 				<div>
 					<label className='block text-sm font-bold'>Website URL</label>
 					<input
@@ -195,16 +205,7 @@ export default function Home() {
 						placeholder='Enter website URL'
 					/>
 				</div>
-				<div>
-					<label className='block text-sm font-bold'>Client</label>
-					<input
-						type='text'
-						value={clientId}
-						onChange={(e) => setClientId(e.target.value)}
-						className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-						placeholder='Enter client name'
-					/>
-				</div>
+				
 				<div className='flex items-end gap-2'>
 					<button
 						onClick={handleExport}

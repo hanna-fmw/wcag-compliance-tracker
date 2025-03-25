@@ -97,7 +97,7 @@ export default function ReportPreview({ auditData, onClose }) {
 						</h1>
 
 						<h2 className='text-xl font-semibold mb-4'>About the Evaluation</h2>
-						<p className='mb-4 p-4'>
+						<p className='mb-4'>
 							The aim of this audit is to evaluate the conformance of {auditData.clientName} with
 							W3C's Web Content Accessibility Guidelines (WCAG) 2.2 at level AA and the European
 							Accessibility Act. The assessment includes automated testing, manual review, and
