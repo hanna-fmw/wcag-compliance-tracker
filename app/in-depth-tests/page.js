@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import ReportPreview from './components/ReportPreview'
+import ReportPreview from '../components/ReportPreview'
 import Link from 'next/link'
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
@@ -728,20 +728,7 @@ export default function WCAGCriteriaPage() {
 	return (
 		<div className='container mx-auto p-4'>
 			<div className='mb-6 flex flex-col gap-4'>
-				<h1 className='text-4xl font-bold text-red-500'>
-					WCAG Criteria - OLD, THIS IS NOW JUST HOMEPAGE WITH LINKS TO BASIC AND IN-DEPTH TESTS
-				</h1>
-
-				<Link href='/basic-tests' className='text-blue-500 hover:text-blue-700'>
-					Basic Tests
-				</Link>
-				<Link href='/in-depth-tests' className='text-blue-500 hover:text-blue-700'>
-					In-Depth Tests
-				</Link>
-				<Link href='/test-tools' className='text-blue-500 hover:text-blue-700'>
-					Not working yet - move content to this page from Basics Tests page
-				</Link>
-
+				<h1 className='text-2xl font-bold'>WCAG Criteria</h1>
 				<div className='py-6 border-b'>
 					<h2 className='text-lg font-bold'>Instructions</h2>
 					<ul className='list-disc list-inside text-sm'>
