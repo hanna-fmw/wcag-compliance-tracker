@@ -302,9 +302,12 @@ Minor Issues:
 									<button
 										onClick={() => toggleSection('step2a')}
 										className='flex justify-between items-center w-full text-left group'>
-										<h3 className='text-xl font-semibold text-orange-500'>
-											Audit Form for Basic Checks
-										</h3>
+										<div>
+											<h2 className='text-lg font-bold mb-4'>Test Results and Observations</h2>
+											<p className='text-sm text-muted-foreground'>
+												Go through each criterion and document your findings
+											</p>
+										</div>
 										<span
 											className={`transform transition-transform text-gray-700 cursor-pointer ${
 												expandedSections.step2a ? 'rotate-90' : ''

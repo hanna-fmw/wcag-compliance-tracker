@@ -827,7 +827,10 @@ Minor Issues:
 					</div>
 				</div>
 				<div className='mb-8 py-6'>
-					<h2 className='text-lg font-bold mb-4'>Audit</h2>
+					<h2 className='text-lg font-bold mb-4'>Test Results and Observations</h2>
+					<p className='text-sm text-muted-foreground pb-6'>
+						Go through each criterion and document your findings
+					</p>
 					<div className='overflow-x-auto'>
 						<table className='min-w-full bg-white border border-gray-300 text-black'>
 							<thead>
