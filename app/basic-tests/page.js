@@ -208,41 +208,13 @@ export default function BasicTestsPage() {
 				<div className='mb-6 flex flex-col gap-4'>
 					<Instructions />
 
-					{/* Move Step 1 content here as a regular section */}
-					<div className='py-6 border-b'>
-						<h2 className='text-2xl font-semibold text-gray-900 mb-4'>
-							Step 1: Determine the Scope
-						</h2>
-						<div className='mt-4'>
-							<p className='text-gray-600'>
-								Instead of evaluating every page, choose the pages and functionalities that
-								represent the broader experience of the website. For example:
-							</p>
-							<ul className='list-disc pl-6 space-y-2 text-gray-600'>
-								<li>Most popular pages</li>
-								<li>Range of template types</li>
-								<li>At least one service end-to-end (where possible)</li>
-								<li>Other pages your stakeholders (or you) thinks really need to be tested</li>
-							</ul>
-							<p className='text-gray-600'>Try to limit the amount of pages (8-10).</p>
-							<p className='text-gray-600'>
-								When writing down issues you'll need to refer to screens (and sometimes specific
-								states), so it helps to list the URLs and to take screenshots of all the pages and
-								create an overview in FigJam or Miro to refer to.
-							</p>
-						</div>
-					</div>
 					<div className='py-6'>
-						<h2 className='text-2xl font-semibold text-gray-900'>Step 2: Audit</h2>
+						<h2 className='text-2xl font-semibold text-gray-900'>Audit</h2>
 						<div>
 							<p className='text-gray-600'>
 								Write the issues in a short and consistent way. If relevant, add page URL and
 								screenshot.
 							</p>
-							<ul className='list-disc pl-6 space-y-2 text-gray-600'>
-								<li>&lt;Element&gt;&lt;Location on page&gt;&lt;Issue&gt;</li>
-								<li>When &lt;action&gt;&lt;location on page&gt;&lt;result&gt;&lt;issue&gt;</li>
-							</ul>
 						</div>
 					</div>
 

@@ -565,6 +565,27 @@ export default function TestToolsPage() {
 											</li>
 										</ul>
 									</div>
+									<div>
+										<h3 className='text-lg font-semibold mb-2'>Other Recommendations</h3>
+										<p className='pl-6 space-y-2 text-muted-foreground'>
+											Instead of evaluating every page, choose the pages and functionalities that
+											represent the broader experience of the website. For example:
+										</p>
+										<ul className='list-disc pl-6 space-y-2 text-muted-foreground'>
+											<li>Most popular pages</li>
+											<li>Range of template types</li>
+											<li>At least one service end-to-end (where possible)</li>
+											<li>
+												Other pages your stakeholders (or you) thinks really need to be tested
+											</li>
+											<li>Try to limit the amount of pages (8-10).</li>
+											<li>
+												When writing down issues you'll need to refer to screens (and sometimes
+												specific states), so it helps to list the URLs and to take screenshots of
+												all the pages and create an overview in FigJam or Miro to refer to.
+											</li>
+										</ul>
+									</div>
 								</div>
 							)}
 						</CardContent>
