@@ -663,6 +663,7 @@ export default function WCAGCriteriaPage() {
 	const [showPreview, setShowPreview] = useState(false)
 	const [previewData, setPreviewData] = useState(null)
 	const [executiveSummary, setExecutiveSummary] = useState('')
+	const [expandedSections, setExpandedSections] = useState({ testResults: false })
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
@@ -733,182 +734,261 @@ export default function WCAGCriteriaPage() {
 		}
 	}
 
+	const toggleSection = (section) => {
+		setExpandedSections((prev) => ({
+			...prev,
+			[section]: !prev[section],
+		}))
+	}
+
 	return (
 		<main className='flex flex-1 flex-col'>
 			<Hero
 				title='In-Depth Accessibility Tests'
 				description='A comprehensive guide for conducting thorough accessibility testing'
 			/>
-
 			<div className='container mx-auto p-4'>
-				<div className='mb-6 flex flex-col gap-4'>
-					<Instructions />
-
+				<Instructions />
+			</div>
+			<div className='container mx-auto p-4'>
+				<div className='mb-6 flex flex-col gap-4 '>
 					<div className='py-6'>
 						<Card>
 							<CardHeader>
 								<CardTitle>
-									<h2 className='text-2xl font-semibold leading-none tracking-tight'>Audit</h2>
+									<h2 className='text-2xl font-semibold leading-none tracking-tight py-4'>Audit</h2>
 								</CardTitle>
 								<p className='text-sm text-muted-foreground'>
-									Write the issues in a short and consistent way. If relevant, add page URL and
-									screenshot.
+									Complete step 1, 2 and 3 below. When done, click{' '}
+									<span className='font-bold'>Export Audit</span> to preview the report and export
+									it as a PDF, HTML or JSON.
 								</p>
-							</CardHeader>
-							<CardContent className='space-y-6'>
-								{/* Client info and buttons section */}
-								<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-									<div className='space-y-2'>
-										<Label htmlFor='clientId'>Client</Label>
-										<Input
-											id='clientId'
-											value={clientId}
-											onChange={(e) => setClientId(e.target.value)}
-											placeholder='Enter client name'
-										/>
-									</div>
-									<div className='space-y-2'>
-										<Label htmlFor='client'>Website URL</Label>
-										<Input
-											id='client'
-											value={clientName}
-											onChange={(e) => setClientName(e.target.value)}
-											placeholder='Enter website URL'
-										/>
-									</div>
-								</div>
-
-								<div className='flex justify-end gap-2'>
+								<p className='text-sm text-muted-foreground'>
+									For each new audit, click <span className='font-bold'>Clear Data</span>
+									to start fresh and clear local storage.
+								</p>
+								<div className='flex justify-start gap-2 py-6'>
 									<Button variant='outline' onClick={handleClearData}>
 										Clear Data
 									</Button>
 									<Button onClick={handleExport}>Export Audit</Button>
 								</div>
-							</CardContent>
-						</Card>
-					</div>
-
-					{/* Executive summary section */}
-					<div className='py-6'>
-						<Card>
-							<CardHeader>
-								<CardTitle>Executive Summary</CardTitle>
-								<p className='text-sm text-muted-foreground'>
-									Enter a summary based on the observations you have entered in the table below.
-									This summary will appear in the PDF report and should highlight key findings,
-									major issues, and general recommendations.
-								</p>
 							</CardHeader>
-							<CardContent>
-								<Textarea
-									value={executiveSummary}
-									onChange={(e) => setExecutiveSummary(e.target.value)}
-									className='min-h-[200px]'
-									placeholder={`Example:
+							<div className='container mx-auto p-4'>
+								<div className='mb-6 flex flex-col gap-4 '>
+									<div className='py-6'>
+										<Card>
+											<CardHeader>
+												<CardTitle>
+													<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+														Step 1: Enter Client Info
+													</h3>
+												</CardTitle>
+												<p className='text-sm text-muted-foreground'>
+													Enter client name and website URL.
+												</p>
+											</CardHeader>
+											<CardContent className='space-y-6'>
+												{/* Client info and buttons section */}
+												<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+													<div className='space-y-2'>
+														<Label htmlFor='clientId'>Client Name</Label>
+														<Input
+															id='clientId'
+															value={clientId}
+															onChange={(e) => setClientId(e.target.value)}
+															placeholder='Enter client name'
+														/>
+													</div>
+													<div className='space-y-2'>
+														<Label htmlFor='client'>Website URL</Label>
+														<Input
+															id='client'
+															value={clientName}
+															onChange={(e) => setClientName(e.target.value)}
+															placeholder='Enter website URL'
+														/>
+													</div>
+												</div>
+											</CardContent>
+										</Card>
+									</div>
+								</div>
+								<div className='mb-8 py-6'>
+									<Card>
+										<CardContent>
+											<div className='space-y-4'>
+												<div className='mt-4 space-y-8'>
+													<div>
+														<button
+															onClick={() => toggleSection('testResults')}
+															className='flex justify-between items-start w-full text-left group'>
+															<div className='max-w-[80%]'>
+																<CardTitle>
+																	<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+																		Step 2: Test Results & Observations
+																	</h3>
+																</CardTitle>
+																<p className='text-sm text-muted-foreground py-2'>
+																	Go through each criterion in the{' '}
+																	<span className='font-bold'>Criterion</span> column and document
+																	your findings in the{' '}
+																	<span className='font-bold'>Observations</span> column. Write the
+																	issues in a short and consistent way. If relevant, add page URL in
+																	your observations.
+																</p>
+																<p className='text-sm text-muted-foreground py-2'>
+																	The data you enter will remain in the table until you clear the
+																	data with the <span className='font-bold'>Clear Data</span>{' '}
+																	button. If needed, refer to the following guidelines:{' '}
+																	<Link
+																		className='text-blue-500 hover:text-blue-700 hover:underline'
+																		href='https://www.digg.se/webbriktlinjer/alla-webbriktlinjer'
+																		target='_blank'
+																		rel='noopener noreferrer'>
+																		webbriktlinjer
+																	</Link>{' '}
+																	from Digg (myndigheten för digital förvaltning).
+																</p>
+																<div className='flex items-center gap-4'>
+																	<p className='text-sm font-bold text-muted-foreground py-2'>
+																		Click to expand the audit table
+																	</p>
+																	<span
+																		className={`transform transition-transform text-gray-700 cursor-pointer ${
+																			expandedSections.testResults ? 'rotate-90' : ''
+																		}`}>
+																		▶
+																	</span>
+																</div>
+															</div>
+														</button>
+														{expandedSections.testResults && (
+															<div className='mt-4'>
+																<div className='overflow-x-auto'>
+																	<table className='min-w-full border-collapse'>
+																		<thead>
+																			<tr>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Criterion
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Category
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Level
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Description
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Observations
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					How to Check
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Tool/Method
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																					Where to Check
+																				</th>
+																			</tr>
+																		</thead>
+																		<tbody className='text-sm'>
+																			{wcagCriteria.map((criterion, index) => (
+																				<tr key={index} className='border-b hover:bg-muted/50'>
+																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
+																						{criterion.criterion}
+																					</td>
+																					<td className='border p-2 w-[8%] text-left align-top'>
+																						{criterion.category}
+																					</td>
+																					<td className='border p-2 w-[5%] text-left align-top'>
+																						{criterion.level}
+																					</td>
+																					<td className='border p-2 w-[15%] text-left align-top'>
+																						{criterion.description}
+																					</td>
+																					<td className='border p-2 w-[25%] text-left align-top'>
+																						<textarea
+																							value={observations[criterion.criterion] || ''}
+																							onChange={(e) =>
+																								handleObservationChange(
+																									criterion.criterion,
+																									e.target.value
+																								)
+																							}
+																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
+																							placeholder='Enter observations...'
+																						/>
+																					</td>
+																					<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
+																						{criterion.howToCheck}
+																					</td>
+																					<td className='border p-2 w-[10%] text-left align-top'>
+																						{criterion.toolMethod}
+																					</td>
+																					<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
+																						{criterion.whereToCheck}
+																					</td>
+																				</tr>
+																			))}
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														)}
+													</div>
+												</div>
+											</div>
+										</CardContent>
+									</Card>
+								</div>
+								{/* Executive summary section */}
+								<div className='py-6'>
+									<Card>
+										<CardHeader>
+											<CardTitle>
+												<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+													Step 3: Executive Summary
+												</h3>
+											</CardTitle>
+
+											<p className='text-sm text-muted-foreground'>
+												Enter a summary based on the observations you have entered in the table
+												below. This summary will appear in the PDF report and should highlight key
+												findings, major issues, and general recommendations. (The placeholder text
+												in the field below is just an example).
+											</p>
+											<p className='text-sm text-muted-foreground'>
+												Tip: Paste in all your observations into chatgpt and ask it to summarize it
+												for you, and then paste the summary in the Executive Summary field. (This
+												feature will be AI-powered in the future)
+											</p>
+										</CardHeader>
+										<CardContent>
+											<Textarea
+												value={executiveSummary}
+												onChange={(e) => setExecutiveSummary(e.target.value)}
+												className='min-h-[150px]'
+												placeholder={`Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
 • Several critical issues were identified...
-
-Critical Issues:
-• Issue 1...
-• Issue 2...
-
-Moderate Issues:
-• Issue 1...
-• Issue 2...
-
-Minor Issues:
-• Issue 1...
-• Issue 2...`}
-								/>
-							</CardContent>
+`}
+											/>
+										</CardContent>
+									</Card>
+								</div>
+								{showPreview && (
+									<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
+								)}
+							</div>
 						</Card>
 					</div>
 				</div>
-				<div className='mb-8 py-6'>
-					<Card>
-						<CardHeader>
-							<CardTitle>Test Results & Observations</CardTitle>
-							<p className='text-sm text-muted-foreground'>
-								Go through each criterion and document your findings
-							</p>
-						</CardHeader>
-						<CardContent>
-							<div className='overflow-x-auto'>
-								<table className='min-w-full border-collapse'>
-									<thead>
-										<tr>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Criterion
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Category
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Level
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Description
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Observations
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												How to Check
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Tool/Method
-											</th>
-											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-												Where to Check
-											</th>
-										</tr>
-									</thead>
-									<tbody className='text-sm'>
-										{wcagCriteria.map((criterion, index) => (
-											<tr key={index} className='border-b hover:bg-muted/50'>
-												<td className='border p-2 w-[10%] text-left align-top font-medium'>
-													{criterion.criterion}
-												</td>
-												<td className='border p-2 w-[8%] text-left align-top'>
-													{criterion.category}
-												</td>
-												<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
-												<td className='border p-2 w-[15%] text-left align-top'>
-													{criterion.description}
-												</td>
-												<td className='border p-2 w-[25%] text-left align-top'>
-													<textarea
-														value={observations[criterion.criterion] || ''}
-														onChange={(e) =>
-															handleObservationChange(criterion.criterion, e.target.value)
-														}
-														className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
-														placeholder='Enter observations...'
-													/>
-												</td>
-												<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
-													{criterion.howToCheck}
-												</td>
-												<td className='border p-2 w-[10%] text-left align-top'>
-													{criterion.toolMethod}
-												</td>
-												<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
-													{criterion.whereToCheck}
-												</td>
-											</tr>
-										))}
-									</tbody>
-								</table>
-							</div>
-						</CardContent>
-					</Card>
-				</div>
-
-				{showPreview && (
-					<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
-				)}
 			</div>
 		</main>
 	)
