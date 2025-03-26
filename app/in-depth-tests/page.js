@@ -758,20 +758,23 @@ export default function WCAGCriteriaPage() {
 								<CardTitle>
 									<h2 className='text-2xl font-semibold leading-none tracking-tight py-4'>Audit</h2>
 								</CardTitle>
-								<p className='text-sm text-muted-foreground'>
-									Complete step 1, 2 and 3 below. When done, click{' '}
-									<span className='font-bold'>Export Audit</span> to preview the report and export
-									it as a PDF, HTML or JSON.
-								</p>
-								<p className='text-sm text-muted-foreground'>
-									For each new audit, click <span className='font-bold'>Clear Data</span>
-									to start fresh and clear local storage.
+								<div className='text-sm text-muted-foreground'>
+									<p className='py-2'>Go through the 4 steps below to complete the audit:</p>
+									<ul>
+										<li>Step 1. Enter client info</li>
+										<li>Step 2. Enter issues & observations</li>
+										<li>Step 3. Add an audit summary</li>
+										<li>Step 4. Preview and Export the audit</li>
+									</ul>
+								</div>
+								<p className='text-sm text-muted-foreground py-2'>
+									For each new audit, click <span className='font-bold'>Clear Data</span> to start
+									fresh and clear local storage.
 								</p>
 								<div className='flex justify-start gap-2 py-6'>
-									<Button variant='outline' onClick={handleClearData}>
+									<Button className='cursor-pointer' onClick={handleClearData}>
 										Clear Data
 									</Button>
-									<Button onClick={handleExport}>Export Audit</Button>
 								</div>
 							</CardHeader>
 							<div className='container mx-auto p-4'>
@@ -982,6 +985,25 @@ Overall Evaluation:
 										</CardContent>
 									</Card>
 								</div>
+								<Card>
+									<CardHeader>
+										<CardTitle>
+											<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+												Step 4: Export Audit
+											</h3>
+										</CardTitle>
+										<p className='text-sm text-muted-foreground'>
+											When done, click <span className='font-bold'>Export Audit</span> to preview
+											the report and export it as a PDF, HTML or JSON.
+										</p>
+									</CardHeader>
+									<CardContent className='space-y-6'>
+										{/* Client info and buttons section */}
+										<Button className='cursor-pointer' onClick={handleExport}>
+											Export Audit
+										</Button>
+									</CardContent>
+								</Card>
 								{showPreview && (
 									<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
 								)}
