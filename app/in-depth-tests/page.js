@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import ReportPreview from '../components/ReportPreview'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
 	// Extract numbers from criterion strings (e.g., "1.2.3" from "1.2.3 Audio Description")
@@ -726,84 +728,94 @@ export default function WCAGCriteriaPage() {
 	}
 
 	return (
-		<div className='container mx-auto p-4'>
-			<div className='mb-6 flex flex-col gap-4'>
-				<h1 className='text-2xl font-bold'>WCAG Criteria</h1>
-				<div className='py-6 border-b'>
-					<h2 className='text-lg font-bold'>Instructions</h2>
-					<ul className='list-disc list-inside text-sm'>
-						<li>Select Pages Homepage + 3-5 critical pages (e.g., contact, services, forms).</li>
-						<li>
-							Pick an automated tool, eg Silktide Accessibility Checker, Lighthouse, WAVE, etc.
-							(also see Tool/Method column)
-						</li>
-						<li>
-							Enter Observations in the Observations column, eg. "The form is not accessible because
-							there is no label for the input field."
-						</li>
-						<li>
-							See How to Check and Where to Check columns for more information on how to check the
-							criteria.
-						</li>
-						<li>Export the audit data to a PDF, HTML, or JSON file.</li>
-						<li>Clear the data to start over and create a new audit.</li>
-					</ul>
-					<div className='py-6'>
-						For Basic Test Checklist, Automated Tools, Manual Checks, etc.,{' '}
-						<Link href='/basic-tests' className='text-blue-500 hover:text-blue-700'>
-							click here
-						</Link>
-						.
-					</div>
+		<main className='flex flex-1 flex-col'>
+			{/* Hero Section */}
+			<section className='border-b'>
+				<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12'>
+					<Button variant='outline' asChild className='mb-4'>
+						<Link href='/'>← Back to Home</Link>
+					</Button>
+					<h1 className='text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]'>
+						In-Depth Accessibility Tests
+					</h1>
+					<p className='max-w-2xl text-base font-light text-muted-foreground sm:text-lg'>
+						A comprehensive guide for conducting thorough accessibility testing
+					</p>
 				</div>
+			</section>
 
-				<div className='flex gap-4 py-6'>
-					<div>
-						<label className='block text-sm font-bold'>Client Name</label>
-						<input
-							type='text'
-							value={clientName}
-							onChange={(e) => setClientName(e.target.value)}
-							className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-							placeholder='Enter client name'
-						/>
+			<div className='container mx-auto p-4'>
+				<div className='mb-6 flex flex-col gap-4'>
+					
+					<div className='py-6 border-b'>
+						<h2 className='text-lg font-bold'>Instructions</h2>
+						<ul className='list-disc list-inside text-sm'>
+							<li>Select Pages Homepage + 3-5 critical pages (e.g., contact, services, forms).</li>
+							<li>
+								Pick an automated tool, eg Silktide Accessibility Checker, Lighthouse, WAVE, etc.
+								(also see Tool/Method column)
+							</li>
+							<li>
+								Enter Observations in the Observations column, eg. "The form is not accessible
+								because there is no label for the input field."
+							</li>
+							<li>
+								See How to Check and Where to Check columns for more information on how to check the
+								criteria.
+							</li>
+							<li>Export the audit data to a PDF, HTML, or JSON file.</li>
+							<li>Clear the data to start over and create a new audit.</li>
+						</ul>
+						
 					</div>
-					<div>
-						<label className='block text-sm font-bold'>Client ID</label>
-						<input
-							type='text'
-							value={clientId}
-							onChange={(e) => setClientId(e.target.value)}
-							className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-							placeholder='Enter client ID'
-						/>
-					</div>
-					<div className='flex items-end gap-2'>
-						<button
-							onClick={handleExport}
-							className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
-							Export Audit
-						</button>
-						<button
-							onClick={handleClearData}
-							className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
-							Clear Data
-						</button>
+
+					<div className='flex gap-4 py-6'>
+						<div>
+							<label className='block text-sm font-bold'>Client Name</label>
+							<input
+								type='text'
+								value={clientName}
+								onChange={(e) => setClientName(e.target.value)}
+								className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
+								placeholder='Enter client name'
+							/>
+						</div>
+						<div>
+							<label className='block text-sm font-bold'>Client ID</label>
+							<input
+								type='text'
+								value={clientId}
+								onChange={(e) => setClientId(e.target.value)}
+								className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
+								placeholder='Enter client ID'
+							/>
+						</div>
+						<div className='flex items-end gap-2'>
+							<button
+								onClick={handleExport}
+								className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
+								Export Audit
+							</button>
+							<button
+								onClick={handleClearData}
+								className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
+								Clear Data
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className='mb-8 py-6'>
-				<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
-				<p className='text-sm mb-4'>
-					Enter a summary based on the observations you have entered in the table below. This
-					summary will appear in the PDF report and should highlight key findings, major issues, and
-					general recommendations.
-				</p>
-				<textarea
-					value={executiveSummary}
-					onChange={(e) => setExecutiveSummary(e.target.value)}
-					className='w-full text-sm p-4 border focus:ring-gray-500 focus:border-gray-500 min-h-[200px]'
-					placeholder={`Example:
+				<div className='mb-8 py-6'>
+					<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
+					<p className='text-sm mb-4'>
+						Enter a summary based on the observations you have entered in the table below. This
+						summary will appear in the PDF report and should highlight key findings, major issues,
+						and general recommendations.
+					</p>
+					<textarea
+						value={executiveSummary}
+						onChange={(e) => setExecutiveSummary(e.target.value)}
+						className='w-full text-sm p-4 border focus:ring-gray-500 focus:border-gray-500 min-h-[200px]'
+						placeholder={`Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
@@ -820,54 +832,57 @@ Moderate Issues:
 Minor Issues:
 • Issue 1...
 • Issue 2...`}
-				/>
-			</div>
-			<div className='overflow-x-auto'>
-				<table className='min-w-full bg-white border border-gray-300 text-black'>
-					<thead>
-						<tr>
-							<th className='border p-2 text-md w-[10%] text-left align-top'>Criterion</th>
-							<th className='border p-2 text-md w-[8%] text-left align-top'>Category</th>
-							<th className='border p-2 text-md w-[5%] text-left align-top'>Level</th>
-							<th className='border p-2 text-md w-[15%] text-left align-top'>Description</th>
-							<th className='border p-2 text-md w-[25%] text-left align-top'>Observations</th>
-							<th className='border p-2 text-md w-[15%] text-left align-top'>How to Check</th>
-							<th className='border p-2 text-md w-[10%] text-left align-top'>Tool/Method</th>
-							<th className='border p-2 text-md w-[12%] text-left align-top'>Where to Check</th>
-						</tr>
-					</thead>
-					<tbody className='text-sm'>
-						{wcagCriteria.map((criterion, index) => (
-							<tr key={index} className='border-b'>
-								<td className='border p-2 w-[10%] text-left align-top'>{criterion.criterion}</td>
-								<td className='border p-2 w-[8%] text-left align-top'>{criterion.category}</td>
-								<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
-								<td className='border p-2 w-[15%] text-left align-top'>{criterion.description}</td>
-								<td className='border p-2 w-[25%] text-left align-top'>
-									<textarea
-										value={observations[criterion.criterion] || ''}
-										onChange={(e) => handleObservationChange(criterion.criterion, e.target.value)}
-										className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
-										rows={3}
-										placeholder='Enter observations...'
-									/>
-								</td>
-								<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
-									{criterion.howToCheck}
-								</td>
-								<td className='border p-2 w-[10%] text-left align-top'>{criterion.toolMethod}</td>
-								<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
-									{criterion.whereToCheck}
-								</td>
+					/>
+				</div>
+				<div className='overflow-x-auto'>
+					<table className='min-w-full bg-white border border-gray-300 text-black'>
+						<thead>
+							<tr>
+								<th className='border p-2 text-md w-[10%] text-left align-top'>Criterion</th>
+								<th className='border p-2 text-md w-[8%] text-left align-top'>Category</th>
+								<th className='border p-2 text-md w-[5%] text-left align-top'>Level</th>
+								<th className='border p-2 text-md w-[15%] text-left align-top'>Description</th>
+								<th className='border p-2 text-md w-[25%] text-left align-top'>Observations</th>
+								<th className='border p-2 text-md w-[15%] text-left align-top'>How to Check</th>
+								<th className='border p-2 text-md w-[10%] text-left align-top'>Tool/Method</th>
+								<th className='border p-2 text-md w-[12%] text-left align-top'>Where to Check</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+						</thead>
+						<tbody className='text-sm'>
+							{wcagCriteria.map((criterion, index) => (
+								<tr key={index} className='border-b'>
+									<td className='border p-2 w-[10%] text-left align-top'>{criterion.criterion}</td>
+									<td className='border p-2 w-[8%] text-left align-top'>{criterion.category}</td>
+									<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
+									<td className='border p-2 w-[15%] text-left align-top'>
+										{criterion.description}
+									</td>
+									<td className='border p-2 w-[25%] text-left align-top'>
+										<textarea
+											value={observations[criterion.criterion] || ''}
+											onChange={(e) => handleObservationChange(criterion.criterion, e.target.value)}
+											className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+											rows={3}
+											placeholder='Enter observations...'
+										/>
+									</td>
+									<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
+										{criterion.howToCheck}
+									</td>
+									<td className='border p-2 w-[10%] text-left align-top'>{criterion.toolMethod}</td>
+									<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
+										{criterion.whereToCheck}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 
-			{showPreview && (
-				<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
-			)}
-		</div>
+				{showPreview && (
+					<ReportPreview auditData={previewData} onClose={() => setShowPreview(false)} />
+				)}
+			</div>
+		</main>
 	)
 }
