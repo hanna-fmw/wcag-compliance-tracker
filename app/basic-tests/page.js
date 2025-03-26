@@ -305,7 +305,17 @@ Minor Issues:
 										<div>
 											<h2 className='text-lg font-bold mb-4'>Test Results and Observations</h2>
 											<p className='text-sm text-muted-foreground'>
-												Go through each criterion and document your findings
+												Go through each criterion and document your findings.
+											</p>
+											<p className='text-sm text-muted-foreground'>
+												If needed, refer to the following guidelines:{' '}
+												<Link
+													className='text-blue-500 hover:text-blue-700 hover:underline'
+													href='https://www.digg.se/webbriktlinjer/alla-webbriktlinjer'
+													target='_blank'
+													rel='noopener noreferrer'>
+													webbriktlinjer from Digg (myndigheten för digital förvaltning)
+												</Link>
 											</p>
 										</div>
 										<span
