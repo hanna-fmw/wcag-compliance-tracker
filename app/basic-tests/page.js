@@ -339,32 +339,32 @@ Minor Issues:
 											</p>
 
 											<div className='overflow-x-auto'>
-												<table className='min-w-full bg-white border border-gray-300 text-black'>
+												<table className='min-w-full border-collapse'>
 													<thead>
 														<tr>
-															<th className='border p-2 text-md w-[15%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
 																Check Type
 															</th>
-															<th className='border p-2 text-md w-[20%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[20%]'>
 																Description
 															</th>
-															<th className='border p-2 text-md w-[25%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[25%]'>
 																Observations
 															</th>
-															<th className='border p-2 text-md w-[15%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
 																How to Check
 															</th>
-															<th className='border p-2 text-md w-[10%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[10%]'>
 																Tool/Method
 															</th>
-															<th className='border p-2 text-md w-[15%] text-left align-top'>
+															<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
 																Where to Check
 															</th>
 														</tr>
 													</thead>
 													<tbody className='text-sm'>
-														<tr>
-															<td className='border p-2'>Image Alternative Text</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Image Alternative Text</td>
 															<td className='border p-2'>
 																Image alternative text ("alt text") is a short description that
 																conveys the purpose of an image. Alternative text is used by people
@@ -379,7 +379,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('imageAlt', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -404,8 +404,8 @@ Minor Issues:
 														</tr>
 
 														{/* Add more rows for each basic check */}
-														<tr>
-															<td className='border p-2'>Page Title</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Page Title</td>
 															<td className='border p-2'>
 																Page titles are shown in: • Browser window title bar • Browser tabs
 																when multiple pages are open • Search engine results • Browser
@@ -419,7 +419,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('pageTitle', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -444,8 +444,8 @@ Minor Issues:
 														</tr>
 
 														{/* Add these rows after the Page Title row */}
-														<tr>
-															<td className='border p-2'>Headings</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Headings</td>
 															<td className='border p-2'>
 																Headings communicate the organization of the content on the page,
 																like a table of contents. They should be nested by their rank/level
@@ -461,7 +461,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('headings', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -484,8 +484,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Color Contrast</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Color Contrast</td>
 															<td className='border p-2'>
 																Color contrast refers to the difference between adjacent colors: •
 																Text and background color • Interactive elements and their
@@ -504,7 +504,7 @@ Minor Issues:
 																			e.target.value
 																		)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -529,8 +529,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Skip Link</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Skip Link</td>
 															<td className='border p-2'>
 																A skip link is the first interactive element on a page that allows
 																users to bypass blocks of repeated content. The most important
@@ -545,7 +545,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('skipLink', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -567,8 +567,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Keyboard Focus</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Keyboard Focus</td>
 															<td className='border p-2'>
 																Visible keyboard focus indicates which interactive element (link,
 																button, form field) you are on when using the keyboard to navigate.
@@ -586,7 +586,7 @@ Minor Issues:
 																			e.target.value
 																		)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -611,8 +611,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Language</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Language</td>
 															<td className='border p-2'>
 																Web pages should identify the primary language of the page. This is
 																crucial because: • Screen readers and other text-to-speech tools
@@ -626,7 +626,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('language', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -649,8 +649,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Zoom</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Zoom</td>
 															<td className='border p-2'>
 																Zoom is used to enlarge text and images on web pages to make them
 																more readable. This is crucial for: • People who need to enlarge
@@ -664,7 +664,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('zoom', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -688,8 +688,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Multimedia (Captions)</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Multimedia (Captions)</td>
 															<td className='border p-2'>
 																Captions are a text version of the speech and non-speech audio
 																information needed to understand the video and displayed with the
@@ -705,7 +705,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('captions', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -727,8 +727,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Multimedia (Transcripts)</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Multimedia (Transcripts)</td>
 															<td className='border p-2'>
 																Transcripts are a text version of the speech and non-speech
 																information in audio content and available separately from the
@@ -744,7 +744,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('transcripts', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -767,8 +767,10 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Multimedia (Audio Description)</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>
+																Multimedia (Audio Description)
+															</td>
 															<td className='border p-2'>
 																Audio description describes visual information needed to understand
 																the content, including text displayed in the video, as part of the
@@ -787,7 +789,7 @@ Minor Issues:
 																			e.target.value
 																		)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -812,8 +814,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Forms (Labels)</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Forms (Labels)</td>
 															<td className='border p-2'>
 																Form field labels are the text beside form fields. They should tell
 																us what information to enter or what checkbox to select. Everyone
@@ -830,7 +832,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('formLabels', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -852,8 +854,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Forms (Required Fields)</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Forms (Required Fields)</td>
 															<td className='border p-2'>
 																A required form field must be completed before you submit a form.
 																Marking which fields are required in a form makes it easier for
@@ -872,7 +874,7 @@ Minor Issues:
 																			e.target.value
 																		)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -897,8 +899,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Tables</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Tables</td>
 															<td className='border p-2'>
 																Tables should be used for presenting tabular data, not for layout
 																purposes. Proper table structure helps screen reader users
@@ -915,7 +917,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('tables', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -935,8 +937,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Body Text</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Body Text</td>
 															<td className='border p-2'>
 																The body text of a page should be well-structured and easy to
 																understand. This is important for: • All users, particularly those
@@ -951,7 +953,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('bodyText', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -974,8 +976,8 @@ Minor Issues:
 															</td>
 														</tr>
 
-														<tr>
-															<td className='border p-2'>Screen Reader</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Screen Reader</td>
 															<td className='border p-2'>
 																Screen reader testing helps identify issues with content structure,
 																reading order, dynamic updates, and interactive elements. This
@@ -990,7 +992,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('screenReader', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
@@ -1027,8 +1029,8 @@ Minor Issues:
 														</tr>
 
 														{/* Add Other Tests row */}
-														<tr>
-															<td className='border p-2'>Other Tests</td>
+														<tr className='border-b hover:bg-muted/50'>
+															<td className='border p-2 font-medium'>Other Tests</td>
 															<td className='border p-2'>
 																Additional testing helps identify issues with various content types
 																and functionalities. This is important for: • Users accessing PDF
@@ -1043,7 +1045,7 @@ Minor Issues:
 																	onChange={(e) =>
 																		handleBasicTestObservationChange('otherTests', e.target.value)
 																	}
-																	className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
+																	className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
 																	rows={3}
 																	placeholder='Enter observations...'
 																/>
