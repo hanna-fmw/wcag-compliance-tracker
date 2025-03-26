@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import ReportPreview from '../components/ReportPreview'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Instructions from '../components/Instructions'
+import Hero from '../components/Hero'
 
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
@@ -729,45 +731,14 @@ export default function WCAGCriteriaPage() {
 
 	return (
 		<main className='flex flex-1 flex-col'>
-			{/* Hero Section */}
-			<section className='border-b'>
-				<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12'>
-					<Button variant='outline' asChild className='mb-4'>
-						<Link href='/'>← Back to Home</Link>
-					</Button>
-					<h1 className='text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]'>
-						In-Depth Accessibility Tests
-					</h1>
-					<p className='max-w-2xl text-base font-light text-muted-foreground sm:text-lg'>
-						A comprehensive guide for conducting thorough accessibility testing
-					</p>
-				</div>
-			</section>
+			<Hero
+				title='In-Depth Accessibility Tests'
+				description='A comprehensive guide for conducting thorough accessibility testing'
+			/>
 
 			<div className='container mx-auto p-4'>
 				<div className='mb-6 flex flex-col gap-4'>
-					
-					<div className='py-6 border-b'>
-						<h2 className='text-lg font-bold'>Instructions</h2>
-						<ul className='list-disc list-inside text-sm'>
-							<li>Select Pages Homepage + 3-5 critical pages (e.g., contact, services, forms).</li>
-							<li>
-								Pick an automated tool, eg Silktide Accessibility Checker, Lighthouse, WAVE, etc.
-								(also see Tool/Method column)
-							</li>
-							<li>
-								Enter Observations in the Observations column, eg. "The form is not accessible
-								because there is no label for the input field."
-							</li>
-							<li>
-								See How to Check and Where to Check columns for more information on how to check the
-								criteria.
-							</li>
-							<li>Export the audit data to a PDF, HTML, or JSON file.</li>
-							<li>Clear the data to start over and create a new audit.</li>
-						</ul>
-						
-					</div>
+					<Instructions />
 
 					<div className='flex gap-4 py-6'>
 						<div>
