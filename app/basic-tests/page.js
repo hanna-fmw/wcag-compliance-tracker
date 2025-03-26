@@ -215,7 +215,9 @@ export default function BasicTestsPage() {
 					<div className='py-6'>
 						<Card>
 							<CardHeader>
-								<CardTitle>Audit</CardTitle>
+								<CardTitle>
+									<h2 className='text-2xl font-semibold leading-none tracking-tight'>Audit</h2>
+								</CardTitle>
 								<p className='text-sm text-muted-foreground'>
 									Write the issues in a short and consistent way. If relevant, add page URL and
 									screenshot.
