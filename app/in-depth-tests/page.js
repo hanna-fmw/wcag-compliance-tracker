@@ -762,9 +762,9 @@ export default function WCAGCriteriaPage() {
 									<p className='py-2'>Go through the 4 steps below to complete the audit:</p>
 									<ul>
 										<li>Step 1. Enter client info</li>
-										<li>Step 2. Enter issues & observations</li>
-										<li>Step 3. Add an audit summary</li>
-										<li>Step 4. Preview and Export the audit</li>
+										<li>Step 2. Enter observations (comments and issues)</li>
+										<li>Step 3. Add a summary of findings</li>
+										<li>Step 4. Preview and export audit</li>
 									</ul>
 								</div>
 								<p className='text-sm text-muted-foreground py-2'>
@@ -784,7 +784,7 @@ export default function WCAGCriteriaPage() {
 											<CardHeader>
 												<CardTitle>
 													<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-														Step 1: Enter Client Info
+														Step 1: Enter client info
 													</h3>
 												</CardTitle>
 												<p className='text-sm text-muted-foreground'>
@@ -829,7 +829,7 @@ export default function WCAGCriteriaPage() {
 															<div className='max-w-[80%]'>
 																<CardTitle>
 																	<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-																		Step 2: Test Results & Observations
+																		Step 2: Enter observations (comments and issues)
 																	</h3>
 																</CardTitle>
 																<p className='text-sm text-muted-foreground py-2'>
@@ -837,8 +837,9 @@ export default function WCAGCriteriaPage() {
 																	<span className='font-bold'>Criterion</span> column and document
 																	your findings in the{' '}
 																	<span className='font-bold'>Observations</span> column. Write the
-																	issues in a short and consistent way. If relevant, add page URL in
-																	your observations.
+																	issues and comments in a short and consistent way. Fill in only
+																	where relevant; empty cells are allowed. If relevant, add page URL
+																	in your observations.
 																</p>
 																<p className='text-sm text-muted-foreground py-2'>
 																	The data you enter will remain in the table until you clear the
@@ -954,7 +955,7 @@ export default function WCAGCriteriaPage() {
 										<CardHeader>
 											<CardTitle>
 												<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-													Step 3: Executive Summary
+													Step 3: Add a summary of findings
 												</h3>
 											</CardTitle>
 
@@ -989,7 +990,7 @@ Overall Evaluation:
 									<CardHeader>
 										<CardTitle>
 											<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-												Step 4: Export Audit
+												Step 4: Preview and export audit
 											</h3>
 										</CardTitle>
 										<p className='text-sm text-muted-foreground'>
