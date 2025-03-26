@@ -827,60 +827,83 @@ Minor Issues:
 					</div>
 				</div>
 				<div className='mb-8 py-6'>
-					<h2 className='text-lg font-bold mb-4'>Test Results and Observations</h2>
-					<p className='text-sm text-muted-foreground pb-6'>
-						Go through each criterion and document your findings
-					</p>
-					<div className='overflow-x-auto'>
-						<table className='min-w-full bg-white border border-gray-300 text-black'>
-							<thead>
-								<tr>
-									<th className='border p-2 text-md w-[10%] text-left align-top'>Criterion</th>
-									<th className='border p-2 text-md w-[8%] text-left align-top'>Category</th>
-									<th className='border p-2 text-md w-[5%] text-left align-top'>Level</th>
-									<th className='border p-2 text-md w-[15%] text-left align-top'>Description</th>
-									<th className='border p-2 text-md w-[25%] text-left align-top'>Observations</th>
-									<th className='border p-2 text-md w-[15%] text-left align-top'>How to Check</th>
-									<th className='border p-2 text-md w-[10%] text-left align-top'>Tool/Method</th>
-									<th className='border p-2 text-md w-[12%] text-left align-top'>Where to Check</th>
-								</tr>
-							</thead>
-							<tbody className='text-sm'>
-								{wcagCriteria.map((criterion, index) => (
-									<tr key={index} className='border-b'>
-										<td className='border p-2 w-[10%] text-left align-top'>
-											{criterion.criterion}
-										</td>
-										<td className='border p-2 w-[8%] text-left align-top'>{criterion.category}</td>
-										<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
-										<td className='border p-2 w-[15%] text-left align-top'>
-											{criterion.description}
-										</td>
-										<td className='border p-2 w-[25%] text-left align-top'>
-											<textarea
-												value={observations[criterion.criterion] || ''}
-												onChange={(e) =>
-													handleObservationChange(criterion.criterion, e.target.value)
-												}
-												className='w-full p-1 border rounded focus:ring-gray-500 focus:border-gray-500'
-												rows={3}
-												placeholder='Enter observations...'
-											/>
-										</td>
-										<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
-											{criterion.howToCheck}
-										</td>
-										<td className='border p-2 w-[10%] text-left align-top'>
-											{criterion.toolMethod}
-										</td>
-										<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
-											{criterion.whereToCheck}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
+					<Card>
+						<CardHeader>
+							<CardTitle>Test Results & Observations</CardTitle>
+							<p className='text-sm text-muted-foreground'>
+								Go through each criterion and document your findings
+							</p>
+						</CardHeader>
+						<CardContent>
+							<div className='overflow-x-auto'>
+								<table className='min-w-full border-collapse'>
+									<thead>
+										<tr>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Criterion
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Category
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Level
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Description
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Observations
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												How to Check
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Tool/Method
+											</th>
+											<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+												Where to Check
+											</th>
+										</tr>
+									</thead>
+									<tbody className='text-sm'>
+										{wcagCriteria.map((criterion, index) => (
+											<tr key={index} className='border-b hover:bg-muted/50'>
+												<td className='border p-2 w-[10%] text-left align-top font-medium'>
+													{criterion.criterion}
+												</td>
+												<td className='border p-2 w-[8%] text-left align-top'>
+													{criterion.category}
+												</td>
+												<td className='border p-2 w-[5%] text-left align-top'>{criterion.level}</td>
+												<td className='border p-2 w-[15%] text-left align-top'>
+													{criterion.description}
+												</td>
+												<td className='border p-2 w-[25%] text-left align-top'>
+													<textarea
+														value={observations[criterion.criterion] || ''}
+														onChange={(e) =>
+															handleObservationChange(criterion.criterion, e.target.value)
+														}
+														className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
+														placeholder='Enter observations...'
+													/>
+												</td>
+												<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
+													{criterion.howToCheck}
+												</td>
+												<td className='border p-2 w-[10%] text-left align-top'>
+													{criterion.toolMethod}
+												</td>
+												<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
+													{criterion.whereToCheck}
+												</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+						</CardContent>
+					</Card>
 				</div>
 
 				{showPreview && (
