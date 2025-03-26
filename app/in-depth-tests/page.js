@@ -838,8 +838,8 @@ export default function WCAGCriteriaPage() {
 																	your findings in the{' '}
 																	<span className='font-bold'>Observations</span> column. Write the
 																	issues and comments in a short and consistent way. Fill in only
-																	where relevant; empty cells are allowed. If relevant, add page URL
-																	in your observations.
+																	where relevant; empty cells are allowed. If relevant, add page
+																	URL/page name in your observations.
 																</p>
 																<p className='text-sm text-muted-foreground py-2'>
 																	The data you enter will remain in the table until you clear the
