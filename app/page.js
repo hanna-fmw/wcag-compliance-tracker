@@ -739,7 +739,7 @@ export default function WCAGCriteriaPage() {
 		<main className='flex flex-1 flex-col'>
 			{/* Hero Section */}
 			<section className='border-b'>
-				<div className='container flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12'>
+				<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12'>
 					<h1 className='text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]'>
 						Internal WCAG Accessibility Testing
 					</h1>
@@ -759,7 +759,7 @@ export default function WCAGCriteriaPage() {
 
 			{/* Navigation Tabs */}
 			<div className='border-b'>
-				<div className='container py-4'>
+				<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-4'>
 					<Tabs defaultValue='instructions' className='w-full'>
 						<TabsList className='flex h-9 items-center justify-start rounded-lg bg-muted p-1 text-muted-foreground w-fit'>
 							<TabsTrigger
@@ -792,7 +792,7 @@ export default function WCAGCriteriaPage() {
 			</div>
 
 			{/* Main Content */}
-			<div className='container py-6'>
+			<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-6'>
 				<Card className='overflow-hidden rounded-lg border bg-card shadow'>
 					<CardHeader>
 						<CardTitle>General Instructions</CardTitle>
