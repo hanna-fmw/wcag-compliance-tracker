@@ -6,6 +6,10 @@ import ReportPreview from '../components/ReportPreview'
 import { Button } from '@/components/ui/button'
 import Instructions from '../components/Instructions'
 import Hero from '../components/Hero'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 // Add this mapping object at the top of the file, after the imports
 const checkTypeDisplayNames = {
@@ -209,65 +213,64 @@ export default function BasicTestsPage() {
 					<Instructions />
 
 					<div className='py-6'>
-						<h2 className='text-2xl font-semibold text-gray-900'>Audit</h2>
-						<div>
-							<p className='text-gray-600'>
-								Write the issues in a short and consistent way. If relevant, add page URL and
-								screenshot.
-							</p>
-						</div>
-					</div>
+						<Card>
+							<CardHeader>
+								<CardTitle>Audit</CardTitle>
+								<p className='text-sm text-muted-foreground'>
+									Write the issues in a short and consistent way. If relevant, add page URL and
+									screenshot.
+								</p>
+							</CardHeader>
+							<CardContent className='space-y-6'>
+								{/* Client info and buttons section */}
+								<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+									<div className='space-y-2'>
+										<Label htmlFor='client'>Client</Label>
+										<Input
+											id='client'
+											value={clientId}
+											onChange={(e) => setClientId(e.target.value)}
+											placeholder='Enter client name'
+										/>
+									</div>
+									<div className='space-y-2'>
+										<Label htmlFor='website'>Website URL</Label>
+										<Input
+											id='website'
+											value={clientName}
+											onChange={(e) => setClientName(e.target.value)}
+											placeholder='Enter website URL'
+										/>
+									</div>
+								</div>
 
-					{/* Client info and buttons section */}
-					<div className='flex gap-4 py-6'>
-						<div>
-							<label className='block text-sm font-bold'>Client</label>
-							<input
-								type='text'
-								value={clientId}
-								onChange={(e) => setClientId(e.target.value)}
-								className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-								placeholder='Enter client name'
-							/>
-						</div>
-						<div>
-							<label className='block text-sm font-bold'>Website URL</label>
-							<input
-								type='text'
-								value={clientName}
-								onChange={(e) => setClientName(e.target.value)}
-								className='mt-1 block w-full border-gray-300 focus:border-gray-500 focus:ring-gray-500'
-								placeholder='Enter website URL'
-							/>
-						</div>
-
-						<div className='flex items-end gap-2'>
-							<button
-								onClick={handleExport}
-								className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
-								Export Audit
-							</button>
-							<button
-								onClick={handleClearData}
-								className='bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 hover:cursor-pointer'>
-								Clear Data
-							</button>
-						</div>
+								<div className='flex justify-end gap-2'>
+									<Button variant='outline' onClick={handleClearData}>
+										Clear Data
+									</Button>
+									<Button onClick={handleExport}>Export Audit</Button>
+								</div>
+							</CardContent>
+						</Card>
 					</div>
 
 					{/* Executive summary section */}
-					<div className='mb-8 py-6'>
-						<h2 className='text-lg font-bold mb-4'>Executive Summary</h2>
-						<p className='text-sm mb-4'>
-							Enter a summary based on the observations you have entered in the table below. This
-							summary will appear in the PDF report and should highlight key findings, major issues,
-							and general recommendations.
-						</p>
-						<textarea
-							value={executiveSummary}
-							onChange={(e) => setExecutiveSummary(e.target.value)}
-							className='w-full text-sm p-4 border focus:ring-gray-500 focus:border-gray-500 min-h-[200px]'
-							placeholder={`Example:
+					<div className='py-6'>
+						<Card>
+							<CardHeader>
+								<CardTitle>Executive Summary</CardTitle>
+								<p className='text-sm text-muted-foreground'>
+									Enter a summary based on the observations you have entered in the table below.
+									This summary will appear in the PDF report and should highlight key findings,
+									major issues, and general recommendations.
+								</p>
+							</CardHeader>
+							<CardContent>
+								<Textarea
+									value={executiveSummary}
+									onChange={(e) => setExecutiveSummary(e.target.value)}
+									className='min-h-[200px]'
+									placeholder={`Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
@@ -284,7 +287,9 @@ Moderate Issues:
 Minor Issues:
 • Issue 1...
 • Issue 2...`}
-						/>
+								/>
+							</CardContent>
+						</Card>
 					</div>
 
 					<div className='space-y-12'>
