@@ -748,10 +748,10 @@ export default function WCAGCriteriaPage() {
 					</p>
 					<div className='flex w-full items-center justify-start gap-2 pt-2'>
 						<Button asChild>
-							<Link href='/basic-tests'>Get Started</Link>
+							<Link href='/basic-tests'>Basic Tests</Link>
 						</Button>
 						<Button variant='outline' asChild>
-							<Link href='/test-tools'>Browse Tools</Link>
+							<Link href='/in-depth-tests'>In-Depth Tests</Link>
 						</Button>
 					</div>
 				</div>
@@ -804,7 +804,7 @@ export default function WCAGCriteriaPage() {
 									<div className='flex flex-col gap-2'>
 										<h3 className='font-semibold'>Step 1: Choose Test Type</h3>
 										<p className='text-sm text-muted-foreground'>
-											Select either Basic Tests or In-Depth Tests based on your requirements
+											Select either Basic Tests or In-Depth Tests based on your requirements.
 										</p>
 									</div>
 									<Separator />
@@ -812,7 +812,7 @@ export default function WCAGCriteriaPage() {
 									<div className='flex flex-col gap-2'>
 										<h3 className='font-semibold'>Step 2: Select Pages</h3>
 										<p className='text-sm text-muted-foreground'>
-											Choose Homepage + 3-5 critical pages (e.g., contact, services, forms)
+											Choose Homepage + 3-5 critical pages (e.g., contact, services, forms).
 										</p>
 									</div>
 									<Separator />
@@ -820,7 +820,17 @@ export default function WCAGCriteriaPage() {
 									<div className='flex flex-col gap-2'>
 										<h3 className='font-semibold'>Step 3: Select Testing Tools</h3>
 										<p className='text-sm text-muted-foreground'>
-											Pick automated tools like Silktide Accessibility Checker, Lighthouse, or WAVE
+											Pick automated tools like Silktide Accessibility Checker, Lighthouse, or WAVE.
+											See{' '}
+											<Link className='underline' href={'/test-tools'}>
+												Testing Tools
+											</Link>
+											.
+											<br />
+											Silktide Accessibility Checker is a great tool and very user-friendly:{' '}
+											<Link href={'https://silktide.com/toolbar/'}>
+												https://silktide.com/toolbar/
+											</Link>
 										</p>
 									</div>
 									<Separator />
@@ -828,7 +838,7 @@ export default function WCAGCriteriaPage() {
 									<div className='flex flex-col gap-2'>
 										<h3 className='font-semibold'>Step 4: Document Findings</h3>
 										<p className='text-sm text-muted-foreground'>
-											Enter observations for each criterion, noting any accessibility issues found
+											Enter observations for each criterion, noting any accessibility issues found.
 										</p>
 									</div>
 									<Separator />
@@ -836,7 +846,7 @@ export default function WCAGCriteriaPage() {
 									<div className='flex flex-col gap-2'>
 										<h3 className='font-semibold'>Step 5: Export Report</h3>
 										<p className='text-sm text-muted-foreground'>
-											Generate and review the report, then export as PDF for the client
+											Generate and review the report, then export as PDF for the client.
 										</p>
 									</div>
 								</div>
