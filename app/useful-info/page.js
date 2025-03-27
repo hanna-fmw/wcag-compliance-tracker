@@ -134,6 +134,36 @@ export default function UsefulInfoPage() {
 										</Link>
 									</div>
 								</div>
+								<div className='space-y-6'>
+									<div>
+										<h3 className='text-lg font-semibold mb-2'>EU:s tillgänglighetsdirektiv</h3>
+										<p className='text-muted-foreground mb-3'>
+											<span className='font-bold'>PTS's</span> (Post- och telestyrelsen) page about
+											tillgänglighetsdirektivet:
+										</p>
+										<Link
+											className='underline text-muted-foreground mb-3'
+											href='https://pts.se/digital-inkludering/digin/lagkrav/introduktion-till-tillganglighetsdirektivet/#:~:text=tj%C3%A4nster%20och%20produkter-,Vilka%20ber%C3%B6rs%3F,-Produkter%20och%20tj%C3%A4nster'>
+											About Tillgänglighetsdirektivet and the requirements
+										</Link>
+									</div>
+								</div>
+								<div className='space-y-6'>
+									<div>
+										<h3 className='text-lg font-semibold mb-2'>
+											PTS´s page: Omfattas jag av lagen?
+										</h3>
+										<p className='text-muted-foreground mb-3'>
+											<span className='font-bold'>PTS's</span> (Post- och telestyrelsen) page with
+											questions and answers about accessibility and tillgänglighetslagen:
+										</p>
+										<Link
+											className='underline text-muted-foreground mb-3'
+											href='https://pts.se/digital-inkludering/lagen-om-vissa-produkters-och-tjansters-tillganglighet/vanliga-fragor-och-svar-om-tillganglighetslagen/'>
+											Questions and answers about the law
+										</Link>
+									</div>
+								</div>
 							</div>
 						)}
 					</CardContent>
