@@ -104,58 +104,86 @@ export default function ReportPreview({ auditData, onClose }) {
 								padding: 1rem;
 								line-height: 1.5;
 								color: #111827;
+								
 							}
 							
 							/* Section spacing */
 							.report-section {
-								margin-bottom: 2rem;
+								padding: 1.5rem;
+								border: 1px solid #e5e7eb;
+								background-color: white;
+								
 							}
 							
 							/* Headings */
 							.report-heading {
-								font-size: 1.25rem;
+								font-size: 1.5rem;
 								font-weight: 600;
-								padding-bottom: 1rem;
-								margin-bottom: 1rem;
-								border-bottom: 1px solid #e5e7eb;
+								line-height: 1;
+								letter-spacing: -0.025em;
+								padding: 1.25rem;
+								padding-bottom: 0.75rem;
 							}
 							
 							/* Text styles */
 							.report-text {
-								margin-bottom: 1rem;
+								padding: 0.75rem 1.25rem;
+								font-size: 0.875rem;
+								color: #4b5563;
 							}
 							
 							/* Lists */
 							.report-list {
-								list-style-type: disc;
-								padding-left: 1.25rem;
+								padding: 0.75rem 1.25rem;
+								margin-top: 0.75rem;
+								margin-bottom: 0.75rem;
+								font-size: 0.875rem;
+								color: #4b5563;
+							}
+							
+							.report-list li {
+								display: flex;
+								align-items: flex-start;
+								margin-bottom: 1rem;
+							}
+							
+							.report-list li::before {
+								content: "•";
+								margin-right: 0.5rem;
 							}
 							
 							/* Observation cards */
 							.observation-card {
+								border-radius: 0.5rem;
 								border: 1px solid #e5e7eb;
-								border-radius: 0.375rem;
-								padding: 1rem;
+								background-color: white;
+								box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+								padding: 1.5rem;
 							}
 							
 							.observation-header {
 								display: flex;
 								justify-content: space-between;
 								align-items: flex-start;
-								margin-bottom: 0.5rem;
+								margin-bottom: 1rem;
 							}
 							
 							.observation-title {
+								font-size: 1.125rem;
 								font-weight: 600;
+								line-height: 1;
+								letter-spacing: -0.025em;
 							}
 							
 							.observation-level {
 								font-size: 0.875rem;
+								color: #4b5563;
 							}
 							
 							.observation-description {
 								font-size: 0.875rem;
-								margin-bottom: 0.5rem;
+								color: #4b5563;
+								margin-bottom: 1rem;
 							}
 							
 							.observation-label {
@@ -165,13 +193,13 @@ export default function ReportPreview({ auditData, onClose }) {
 							
 							.observation-content {
 								font-size: 0.875rem;
+								color: #4b5563;
 								white-space: pre-wrap;
 							}
 
 							/* Links */
 							.report-link {
 								color: #2563eb;
-								text-decoration: none;
 							}
 							
 							.report-link:hover {
@@ -181,11 +209,21 @@ export default function ReportPreview({ auditData, onClose }) {
 							/* Executive Summary */
 							.executive-summary {
 								white-space: pre-wrap;
+								font-size: 0.875rem;
+								color: #4b5563;
 							}
 
 							/* Space between observation cards */
 							.observations-container > div + div {
 								margin-top: 1.5rem;
+							}
+
+							/* Subheadings in Review Process */
+							.text-lg.font-semibold {
+								font-size: 1.125rem;
+								font-weight: 600;
+								margin-top: 1.5rem;
+								margin-bottom: 0.75rem;
 							}
 						`}
 					</style>
@@ -235,13 +273,15 @@ export default function ReportPreview({ auditData, onClose }) {
 							thorough assessment of potential barriers affecting users with disabilities.
 						</p>
 
-						<h3 className='text-lg font-semibold mt-6 mb-3'>Automated Testing</h3>
+						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>Automated Testing</h3>
 						<p className='report-text'>
 							Automated tools can quickly scan a website for common accessibility issues. However,
 							they should always be complemented with manual testing.
 						</p>
 
-						<h3 className='text-lg font-semibold mt-6 mb-3'>Manual Testing & Visual Inspection</h3>
+						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>
+							Manual Testing & Visual Inspection
+						</h3>
 						<ul className='report-list mb-4'>
 							<li>
 								Surface level checks to the text to catch readability issues, inconsistencies,
@@ -251,7 +291,9 @@ export default function ReportPreview({ auditData, onClose }) {
 							<li>Ensuring content structure follows a logical reading order</li>
 						</ul>
 
-						<h3 className='text-lg font-semibold mt-6 mb-3'>Assistive Technology & Simulations</h3>
+						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>
+							Assistive Technology & Simulations
+						</h3>
 						<ul className='report-list mb-4'>
 							<li>Screen reader testing for navigation and content accessibility</li>
 							<li>Color blindness simulation tools to assess contrast and usability</li>
@@ -268,9 +310,9 @@ export default function ReportPreview({ auditData, onClose }) {
 										<h3 className='observation-title'>{obs.criterion}</h3>
 										<span className='observation-level'>{obs.level}</span>
 									</div>
-									<p className='observation-description'>{obs.description}</p>
+									<p className='report-text'>{obs.description}</p>
 									<h4 className='observation-label'>Evaluation</h4>
-									<p className='observation-content'>{obs.observation}</p>
+									<p className='report-text'>{obs.observation}</p>
 								</div>
 							))}
 						</div>
@@ -284,7 +326,7 @@ export default function ReportPreview({ auditData, onClose }) {
 							their impact, and determine how they should be addressed. Some adjustments may be
 							simple, while others could require more extensive changes.
 						</p>
-						<p>
+						<p className='report-text'>
 							For the next steps we typically provide a time estimate to make the improvements and
 							discuss the best approach to improving the website's accessibility in line with WCAG
 							2.2 and the European Accessibility Act.
@@ -293,6 +335,7 @@ export default function ReportPreview({ auditData, onClose }) {
 
 					<section className='report-section'>
 						<h2 className='report-heading'>References</h2>
+
 						<ul className='report-list space-y-2'>
 							<li>
 								<a href='https://www.w3.org/WAI/standards-guidelines/wcag/' className='report-link'>
