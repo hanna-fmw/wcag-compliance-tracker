@@ -11,7 +11,7 @@ export default function Hero({ title, description }) {
 				<p className='max-w-2xl text-base font-light text-muted-foreground sm:text-lg'>
 					{description}
 				</p>
-				<Button asChild className='mb-4'>
+				<Button asChild className='mb-4 hover:cursor-pointer'>
 					<Link href='/'>← Back to Home</Link>
 				</Button>
 			</div>

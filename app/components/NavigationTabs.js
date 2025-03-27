@@ -11,31 +11,31 @@ export default function NavigationTabs() {
 					<TabsList className='flex h-9 items-center justify-start rounded-lg bg-muted p-1 text-muted-foreground w-fit'>
 						<TabsTrigger
 							value='instructions'
-							className='rounded-md px-3'
+							className='rounded-md px-3 hover:cursor-pointer'
 							onClick={() => router.push('/')}>
 							Instructions
 						</TabsTrigger>
 						<TabsTrigger
 							value='basic'
-							className='rounded-md px-3'
+							className='rounded-md px-3 hover:cursor-pointer'
 							onClick={() => router.push('/basic-tests')}>
 							Basic Tests
 						</TabsTrigger>
 						<TabsTrigger
 							value='in-depth'
-							className='rounded-md px-3'
+							className='rounded-md px-3 hover:cursor-pointer'
 							onClick={() => router.push('/in-depth-tests')}>
 							In-Depth Tests
 						</TabsTrigger>
 						<TabsTrigger
 							value='tools'
-							className='rounded-md px-3'
+							className='rounded-md px-3 hover:cursor-pointer'
 							onClick={() => router.push('/test-tools')}>
 							Testing Tools
 						</TabsTrigger>
 						<TabsTrigger
 							value='useful-info'
-							className='rounded-md px-3'
+							className='rounded-md px-3 hover:cursor-pointer'
 							onClick={() => router.push('/useful-info')}>
 							Useful Info
 						</TabsTrigger>
