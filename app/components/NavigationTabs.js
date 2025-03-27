@@ -33,6 +33,12 @@ export default function NavigationTabs() {
 							onClick={() => router.push('/test-tools')}>
 							Testing Tools
 						</TabsTrigger>
+						<TabsTrigger
+							value='useful-info'
+							className='rounded-md px-3'
+							onClick={() => router.push('/useful-info')}>
+							Useful Info
+						</TabsTrigger>
 					</TabsList>
 				</Tabs>
 			</div>
