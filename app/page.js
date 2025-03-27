@@ -10,7 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Menu } from 'lucide-react'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useRouter } from 'next/navigation'
-
+import NavigationTabs from './components/NavigationTabs'
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
 	// Extract numbers from criterion strings (e.g., "1.2.3" from "1.2.3 Audio Description")
@@ -758,44 +758,17 @@ export default function WCAGCriteriaPage() {
 			</section>
 
 			{/* Navigation Tabs */}
-			<div className='border-b'>
-				<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-4'>
-					<Tabs defaultValue='instructions' className='w-full'>
-						<TabsList className='flex h-9 items-center justify-start rounded-lg bg-muted p-1 text-muted-foreground w-fit'>
-							<TabsTrigger
-								value='instructions'
-								className='rounded-md px-3'
-								onClick={() => router.push('/')}>
-								Instructions
-							</TabsTrigger>
-							<TabsTrigger
-								value='basic'
-								className='rounded-md px-3'
-								onClick={() => router.push('/basic-tests')}>
-								Basic Tests
-							</TabsTrigger>
-							<TabsTrigger
-								value='in-depth'
-								className='rounded-md px-3'
-								onClick={() => router.push('/in-depth-tests')}>
-								In-Depth Tests
-							</TabsTrigger>
-							<TabsTrigger
-								value='tools'
-								className='rounded-md px-3'
-								onClick={() => router.push('/test-tools')}>
-								Testing Tools
-							</TabsTrigger>
-						</TabsList>
-					</Tabs>
-				</div>
-			</div>
+			<NavigationTabs />
 
 			{/* Main Content */}
 			<div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-6'>
 				<Card className='overflow-hidden rounded-lg border bg-card shadow'>
 					<CardHeader>
-						<CardTitle>General Instructions</CardTitle>
+						<CardTitle>
+							<h2 className='text-2xl font-semibold leading-none tracking-tight'>
+								General Instructions
+							</h2>
+						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<ScrollArea className='h-[400px] rounded-md'>
