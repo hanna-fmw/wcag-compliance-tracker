@@ -66,6 +66,13 @@ export default function TestToolsPage() {
 													W3.org Web Accessibility Evaluation Tools List
 												</a>
 											</h3>
+											<p className='text-muted-foreground mt-2'>
+												A comprehensive list of web accessibility evaluation tools from the W3.org
+												Web Accessibility Initiative:{' '}
+												<Link href='https://www.w3.org/WAI/test-evaluate/tools/list/'>
+													<span className='underline'>tool list</span>
+												</Link>
+											</p>
 										</div>
 
 										{/* Silktide */}

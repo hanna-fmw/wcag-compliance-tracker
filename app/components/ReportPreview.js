@@ -238,15 +238,13 @@ export default function ReportPreview({ auditData, onClose }) {
 						<h3 className='text-lg font-semibold mt-6 mb-3'>Automated Testing</h3>
 						<p className='report-text'>
 							Automated tools can quickly scan a website for common accessibility issues. However,
-							they should always be complemented with manual testing. Among others, we use tools
-							like Lighthouse (Chrome DevTools), WAVE Evaluation Tool, Pa11y (CLI tool), ARIA
-							DevTools, Readable, as well as custom internal auditing software solutions
+							they should always be complemented with manual testing.
 						</p>
 
 						<h3 className='text-lg font-semibold mt-6 mb-3'>Manual Testing & Visual Inspection</h3>
 						<ul className='report-list mb-4'>
 							<li>
-								Light proof-reading (spot-check) to catch readability issues, inconsistencies,
+								Surface level checks to the text to catch readability issues, inconsistencies,
 								spelling mistakes, and grammatical errors
 							</li>
 							<li>General inspection of the website's layout, spacing, and alignment</li>
@@ -287,9 +285,9 @@ export default function ReportPreview({ auditData, onClose }) {
 							simple, while others could require more extensive changes.
 						</p>
 						<p>
-							We would be happy to provide a time estimate for the improvements and discuss the best
-							approach to improving the website's accessibility in line with WCAG 2.2 and the
-							European Accessibility Act.
+							For the next steps we typically provide a time estimate to make the improvements and
+							discuss the best approach to improving the website's accessibility in line with WCAG
+							2.2 and the European Accessibility Act.
 						</p>
 					</section>
 
