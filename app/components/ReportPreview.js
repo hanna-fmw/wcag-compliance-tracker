@@ -13,9 +13,7 @@ export default function ReportPreview({ auditData, onClose }) {
 		const url = URL.createObjectURL(blob)
 		const a = document.createElement('a')
 		a.href = url
-		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}-${
-			new Date().toISOString().split('T')[0]
-		}.json`
+		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}.json`
 		document.body.appendChild(a)
 		a.click()
 		document.body.removeChild(a)
@@ -23,14 +21,29 @@ export default function ReportPreview({ auditData, onClose }) {
 	}
 
 	const handleDownloadHTML = () => {
-		const htmlContent = reportRef.current.innerHTML
+		const htmlContent = `
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>WCAG Accessibility Audit Report</title>
+				<style>
+					@page { size: auto; margin: 0; }
+					body { margin: 0; padding: 0; }
+					${document.querySelector('style').innerHTML}
+				</style>
+			</head>
+			<body>
+				${reportRef.current.innerHTML}
+			</body>
+			</html>
+		`
 		const blob = new Blob([htmlContent], { type: 'text/html' })
 		const url = URL.createObjectURL(blob)
 		const a = document.createElement('a')
 		a.href = url
-		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}-${
-			new Date().toISOString().split('T')[0]
-		}.html`
+		a.download = `wcag-audit-${auditData.clientName || 'unnamed'}.html`
 		document.body.appendChild(a)
 		a.click()
 		document.body.removeChild(a)
@@ -41,7 +54,6 @@ export default function ReportPreview({ auditData, onClose }) {
 		if (!reportRef.current) return
 
 		try {
-			// Get the full height of the content
 			const contentHeight = reportRef.current.scrollHeight
 			const contentWidth = reportRef.current.scrollWidth
 
@@ -50,18 +62,14 @@ export default function ReportPreview({ auditData, onClose }) {
 				useCORS: true,
 				logging: false,
 				backgroundColor: '#ffffff',
-				// Explicitly set dimensions to match content
 				height: contentHeight,
 				width: contentWidth,
-				// Ensure full content capture
 				windowHeight: contentHeight,
 				windowWidth: contentWidth,
 			})
 
 			const imgData = canvas.toDataURL('image/png')
-
-			// Calculate PDF dimensions to fit content
-			const pdfWidth = 210 // A4 width in mm
+			const pdfWidth = 210
 			const pdfHeight = (canvas.height * pdfWidth) / canvas.width
 
 			const pdf = new jsPDF({
@@ -71,12 +79,7 @@ export default function ReportPreview({ auditData, onClose }) {
 			})
 
 			pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
-
-			pdf.save(
-				`wcag-audit-${auditData.clientName || 'unnamed'}-${
-					new Date().toISOString().split('T')[0]
-				}.pdf`
-			)
+			pdf.save(`wcag-audit-${auditData.clientName || 'unnamed'}.pdf`)
 		} catch (error) {
 			console.error('Error generating PDF:', error)
 			alert('There was an error generating the PDF. Please try again.')
@@ -85,12 +88,12 @@ export default function ReportPreview({ auditData, onClose }) {
 
 	return (
 		<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'>
-			<div className='bg-gray-200 text-black rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto'>
-				<div className='p-4 border-b flex justify-between items-center bg-gray-700 text-white'>
+			<div className='bg-gray-200 text-black rounded-md max-w-4xl w-full max-h-[90vh] overflow-y-auto'>
+				<div className='p-4 border-b flex justify-between items-center bg-gray-600 text-white'>
 					<h1 className='text-xl font-semibold'>Report Preview</h1>
 					<button
 						onClick={onClose}
-						className='text-gray-500 hover:text-gray-700 hover:cursor-pointer'>
+						className='text-white hover:text-white font-bold hover:cursor-pointer'>
 						✕
 					</button>
 				</div>
