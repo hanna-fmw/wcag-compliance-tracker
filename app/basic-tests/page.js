@@ -146,7 +146,7 @@ export default function BasicTestsPage() {
 				criterion: checkTypeDisplayNames[checkId] || checkId,
 				observation,
 				category: 'Basic Test',
-				level: 'A/AA',
+				level: '',
 				description: checkDescriptions[checkId] || 'Basic accessibility test observation',
 			})
 		)
