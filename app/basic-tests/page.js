@@ -366,9 +366,7 @@ export default function BasicTestsPage() {
 																		</thead>
 																		<tbody className='text-sm'>
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 font-medium'>
-																					Image Alternative Text
-																				</td>
+																				<td className='border p-2 font-medium'>Alt Text</td>
 																				<td className='border p-2'>
 																					Image alternative text ("alt text") is a short description
 																					that conveys the purpose of an image. Alternative text is
