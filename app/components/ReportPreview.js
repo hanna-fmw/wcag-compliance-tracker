@@ -203,8 +203,8 @@ export default function ReportPreview({ auditData, onClose }) {
 						</p>
 						<p className='report-text'>
 							The evaluation results in this report are based on evaluations conducted on the
-							following date(s): {new Date(auditData.dateCreated).toLocaleDateString()}. The website
-							may have changed since that time.
+							following date(s): {new Date(auditData.dateCreated).toLocaleDateString('sv-SE')}. The
+							website may have changed since that time.
 						</p>
 					</section>
 
