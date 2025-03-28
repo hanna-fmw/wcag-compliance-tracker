@@ -13,7 +13,7 @@ export default function Instructions() {
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
 						Pick an automated tool, eg Silktide Accessibility Checker, Lighthouse, WAVE, etc. (also
-						see Tool/Method column)
+						see Tool/Method column).
 					</li>
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
