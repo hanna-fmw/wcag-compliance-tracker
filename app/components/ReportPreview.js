@@ -311,7 +311,7 @@ export default function ReportPreview({ auditData, onClose }) {
 								<div key={index} className='observation-card'>
 									<div className='observation-header'>
 										<h3 className='observation-title'>{obs.criterion}</h3>
-										<span className='observation-level'>{obs.level}</span>
+										{/* <span className='observation-level'>{obs.level}</span> */}
 									</div>
 									<p className='report-text'>{obs.description}</p>
 									<h4 className='observation-label'>Evaluation</h4>
