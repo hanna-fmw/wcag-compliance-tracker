@@ -17,7 +17,7 @@ export default function Instructions() {
 					</li>
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
-						Enter Observations in the Observations column, eg. "The form is not accessible because
+						Enter observations in the Observations column, eg. "The form is not accessible because
 						there is no label for the input field."
 					</li>
 					<li className='flex items-start'>
