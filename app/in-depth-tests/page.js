@@ -960,7 +960,9 @@ export default function WCAGCriteriaPage() {
 																			{updatedWcagCriteria.map((criterion, index) => (
 																				<tr
 																					key={criterion.criterion}
-																					className='border-b hover:bg-muted/50'>
+																					className={`border-b ${
+																						completedItems[criterion.criterion] ? 'bg-gray-100' : ''
+																					}`}>
 																					<td className='border p-2 align-top text-foreground'>
 																						<div className='flex flex-col items-center gap-2'>
 																							<span className='text-xs text-muted-foreground'>
@@ -977,7 +979,7 @@ export default function WCAGCriteriaPage() {
 																									onCheckedChange={() =>
 																										toggleCompleted(criterion.criterion)
 																									}
-																									className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																									className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																								/>
 																							</div>
 																						</div>
