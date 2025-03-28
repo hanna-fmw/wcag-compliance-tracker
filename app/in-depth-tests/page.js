@@ -938,16 +938,16 @@ export default function WCAGCriteriaPage() {
 																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
 																						{criterion.criterion}
 																					</td>
-																					<td className='border p-2 w-[8%] text-left align-top'>
+																					<td className='border p-2 w-[8%] text-left align-top text-sm text-muted-foreground'>
 																						{criterion.category}
 																					</td>
-																					<td className='border p-2 w-[5%] text-left align-top'>
+																					<td className='border p-2 w-[5%] text-left align-top text-sm text-muted-foreground'>
 																						{criterion.level}
 																					</td>
-																					<td className='border p-2 w-[15%] text-left align-top'>
+																					<td className='border p-2 w-[15%] text-left align-top text-sm text-muted-foreground'>
 																						{criterion.description}
 																					</td>
-																					<td className='border p-2 w-[25%] text-left align-top'>
+																					<td className='border p-2 w-[25%] text-left align-top text-sm text-muted-foreground'>
 																						<textarea
 																							value={observations[criterion.criterion] || ''}
 																							onChange={(e) =>
@@ -956,17 +956,17 @@ export default function WCAGCriteriaPage() {
 																									e.target.value
 																								)
 																							}
-																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background'
+																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																							placeholder='Enter observations...'
 																						/>
 																					</td>
-																					<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line'>
+																					<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line text-sm text-muted-foreground'>
 																						{criterion.howToCheck}
 																					</td>
-																					<td className='border p-2 w-[10%] text-left align-top'>
+																					<td className='border p-2 w-[10%] text-left align-top text-sm text-muted-foreground'>
 																						{criterion.toolMethod}
 																					</td>
-																					<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line'>
+																					<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line text-sm text-muted-foreground'>
 																						{criterion.whereToCheck}
 																					</td>
 																				</tr>
