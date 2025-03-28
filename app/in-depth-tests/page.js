@@ -1092,7 +1092,7 @@ export default function WCAGCriteriaPage() {
 												value={executiveSummary}
 												onChange={(e) => setExecutiveSummary(e.target.value)}
 												className='min-h-[150px]'
-												placeholder={`Example:
+												placeholder={`Enter your summary here. Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
