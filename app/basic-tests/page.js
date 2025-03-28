@@ -377,12 +377,7 @@ export default function BasicTestsPage() {
 																					• Some people with learning or reading disabilities who
 																					have information read aloud
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['imageAlt']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['imageAlt'] || ''}
 																						onChange={(e) =>
@@ -430,12 +425,7 @@ export default function BasicTestsPage() {
 																					reader users understand what page is loading and navigate
 																					among open tabs.
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['pageTitle']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['pageTitle'] || ''}
 																						onChange={(e) =>
@@ -485,12 +475,7 @@ export default function BasicTestsPage() {
 																					cognitive and learning disabilities who use headings to
 																					understand and focus on topics
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['headings']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['headings'] || ''}
 																						onChange={(e) =>
@@ -537,12 +522,7 @@ export default function BasicTestsPage() {
 																					with color deficient vision ('color blindness') • Anyone
 																					trying to read content in bright light conditions
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['colorContrast']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['colorContrast'] || ''}
 																						onChange={(e) =>
@@ -590,12 +570,7 @@ export default function BasicTestsPage() {
 																					with various motor disabilities • People using mouth
 																					sticks or head pointers • People using switch devices
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['skipLink']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['skipLink'] || ''}
 																						onChange={(e) =>
@@ -641,12 +616,7 @@ export default function BasicTestsPage() {
 																					voice • People who are blind (using keyboard with
 																					non-visual cues)
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['keyboardFocus']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['keyboardFocus'] || ''}
 																						onChange={(e) =>
@@ -694,12 +664,7 @@ export default function BasicTestsPage() {
 																					to know which language to translate from • It helps search
 																					engines identify the language of content
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['language']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['language'] || ''}
 																						onChange={(e) =>
@@ -744,12 +709,7 @@ export default function BasicTestsPage() {
 																					significant magnification (200% or larger) • Anyone
 																					viewing content on small screens or from a distance
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['zoom']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['zoom'] || ''}
 																						onChange={(e) =>
@@ -800,12 +760,7 @@ export default function BasicTestsPage() {
 																					People learning to read or learning the language • People
 																					who process written information better than audio
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['captions']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['captions'] || ''}
 																						onChange={(e) =>
@@ -853,12 +808,7 @@ export default function BasicTestsPage() {
 																					over listening to audio • People who want to quickly scan
 																					or search through the content
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['transcripts']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['transcripts'] || ''}
 																						onChange={(e) =>
@@ -906,12 +856,7 @@ export default function BasicTestsPage() {
 																					learning the language who benefit from additional verbal
 																					descriptions
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['audioDescription']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['audioDescription'] || ''}
 																						onChange={(e) =>
@@ -962,12 +907,7 @@ export default function BasicTestsPage() {
 																					who need larger clickable areas • Anyone filling out forms
 																					who needs clear guidance
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['formLabels']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['formLabels'] || ''}
 																						onChange={(e) =>
@@ -1014,12 +954,7 @@ export default function BasicTestsPage() {
 																					disabilities who benefit from clear instructions • Anyone
 																					who wants to avoid form submission errors
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['requiredFields']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['requiredFields'] || ''}
 																						onChange={(e) =>
@@ -1069,12 +1004,7 @@ export default function BasicTestsPage() {
 																					efficiently • Anyone who needs to understand the logical
 																					relationships between data points
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['tables']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['tables'] || ''}
 																						onChange={(e) =>
@@ -1119,12 +1049,7 @@ export default function BasicTestsPage() {
 																					People with reading difficulties who need clear, simple
 																					language • Users who scan content using headings and links
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['bodyText']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['bodyText'] || ''}
 																						onChange={(e) =>
@@ -1172,12 +1097,7 @@ export default function BasicTestsPage() {
 																					disabilities who use text-to-speech • Developers and
 																					testers verifying accessibility implementation
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['screenReader']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['screenReader'] || ''}
 																						onChange={(e) =>
@@ -1238,12 +1158,7 @@ export default function BasicTestsPage() {
 																					different browsers and assistive technologies • Anyone
 																					encountering error states or authentication flows
 																				</td>
-																				<td
-																					className={`border p-2 ${
-																						basicTestObservations['otherTests']
-																							? 'border-2 border-green-500'
-																							: ''
-																					} align-top`}>
+																				<td className='border p-2 align-top'>
 																					<textarea
 																						value={basicTestObservations['otherTests'] || ''}
 																						onChange={(e) =>
