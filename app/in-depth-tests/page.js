@@ -664,8 +664,20 @@ export default function WCAGCriteriaPage() {
 	const [showPreview, setShowPreview] = useState(false)
 	const [previewData, setPreviewData] = useState(null)
 	const [executiveSummary, setExecutiveSummary] = useState('')
-	const [expandedSections, setExpandedSections] = useState({ testResults: false })
+	const [expandedSections, setExpandedSections] = useState({
+		testResults: false,
+		step1: false,
+		step2: false,
+		step2a: false,
+		step2b: false,
+		step3: false,
+		example: false,
+		automatedTests: false,
+		pages: false,
+		manualTests: false,
+	})
 	const [completedItems, setCompletedItems] = useState({})
+	const [expandedCells, setExpandedCells] = useState({})
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
@@ -754,6 +766,34 @@ export default function WCAGCriteriaPage() {
 			[checkId]: !prev[checkId],
 		}))
 	}
+
+	const toggleCellExpansion = (cellId) => {
+		setExpandedCells((prev) => ({
+			...prev,
+			[cellId]: !prev[cellId],
+		}))
+	}
+
+	const truncateText = (text, maxLength = 200) => {
+		if (!text) return ''
+		if (text.length <= maxLength) return text
+		return text.slice(0, maxLength) + '...'
+	}
+
+	// Find the Non-text Content criterion and update its howToCheck field
+	const updatedWcagCriteria = wcagCriteria.map((criterion) => {
+		const howToCheck = criterion.howToCheck
+		if (howToCheck.length > 200) {
+			return {
+				...criterion,
+				howToCheck: {
+					full: howToCheck,
+					preview: truncateText(howToCheck),
+				},
+			}
+		}
+		return criterion
+	})
 
 	return (
 		<main className='flex flex-1 flex-col'>
@@ -917,8 +957,10 @@ export default function WCAGCriteriaPage() {
 																			</tr>
 																		</thead>
 																		<tbody className='text-sm'>
-																			{wcagCriteria.map((criterion, index) => (
-																				<tr key={index} className='border-b hover:bg-muted/50'>
+																			{updatedWcagCriteria.map((criterion, index) => (
+																				<tr
+																					key={criterion.criterion}
+																					className='border-b hover:bg-muted/50'>
 																					<td className='border p-2 align-top text-foreground'>
 																						<div className='flex flex-col items-center gap-2'>
 																							<span className='text-xs text-muted-foreground'>
@@ -965,8 +1007,42 @@ export default function WCAGCriteriaPage() {
 																							placeholder='Enter observations...'
 																						/>
 																					</td>
-																					<td className='border p-2 w-[15%] text-left align-top whitespace-pre-line text-sm text-muted-foreground'>
-																						{criterion.howToCheck}
+																					<td className='border p-2 w-[15%] text-left align-top text-sm text-muted-foreground'>
+																						{typeof criterion.howToCheck === 'object' ? (
+																							<div className='relative'>
+																								{expandedCells[
+																									`howToCheck-${criterion.criterion}`
+																								] ? (
+																									<div>
+																										{criterion.howToCheck.full}
+																										<button
+																											onClick={() =>
+																												toggleCellExpansion(
+																													`howToCheck-${criterion.criterion}`
+																												)
+																											}
+																											className='ml-2 text-xs text-blue-500 hover:text-blue-700 hover:underline'>
+																											Show less
+																										</button>
+																									</div>
+																								) : (
+																									<div>
+																										{criterion.howToCheck.preview}
+																										<button
+																											onClick={() =>
+																												toggleCellExpansion(
+																													`howToCheck-${criterion.criterion}`
+																												)
+																											}
+																											className='ml-2 text-xs text-blue-500 hover:text-blue-700 hover:underline'>
+																											Show more
+																										</button>
+																									</div>
+																								)}
+																							</div>
+																						) : (
+																							criterion.howToCheck
+																						)}
 																					</td>
 																					<td className='border p-2 w-[10%] text-left align-top text-sm text-muted-foreground'>
 																						{criterion.toolMethod}
