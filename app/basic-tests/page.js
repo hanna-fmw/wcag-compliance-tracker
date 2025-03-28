@@ -383,7 +383,10 @@ export default function BasicTestsPage() {
 																			</tr>
 																		</thead>
 																		<tbody className='text-sm'>
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['imageAlt'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -396,7 +399,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['imageAlt'] || false}
 																								onCheckedChange={() => toggleCompleted('imageAlt')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -448,8 +451,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			{/* Add more rows for each basic check */}
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['pageTitle'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -462,7 +467,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['pageTitle'] || false}
 																								onCheckedChange={() => toggleCompleted('pageTitle')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -513,8 +518,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			{/* Add these rows after the Page Title row */}
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['headings'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -527,7 +534,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['headings'] || false}
 																								onCheckedChange={() => toggleCompleted('headings')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -579,7 +586,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['colorContrast'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -594,7 +604,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('colorContrast')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -646,7 +656,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['skipLink'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -659,7 +672,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['skipLink'] || false}
 																								onCheckedChange={() => toggleCompleted('skipLink')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -709,7 +722,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['keyboardFocus'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -724,7 +740,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('keyboardFocus')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -777,7 +793,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['language'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -790,7 +809,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['language'] || false}
 																								onCheckedChange={() => toggleCompleted('language')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -839,7 +858,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['zoom'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -852,7 +874,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['zoom'] || false}
 																								onCheckedChange={() => toggleCompleted('zoom')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -905,7 +927,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['captions'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -918,7 +943,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['captions'] || false}
 																								onCheckedChange={() => toggleCompleted('captions')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -970,7 +995,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['transcripts'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -985,7 +1013,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('transcripts')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1037,7 +1065,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['audioDescription'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1054,7 +1085,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('audioDescription')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1108,7 +1139,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['formLabels'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1123,7 +1157,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('formLabels')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1175,7 +1209,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['requiredFields'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1190,7 +1227,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('requiredFields')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1243,7 +1280,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['tables'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1256,7 +1296,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['tables'] || false}
 																								onCheckedChange={() => toggleCompleted('tables')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1308,7 +1348,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['bodyText'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1321,7 +1364,7 @@ export default function BasicTestsPage() {
 																							<Checkbox
 																								checked={completedItems['bodyText'] || false}
 																								onCheckedChange={() => toggleCompleted('bodyText')}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1372,7 +1415,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['screenReader'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1387,7 +1433,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('screenReader')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
@@ -1451,8 +1497,10 @@ export default function BasicTestsPage() {
 																				</td>
 																			</tr>
 
-																			{/* Add Other Tests row */}
-																			<tr className='border-b hover:bg-muted/50'>
+																			<tr
+																				className={`border-b ${
+																					completedItems['otherTests'] ? 'bg-gray-100' : ''
+																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
 																						<span className='text-xs text-muted-foreground'>
@@ -1467,7 +1515,7 @@ export default function BasicTestsPage() {
 																								onCheckedChange={() =>
 																									toggleCompleted('otherTests')
 																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
 																					</div>
