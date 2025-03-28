@@ -893,9 +893,6 @@ export default function WCAGCriteriaPage() {
 																					Check Type
 																				</th>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
-																					Criterion
-																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Category
 																				</th>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
@@ -937,9 +934,6 @@ export default function WCAGCriteriaPage() {
 																								className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																							/>
 																						</div>
-																					</td>
-																					<td className='border p-2 font-medium align-top text-foreground'>
-																						{criterion.category}
 																					</td>
 																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
 																						{criterion.criterion}
