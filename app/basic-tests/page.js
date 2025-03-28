@@ -227,7 +227,7 @@ export default function BasicTestsPage() {
 			<div className='container mx-auto p-4'>
 				<div className='mb-6 flex flex-col gap-4'>
 					<div className='py-6'>
-						<Card>
+						<Card className='bg-muted/50'>
 							<CardHeader>
 								<CardTitle>
 									<h2 className='text-2xl font-semibold leading-none tracking-tight py-4'>Audit</h2>
@@ -399,7 +399,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Alt Text
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Image alternative text ("alt text") is a short description
 																					that conveys the purpose of an image. Alternative text is
 																					used by people who do not see the image, including: •
@@ -408,7 +408,7 @@ export default function BasicTestsPage() {
 																					• Some people with learning or reading disabilities who
 																					have information read aloud
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['imageAlt'] || ''}
 																						onChange={(e) =>
@@ -422,7 +422,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Images with information relevant to content should have
 																					descriptive alt text • Images with text should have that
 																					text in the alt text • Decorative images should have empty
@@ -431,12 +431,12 @@ export default function BasicTestsPage() {
 																					(graphs/charts) should have short alt text plus detailed
 																					description elsewhere
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Browser dev tools, Screen reader, W3C WAI Easy Checks -
 																					Image Alt Text
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/image-alt/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All images on page • Special attention to: - Informative
 																					images - Images of text - Functional images - Complex
 																					images - Groups of images - Image maps
@@ -445,7 +445,7 @@ export default function BasicTestsPage() {
 
 																			{/* Add more rows for each basic check */}
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -461,7 +461,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Page Title
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Page titles are shown in: • Browser window title bar •
 																					Browser tabs when multiple pages are open • Search engine
 																					results • Browser bookmarks/favorites • First thing read
@@ -483,7 +483,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check that there is a title that adequately and briefly
 																					describes the page content • Check that the title is
 																					different from other pages on the website • Verify that
@@ -493,12 +493,12 @@ export default function BasicTestsPage() {
 																					"Contact Acme Web Solutions" (not "Acme Web Solutions -
 																					Contact Us")
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Visual inspection (browser tab/title bar), Screen reader,
 																					W3C WAI Easy Checks - Page Title
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/title/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Browser title bar • Browser tabs • Compare across
 																					different pages of the site
 																				</td>
@@ -506,7 +506,7 @@ export default function BasicTestsPage() {
 
 																			{/* Add these rows after the Page Title row */}
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -522,7 +522,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Headings
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Headings communicate the organization of the content on
 																					the page, like a table of contents. They should be nested
 																					by their rank/level (h1-h6). Headings are important for: •
@@ -532,7 +532,7 @@ export default function BasicTestsPage() {
 																					cognitive and learning disabilities who use headings to
 																					understand and focus on topics
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['headings'] || ''}
 																						onChange={(e) =>
@@ -546,7 +546,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Presence of headings on the page • Page
 																					starts with an h1 • No skipped heading levels • No blank
 																					headings • Visual headings are marked up as actual
@@ -554,20 +554,20 @@ export default function BasicTestsPage() {
 																					• Headings represent proper content structure, especially
 																					nested content
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Browser dev tools, Screen reader, W3C WAI Easy Checks -
 																					Headings
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/headings/),
 																					Body Text Review section in Manual Tests
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All page headings • Visual text that appears to be
 																					headings • Document structure/outline
 																				</td>
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -583,7 +583,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Color Contrast
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Color contrast refers to the difference between adjacent
 																					colors: • Text and background color • Interactive elements
 																					and their background • Parts of graphs or charts that need
@@ -592,7 +592,7 @@ export default function BasicTestsPage() {
 																					with color deficient vision ('color blindness') • Anyone
 																					trying to read content in bright light conditions
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['colorContrast'] || ''}
 																						onChange={(e) =>
@@ -606,7 +606,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Text contrast ratio meets minimum
 																					requirement (4.5:1) • Interactive elements have sufficient
 																					contrast • Color is not the only way to convey information
@@ -614,13 +614,13 @@ export default function BasicTestsPage() {
 																					color Quick check: View page in grayscale to identify
 																					potential contrast issues
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Color Contrast Analyzer, Browser dev tools, W3C WAI Easy
 																					Checks - Color Contrast
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/color-contrast/),
 																					Grayscale viewing
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All text content • Interactive elements (buttons, links,
 																					etc.) • Information conveyed through color • Visual
 																					elements like graphs and charts
@@ -628,7 +628,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -644,7 +644,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Skip Link
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					A skip link is the first interactive element on a page
 																					that allows users to bypass blocks of repeated content.
 																					The most important instance is a skip navigation link at
@@ -653,7 +653,7 @@ export default function BasicTestsPage() {
 																					with various motor disabilities • People using mouth
 																					sticks or head pointers • People using switch devices
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['skipLink'] || ''}
 																						onChange={(e) =>
@@ -667,7 +667,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Presence of skip link as first interactive
 																					element • Skip link becomes visible on keyboard focus (if
 																					initially hidden) • Skip link functionality works
@@ -675,19 +675,19 @@ export default function BasicTestsPage() {
 																					"Skip navigation", "Skip to content", "Skip to main
 																					content") • After activation, focus moves to main content
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Keyboard navigation, Screen reader, W3C WAI Easy Checks -
 																					Skip Link
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/skip-link/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Top of page • Verify skip link target (main content) •
 																					Test with keyboard Tab key
 																				</td>
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -703,7 +703,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Keyboard Focus
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Visible keyboard focus indicates which interactive element
 																					(link, button, form field) you are on when using the
 																					keyboard to navigate. This is essential for: • Sighted
@@ -712,7 +712,7 @@ export default function BasicTestsPage() {
 																					voice • People who are blind (using keyboard with
 																					non-visual cues)
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['keyboardFocus'] || ''}
 																						onChange={(e) =>
@@ -726,7 +726,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Test using keyboard controls: • Tab: Navigate to links
 																					and form controls • Shift + Tab: Navigate backwards •
 																					Spacebar: Activate checkboxes and buttons • Enter:
@@ -737,11 +737,11 @@ export default function BasicTestsPage() {
 																					• Logical navigation order • Proper dialog behavior
 																					(navigation, closure, focus return) • No keyboard traps
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Keyboard navigation, W3C WAI Easy Checks - Keyboard Focus
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/keyboard-focus/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All interactive elements • Navigation menus • Forms and
 																					controls • Modal dialogs • Custom widgets • Dynamic
 																					content
@@ -749,7 +749,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -765,7 +765,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Language
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Web pages should identify the primary language of the
 																					page. This is crucial because: • Screen readers and other
 																					text-to-speech tools need to know which language to use
@@ -773,7 +773,7 @@ export default function BasicTestsPage() {
 																					to know which language to translate from • It helps search
 																					engines identify the language of content
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['language'] || ''}
 																						onChange={(e) =>
@@ -787,7 +787,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Primary language is correctly identified in
 																					HTML lang attribute • Language declaration matches the
 																					actual content language • If page has no language set, it
@@ -795,19 +795,19 @@ export default function BasicTestsPage() {
 																					multilingual pages, check that language changes within
 																					content are properly marked
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					View page source, Browser dev tools, Screen reader, W3C
 																					WAI Easy Checks - Language
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/language/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• HTML tag (lang attribute) • Content sections in
 																					different languages • Page metadata
 																				</td>
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -823,7 +823,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Zoom
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Zoom is used to enlarge text and images on web pages to
 																					make them more readable. This is crucial for: • People who
 																					need to enlarge content to read it • People who forgot
@@ -831,7 +831,7 @@ export default function BasicTestsPage() {
 																					significant magnification (200% or larger) • Anyone
 																					viewing content on small screens or from a distance
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['zoom'] || ''}
 																						onChange={(e) =>
@@ -845,7 +845,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Test at 200% zoom (Ctrl/Cmd + to zoom in): • Verify all
 																					content remains visible and in logical order • Check for
 																					content overlap or spacing issues • Ensure navigation
@@ -855,13 +855,13 @@ export default function BasicTestsPage() {
 																					properly • Check that text isn't hidden behind other
 																					content
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Browser zoom controls (Ctrl/Cmd + to zoom in, Ctrl/Cmd -
 																					to zoom out, Ctrl/Cmd 0 to reset), W3C WAI Easy Checks -
 																					Zoom
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/zoom/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All page content • Navigation menus • Interactive
 																					elements • Text content • Images and media • Forms and
 																					controls
@@ -869,7 +869,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -885,7 +885,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Multimedia (Captions)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Captions are a text version of the speech and non-speech
 																					audio information needed to understand the video and
 																					displayed with the video. The audio in video content needs
@@ -895,7 +895,7 @@ export default function BasicTestsPage() {
 																					People learning to read or learning the language • People
 																					who process written information better than audio
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['captions'] || ''}
 																						onChange={(e) =>
@@ -909,7 +909,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Presence of captions for all video content
 																					• Captions are synchronized with the audio • Captions
 																					include all speech and important non-speech sounds •
@@ -917,12 +917,12 @@ export default function BasicTestsPage() {
 																					identification when multiple people are speaking •
 																					Auto-generated captions alone are not sufficient
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Manual check, Media player controls, W3C WAI Easy Checks -
 																					Captions
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/captions/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All video content • Video player caption controls •
 																					Caption quality and accuracy • Caption timing and
 																					synchronization
@@ -930,7 +930,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -946,7 +946,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Multimedia (Transcripts)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Transcripts are a text version of the speech and
 																					non-speech information in audio content and available
 																					separately from the video. They are used by: • People who
@@ -956,7 +956,7 @@ export default function BasicTestsPage() {
 																					over listening to audio • People who want to quickly scan
 																					or search through the content
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['transcripts'] || ''}
 																						onChange={(e) =>
@@ -970,7 +970,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Presence of transcript with the media or a
 																					link to transcript • Transcript is easy to find near the
 																					audio/video content • All speech is accurately reflected
@@ -979,11 +979,11 @@ export default function BasicTestsPage() {
 																					"tires screeching") • For videos, important visual
 																					information is described in the transcript
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Manual check, W3C WAI Easy Checks - Transcripts
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/transcripts/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All audio content • All video content • Transcript
 																					location and accessibility • Transcript completeness and
 																					accuracy
@@ -991,7 +991,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1007,7 +1007,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Multimedia (Audio Description)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Audio description describes visual information needed to
 																					understand the content, including text displayed in the
 																					video, as part of the video. It provides content to: •
@@ -1017,7 +1017,7 @@ export default function BasicTestsPage() {
 																					learning the language who benefit from additional verbal
 																					descriptions
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['audioDescription'] || ''}
 																						onChange={(e) =>
@@ -1031,7 +1031,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Whether description is needed (are there
 																					important visual elements?) • If needed, check if
 																					description is provided through: - Integration in the main
@@ -1041,12 +1041,12 @@ export default function BasicTestsPage() {
 																					contact information shown - Speakers' names in text - Text
 																					in presentations - Important actions and expressions
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Manual check, Media player controls, W3C WAI Easy Checks -
 																					Audio Description
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/description/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All video content • Visual information in videos • Text
 																					displayed in videos • Actions and expressions • Scene
 																					changes
@@ -1054,7 +1054,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1070,7 +1070,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Forms (Labels)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Form field labels are the text beside form fields. They
 																					should tell us what information to enter or what checkbox
 																					to select. Everyone needs labels to understand how to
@@ -1081,7 +1081,7 @@ export default function BasicTestsPage() {
 																					who need larger clickable areas • Anyone filling out forms
 																					who needs clear guidance
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['formLabels'] || ''}
 																						onChange={(e) =>
@@ -1095,7 +1095,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • All form controls have descriptive labels •
 																					Labels are properly associated with their form fields • If
 																					visual label is not present, check for: - Hidden
@@ -1103,19 +1103,19 @@ export default function BasicTestsPage() {
 																					attribute • Labels clearly describe the required input •
 																					Clicking on label activates the associated form control
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Browser dev tools, Screen reader, W3C WAI Easy Checks -
 																					Form Labels
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/form-field-labels/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All form fields • Text inputs • Checkboxes • Radio
 																					buttons • Select menus • Text areas • Custom form controls
 																				</td>
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1131,7 +1131,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Forms (Required Fields)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					A required form field must be completed before you submit
 																					a form. Marking which fields are required in a form makes
 																					it easier for everyone to complete forms. This is
@@ -1141,7 +1141,7 @@ export default function BasicTestsPage() {
 																					disabilities who benefit from clear instructions • Anyone
 																					who wants to avoid form submission errors
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['requiredFields'] || ''}
 																						onChange={(e) =>
@@ -1155,7 +1155,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Fields marked as required have a visible
 																					indicator • The word "required" is included in the label
 																					(preferred method) • If using an asterisk (*), ensure it's
@@ -1165,19 +1165,19 @@ export default function BasicTestsPage() {
 																					in HTML code (required attribute) • Error messages clearly
 																					indicate missing required fields
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Visual inspection, Screen reader, W3C WAI Easy Checks -
 																					Required Fields
 																					(https://www.w3.org/WAI/test-evaluate/easy-checks/required-fields/)
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All forms • Required field indicators • Form
 																					instructions • Error messages • Form validation
 																				</td>
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1193,7 +1193,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Tables
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Tables should be used for presenting tabular data, not for
 																					layout purposes. Proper table structure helps screen
 																					reader users understand the relationships between headers
@@ -1204,7 +1204,7 @@ export default function BasicTestsPage() {
 																					efficiently • Anyone who needs to understand the logical
 																					relationships between data points
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['tables'] || ''}
 																						onChange={(e) =>
@@ -1218,7 +1218,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Tables are only used for tabular data, not
 																					for layout purposes • Table captions are present and
 																					descriptive • Row and/or column headers are properly
@@ -1227,10 +1227,10 @@ export default function BasicTestsPage() {
 																					their headers • Tables make sense when read in a linear
 																					order
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Browser dev tools, Screen reader
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• All data tables on the page • Table headers and captions
 																					• Table structure and markup • Header-cell relationships •
 																					Table navigation with screen reader
@@ -1238,7 +1238,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1254,7 +1254,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Body Text
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					The body text of a page should be well-structured and easy
 																					to understand. This is important for: • All users,
 																					particularly those with cognitive disabilities • Screen
@@ -1262,7 +1262,7 @@ export default function BasicTestsPage() {
 																					People with reading difficulties who need clear, simple
 																					language • Users who scan content using headings and links
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['bodyText'] || ''}
 																						onChange={(e) =>
@@ -1276,7 +1276,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • Page title is unique and descriptive,
 																					marked as &lt;h1&gt; (only one per page) • Visual headings
 																					use proper hierarchy (&lt;h1&gt;, &lt;h2&gt;, etc.)
@@ -1286,11 +1286,11 @@ export default function BasicTestsPage() {
 																					reference • Content is organized in clear, logical
 																					sections
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Visual inspection, Screen reader, Browser dev tools to
 																					verify heading structure
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Page titles • Heading structure • Link text • General
 																					content • Technical terms and acronyms • Document
 																					organization
@@ -1298,7 +1298,7 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1314,7 +1314,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Screen Reader
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Screen reader testing helps identify issues with content
 																					structure, reading order, dynamic updates, and interactive
 																					elements. This testing is essential for: • People who are
@@ -1323,7 +1323,7 @@ export default function BasicTestsPage() {
 																					disabilities who use text-to-speech • Developers and
 																					testers verifying accessibility implementation
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['screenReader'] || ''}
 																						onChange={(e) =>
@@ -1337,7 +1337,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Test with appropriate screen reader for your system: •
 																					Mac users:
 																					<a href='#' className='text-blue-500 hover:underline'>
@@ -1349,7 +1349,7 @@ export default function BasicTestsPage() {
 																					and instructions • Table structure and navigation • Image
 																					descriptions • Heading hierarchy
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Screen reader software: • Mac:{' '}
 																					<a href='#' className='text-blue-500 hover:underline'>
 																						VoiceOver Guide
@@ -1363,7 +1363,7 @@ export default function BasicTestsPage() {
 																						JAWS Guide
 																					</a>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Page structure and navigation • Interactive elements •
 																					Forms and controls • Dynamic content • Tables and lists •
 																					Images and media • Error messages • Status updates
@@ -1372,7 +1372,7 @@ export default function BasicTestsPage() {
 
 																			{/* Add Other Tests row */}
 																			<tr className='border-b hover:bg-muted/50'>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-1'>
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
@@ -1388,7 +1388,7 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 font-medium align-top text-foreground'>
 																					Other Tests
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Additional testing helps identify issues with various
 																					content types and functionalities. This is important for:
 																					• Users accessing PDF documents • People navigating
@@ -1397,7 +1397,7 @@ export default function BasicTestsPage() {
 																					different browsers and assistive technologies • Anyone
 																					encountering error states or authentication flows
 																				</td>
-																				<td className='border p-2 align-top'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<textarea
 																						value={basicTestObservations['otherTests'] || ''}
 																						onChange={(e) =>
@@ -1411,7 +1411,7 @@ export default function BasicTestsPage() {
 																						placeholder='Enter observations...'
 																					/>
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• Check for: • PDF accessibility (tags, reading order, alt
 																					text) • Broken or empty links • Third-party widget
 																					behavior • Mobile-specific issues • Cross-browser
@@ -1420,11 +1420,11 @@ export default function BasicTestsPage() {
 																					messaging • Any other relevant aspects not covered by
 																					previous tests
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					Manual testing, PDF accessibility tools, Mobile devices,
 																					Multiple browsers, Screen readers
 																				</td>
-																				<td className='border p-2 align-top text-foreground'>
+																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					• PDF documents • External links • Third-party content •
 																					Mobile views • Different browsers • Custom components •
 																					Login/signup flows • Error states • Other unique features
