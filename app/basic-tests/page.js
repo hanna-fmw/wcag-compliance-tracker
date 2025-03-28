@@ -138,17 +138,18 @@ export default function BasicTestsPage() {
 		localStorage.setItem('basicTestsAuditData', JSON.stringify(auditData))
 	}, [basicTestObservations, dateCreated, executiveSummary, clientName, clientId])
 
-	// Add export handler
+	// Update the handleExport function to filter out empty observations
 	const handleExport = () => {
-		const observationsWithDetails = Object.entries(basicTestObservations).map(
-			([checkId, observation]) => ({
+		// Filter out empty observations and create the observations array
+		const observationsWithDetails = Object.entries(basicTestObservations)
+			.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
+			.map(([checkId, observation]) => ({
 				criterion: checkTypeDisplayNames[checkId] || checkId,
 				observation,
 				category: 'Basic Test',
 				level: '',
 				description: checkDescriptions[checkId] || 'Basic accessibility test observation',
-			})
-		)
+			}))
 
 		const auditData = {
 			clientName,
