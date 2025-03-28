@@ -9,6 +9,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { Checkbox } from '@/components/ui/checkbox'
 
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
@@ -923,15 +924,14 @@ export default function WCAGCriteriaPage() {
 																							<span className='text-xs text-muted-foreground'>
 																								Done?
 																							</span>
-																							<input
-																								type='checkbox'
+																							<Checkbox
 																								checked={
 																									completedItems[criterion.criterion] || false
 																								}
-																								onChange={() =>
+																								onCheckedChange={() =>
 																									toggleCompleted(criterion.criterion)
 																								}
-																								className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																							/>
 																						</div>
 																					</td>

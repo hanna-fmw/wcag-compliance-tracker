@@ -9,6 +9,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { Checkbox } from '@/components/ui/checkbox'
 
 // Add this mapping object at the top of the file, after the imports
 const checkTypeDisplayNames = {
@@ -388,11 +389,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['imageAlt'] || false}
-																							onChange={() => toggleCompleted('imageAlt')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('imageAlt')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -450,11 +450,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['pageTitle'] || false}
-																							onChange={() => toggleCompleted('pageTitle')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('pageTitle')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -511,11 +510,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['headings'] || false}
-																							onChange={() => toggleCompleted('headings')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('headings')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -572,11 +570,12 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['colorContrast'] || false}
-																							onChange={() => toggleCompleted('colorContrast')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() =>
+																								toggleCompleted('colorContrast')
+																							}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -633,11 +632,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['skipLink'] || false}
-																							onChange={() => toggleCompleted('skipLink')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('skipLink')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -692,11 +690,12 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['keyboardFocus'] || false}
-																							onChange={() => toggleCompleted('keyboardFocus')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() =>
+																								toggleCompleted('keyboardFocus')
+																							}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -754,11 +753,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['language'] || false}
-																							onChange={() => toggleCompleted('language')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('language')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -812,11 +810,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['zoom'] || false}
-																							onChange={() => toggleCompleted('zoom')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('zoom')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -874,11 +871,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['captions'] || false}
-																							onChange={() => toggleCompleted('captions')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('captions')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -935,11 +931,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['transcripts'] || false}
-																							onChange={() => toggleCompleted('transcripts')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('transcripts')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -996,11 +991,12 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['audioDescription'] || false}
-																							onChange={() => toggleCompleted('audioDescription')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() =>
+																								toggleCompleted('audioDescription')
+																							}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1059,11 +1055,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['formLabels'] || false}
-																							onChange={() => toggleCompleted('formLabels')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('formLabels')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1120,11 +1115,12 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['requiredFields'] || false}
-																							onChange={() => toggleCompleted('requiredFields')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() =>
+																								toggleCompleted('requiredFields')
+																							}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1182,11 +1178,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['tables'] || false}
-																							onChange={() => toggleCompleted('tables')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('tables')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1243,11 +1238,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['bodyText'] || false}
-																							onChange={() => toggleCompleted('bodyText')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('bodyText')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1303,11 +1297,12 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['screenReader'] || false}
-																							onChange={() => toggleCompleted('screenReader')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() =>
+																								toggleCompleted('screenReader')
+																							}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1377,11 +1372,10 @@ export default function BasicTestsPage() {
 																						<span className='text-xs text-muted-foreground'>
 																							Done?
 																						</span>
-																						<input
-																							type='checkbox'
+																						<Checkbox
 																							checked={completedItems['otherTests'] || false}
-																							onChange={() => toggleCompleted('otherTests')}
-																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
+																							onCheckedChange={() => toggleCompleted('otherTests')}
+																							className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
 																						/>
 																					</div>
 																				</td>
