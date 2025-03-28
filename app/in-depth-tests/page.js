@@ -920,19 +920,24 @@ export default function WCAGCriteriaPage() {
 																			{wcagCriteria.map((criterion, index) => (
 																				<tr key={index} className='border-b hover:bg-muted/50'>
 																					<td className='border p-2 align-top text-foreground'>
-																						<div className='flex flex-col items-center gap-1'>
+																						<div className='flex flex-col items-center gap-2'>
 																							<span className='text-xs text-muted-foreground'>
-																								Done?
+																								#{index + 1}
 																							</span>
-																							<Checkbox
-																								checked={
-																									completedItems[criterion.criterion] || false
-																								}
-																								onCheckedChange={() =>
-																									toggleCompleted(criterion.criterion)
-																								}
-																								className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
-																							/>
+																							<div className='flex flex-col items-center gap-1'>
+																								<span className='text-xs text-muted-foreground'>
+																									Done?
+																								</span>
+																								<Checkbox
+																									checked={
+																										completedItems[criterion.criterion] || false
+																									}
+																									onCheckedChange={() =>
+																										toggleCompleted(criterion.criterion)
+																									}
+																									className='data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
+																								/>
+																							</div>
 																						</div>
 																					</td>
 																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
