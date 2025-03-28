@@ -392,7 +392,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['imageAlt'] || false}
 																							onChange={() => toggleCompleted('imageAlt')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -454,7 +454,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['pageTitle'] || false}
 																							onChange={() => toggleCompleted('pageTitle')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -515,7 +515,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['headings'] || false}
 																							onChange={() => toggleCompleted('headings')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -576,7 +576,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['colorContrast'] || false}
 																							onChange={() => toggleCompleted('colorContrast')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -637,7 +637,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['skipLink'] || false}
 																							onChange={() => toggleCompleted('skipLink')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -696,7 +696,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['keyboardFocus'] || false}
 																							onChange={() => toggleCompleted('keyboardFocus')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -721,7 +721,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-sm text-muted-foreground'
 																						rows={3}
 																						placeholder='Enter observations...'
 																					/>
@@ -758,7 +758,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['language'] || false}
 																							onChange={() => toggleCompleted('language')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -816,7 +816,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['zoom'] || false}
 																							onChange={() => toggleCompleted('zoom')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -878,7 +878,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['captions'] || false}
 																							onChange={() => toggleCompleted('captions')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -939,7 +939,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['transcripts'] || false}
 																							onChange={() => toggleCompleted('transcripts')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1000,7 +1000,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['audioDescription'] || false}
 																							onChange={() => toggleCompleted('audioDescription')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1063,7 +1063,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['formLabels'] || false}
 																							onChange={() => toggleCompleted('formLabels')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1124,7 +1124,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['requiredFields'] || false}
 																							onChange={() => toggleCompleted('requiredFields')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1186,7 +1186,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['tables'] || false}
 																							onChange={() => toggleCompleted('tables')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1247,7 +1247,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['bodyText'] || false}
 																							onChange={() => toggleCompleted('bodyText')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1307,7 +1307,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['screenReader'] || false}
 																							onChange={() => toggleCompleted('screenReader')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1381,7 +1381,7 @@ export default function BasicTestsPage() {
 																							type='checkbox'
 																							checked={completedItems['otherTests'] || false}
 																							onChange={() => toggleCompleted('otherTests')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 bg-white checked:bg-green-600 checked:border-green-600'
 																						/>
 																					</div>
 																				</td>
@@ -1460,15 +1460,15 @@ export default function BasicTestsPage() {
 											<p className='text-sm text-muted-foreground'>
 												Tip: Paste in all your observations into chatgpt and ask it to summarize it
 												for you, and then paste the summary in the Executive Summary field. (This
-												feature will be AI-powered in the future)
+												feature will likely be AI-powered in the future).
 											</p>
 										</CardHeader>
 										<CardContent>
 											<Textarea
 												value={executiveSummary}
 												onChange={(e) => setExecutiveSummary(e.target.value)}
-												className='min-h-[150px]'
-												placeholder={`Example:
+												className='min-h-[150px] text-sm text-muted-foreground'
+												placeholder={`Enter your summary here. Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
