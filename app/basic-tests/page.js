@@ -359,7 +359,7 @@ export default function BasicTestsPage() {
 																		<thead>
 																			<tr>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[5%]'>
-																					Completed?
+																					Status
 																				</th>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
 																					Check Type
@@ -384,16 +384,16 @@ export default function BasicTestsPage() {
 																		<tbody className='text-sm'>
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['imageAlt'] || false}
 																							onChange={() => toggleCompleted('imageAlt')}
 																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>
-																							Completed?
-																						</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -446,14 +446,16 @@ export default function BasicTestsPage() {
 																			{/* Add more rows for each basic check */}
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['pageTitle'] || false}
 																							onChange={() => toggleCompleted('pageTitle')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -505,14 +507,16 @@ export default function BasicTestsPage() {
 																			{/* Add these rows after the Page Title row */}
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['headings'] || false}
 																							onChange={() => toggleCompleted('headings')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -564,14 +568,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['colorContrast'] || false}
 																							onChange={() => toggleCompleted('colorContrast')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -623,14 +629,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['skipLink'] || false}
 																							onChange={() => toggleCompleted('skipLink')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -680,14 +688,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['keyboardFocus'] || false}
 																							onChange={() => toggleCompleted('keyboardFocus')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -740,14 +750,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['language'] || false}
 																							onChange={() => toggleCompleted('language')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -796,14 +808,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['zoom'] || false}
 																							onChange={() => toggleCompleted('zoom')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -856,14 +870,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['captions'] || false}
 																							onChange={() => toggleCompleted('captions')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -915,14 +931,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['transcripts'] || false}
 																							onChange={() => toggleCompleted('transcripts')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -974,14 +992,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['audioDescription'] || false}
 																							onChange={() => toggleCompleted('audioDescription')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1035,14 +1055,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['formLabels'] || false}
 																							onChange={() => toggleCompleted('formLabels')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1094,14 +1116,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['requiredFields'] || false}
 																							onChange={() => toggleCompleted('requiredFields')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1154,14 +1178,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['tables'] || false}
 																							onChange={() => toggleCompleted('tables')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1213,14 +1239,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['bodyText'] || false}
 																							onChange={() => toggleCompleted('bodyText')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1271,14 +1299,16 @@ export default function BasicTestsPage() {
 
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['screenReader'] || false}
 																							onChange={() => toggleCompleted('screenReader')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>
@@ -1343,14 +1373,16 @@ export default function BasicTestsPage() {
 																			{/* Add Other Tests row */}
 																			<tr className='border-b hover:bg-muted/50'>
 																				<td className='border p-2 align-top text-foreground'>
-																					<div className='flex items-center gap-2'>
+																					<div className='flex flex-col items-center gap-1'>
+																						<span className='text-xs text-muted-foreground'>
+																							Done?
+																						</span>
 																						<input
 																							type='checkbox'
 																							checked={completedItems['otherTests'] || false}
 																							onChange={() => toggleCompleted('otherTests')}
-																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary'
+																							className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
 																						/>
-																						<span className='text-xs text-muted-foreground'>✓</span>
 																					</div>
 																				</td>
 																				<td className='border p-2 font-medium align-top text-foreground'>

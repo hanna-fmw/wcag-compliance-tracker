@@ -664,18 +664,20 @@ export default function WCAGCriteriaPage() {
 	const [previewData, setPreviewData] = useState(null)
 	const [executiveSummary, setExecutiveSummary] = useState('')
 	const [expandedSections, setExpandedSections] = useState({ testResults: false })
+	const [completedItems, setCompletedItems] = useState({})
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
-		const savedData = localStorage.getItem('wcagAuditData')
+		const savedData = localStorage.getItem('inDepthTestsAuditData')
 		if (savedData) {
-			const { clientName, clientId, observations, dateCreated, executiveSummary } =
+			const { clientName, clientId, observations, dateCreated, executiveSummary, completedItems } =
 				JSON.parse(savedData)
-			setClientName(clientName || '')
-			setClientId(clientId || '')
 			setObservations(observations || {})
 			setDateCreated(dateCreated || new Date().toISOString())
 			setExecutiveSummary(executiveSummary || '')
+			setClientName(clientName || '')
+			setClientId(clientId || '')
+			setCompletedItems(completedItems || {})
 		}
 	}, [])
 
@@ -687,9 +689,10 @@ export default function WCAGCriteriaPage() {
 			observations,
 			dateCreated,
 			executiveSummary,
+			completedItems,
 		}
-		localStorage.setItem('wcagAuditData', JSON.stringify(auditData))
-	}, [clientName, clientId, observations, dateCreated, executiveSummary])
+		localStorage.setItem('inDepthTestsAuditData', JSON.stringify(auditData))
+	}, [observations, dateCreated, executiveSummary, clientName, clientId, completedItems])
 
 	const handleObservationChange = (criterion, value) => {
 		setObservations((prev) => ({
@@ -699,17 +702,19 @@ export default function WCAGCriteriaPage() {
 	}
 
 	const handleExport = () => {
-		// Create an array of observations with additional fields
-		const observationsWithDetails = Object.entries(observations).map(([criterion, observation]) => {
-			const criterionDetails = wcagCriteria.find((c) => c.criterion === criterion)
-			return {
-				criterion,
-				observation,
-				category: criterionDetails?.category || '',
-				level: criterionDetails?.level || '',
-				description: criterionDetails?.description || '',
-			}
-		})
+		// Filter out empty observations and create the observations array
+		const observationsWithDetails = Object.entries(observations)
+			.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
+			.map(([criterion, observation]) => {
+				const criterionDetails = wcagCriteria.find((c) => c.criterion === criterion)
+				return {
+					criterion,
+					observation,
+					category: criterionDetails?.category || '',
+					level: criterionDetails?.level || '',
+					description: criterionDetails?.description || '',
+				}
+			})
 
 		const auditData = {
 			clientName,
@@ -725,12 +730,13 @@ export default function WCAGCriteriaPage() {
 
 	const handleClearData = () => {
 		if (window.confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
-			localStorage.removeItem('wcagAuditData')
-			setClientName('')
-			setClientId('')
+			localStorage.removeItem('inDepthTestsAuditData')
 			setObservations({})
 			setDateCreated(new Date().toISOString())
 			setExecutiveSummary('')
+			setClientName('')
+			setClientId('')
+			setCompletedItems({})
 		}
 	}
 
@@ -738,6 +744,13 @@ export default function WCAGCriteriaPage() {
 		setExpandedSections((prev) => ({
 			...prev,
 			[section]: !prev[section],
+		}))
+	}
+
+	const toggleCompleted = (checkId) => {
+		setCompletedItems((prev) => ({
+			...prev,
+			[checkId]: !prev[checkId],
 		}))
 	}
 
@@ -873,6 +886,12 @@ export default function WCAGCriteriaPage() {
 																	<table className='min-w-full border-collapse'>
 																		<thead>
 																			<tr>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[5%]'>
+																					Status
+																				</th>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
+																					Check Type
+																				</th>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Criterion
 																				</th>
@@ -902,6 +921,26 @@ export default function WCAGCriteriaPage() {
 																		<tbody className='text-sm'>
 																			{wcagCriteria.map((criterion, index) => (
 																				<tr key={index} className='border-b hover:bg-muted/50'>
+																					<td className='border p-2 align-top text-foreground'>
+																						<div className='flex flex-col items-center gap-1'>
+																							<span className='text-xs text-muted-foreground'>
+																								Done?
+																							</span>
+																							<input
+																								type='checkbox'
+																								checked={
+																									completedItems[criterion.criterion] || false
+																								}
+																								onChange={() =>
+																									toggleCompleted(criterion.criterion)
+																								}
+																								className='h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-white'
+																							/>
+																						</div>
+																					</td>
+																					<td className='border p-2 font-medium align-top text-foreground'>
+																						{criterion.category}
+																					</td>
 																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
 																						{criterion.criterion}
 																					</td>
