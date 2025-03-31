@@ -113,6 +113,11 @@ export default function BasicTestsPage() {
 	const [clientName, setClientName] = useState('')
 	const [clientId, setClientId] = useState('')
 
+	// Add URL-related state variables
+	const [urls, setUrls] = useState([])
+	const [selectedUrl, setSelectedUrl] = useState('')
+	const [newUrl, setNewUrl] = useState('')
+
 	// Add new state for completed items after the other state declarations
 	const [completedItems, setCompletedItems] = useState({})
 
@@ -120,14 +125,24 @@ export default function BasicTestsPage() {
 	useEffect(() => {
 		const savedData = localStorage.getItem('basicTestsAuditData')
 		if (savedData) {
-			const { clientName, clientId, observations, dateCreated, executiveSummary, completedItems } =
-				JSON.parse(savedData)
+			const {
+				clientName,
+				clientId,
+				observations,
+				dateCreated,
+				executiveSummary,
+				completedItems,
+				urls,
+				selectedUrl,
+			} = JSON.parse(savedData)
 			setBasicTestObservations(observations || {})
 			setDateCreated(dateCreated || new Date().toISOString())
 			setExecutiveSummary(executiveSummary || '')
 			setClientName(clientName || '')
 			setClientId(clientId || '')
 			setCompletedItems(completedItems || {})
+			setUrls(urls || [])
+			setSelectedUrl(selectedUrl || '')
 		}
 	}, [])
 
@@ -140,22 +155,57 @@ export default function BasicTestsPage() {
 			dateCreated,
 			executiveSummary,
 			completedItems,
+			urls,
+			selectedUrl,
 		}
 		localStorage.setItem('basicTestsAuditData', JSON.stringify(auditData))
-	}, [basicTestObservations, dateCreated, executiveSummary, clientName, clientId, completedItems])
+	}, [
+		basicTestObservations,
+		dateCreated,
+		executiveSummary,
+		clientName,
+		clientId,
+		completedItems,
+		urls,
+		selectedUrl,
+	])
+
+	// Add URL management functions
+	const handleAddUrl = () => {
+		if (newUrl && !urls.includes(newUrl)) {
+			setUrls([...urls, newUrl])
+			setSelectedUrl(newUrl)
+			setNewUrl('')
+		}
+	}
+
+	const handleUrlChange = (url) => {
+		setSelectedUrl(url)
+	}
 
 	// Update the handleExport function to filter out empty observations
 	const handleExport = () => {
-		// Filter out empty observations and create the observations array
-		const observationsWithDetails = Object.entries(basicTestObservations)
-			.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
-			.map(([checkId, observation]) => ({
-				criterion: checkTypeDisplayNames[checkId] || checkId,
-				observation,
-				category: 'Basic Test',
-				level: '',
-				description: checkDescriptions[checkId] || 'Basic accessibility test observation',
-			}))
+		// Create observations array for all URLs
+		const observationsWithDetails = Object.entries(basicTestObservations).map(
+			([url, urlObservations]) => {
+				// Filter and map observations for this URL
+				const urlObservationsList = Object.entries(urlObservations)
+					.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
+					.map(([checkId, observation]) => ({
+						criterion: checkTypeDisplayNames[checkId] || checkId,
+						observation,
+						category: 'Basic Test',
+						level: '',
+						description: checkDescriptions[checkId] || 'Basic accessibility test observation',
+					}))
+
+				// Return URL section with its observations
+				return {
+					url,
+					observations: urlObservationsList,
+				}
+			}
+		)
 
 		const auditData = {
 			clientName,
@@ -169,7 +219,7 @@ export default function BasicTestsPage() {
 		setShowPreview(true)
 	}
 
-	// Add clear data handler
+	// Update clear data handler
 	const handleClearData = () => {
 		if (window.confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
 			localStorage.removeItem('basicTestsAuditData')
@@ -179,6 +229,9 @@ export default function BasicTestsPage() {
 			setClientName('')
 			setClientId('')
 			setCompletedItems({})
+			setUrls([])
+			setSelectedUrl('')
+			setNewUrl('')
 		}
 	}
 
@@ -202,9 +255,14 @@ export default function BasicTestsPage() {
 	}
 
 	const handleBasicTestObservationChange = (checkId, value) => {
+		if (!selectedUrl) return
+
 		setBasicTestObservations((prev) => ({
 			...prev,
-			[checkId]: value,
+			[selectedUrl]: {
+				...prev[selectedUrl],
+				[checkId]: value,
+			},
 		}))
 	}
 
@@ -344,6 +402,43 @@ export default function BasicTestsPage() {
 														</button>
 														{expandedSections.step2a && (
 															<div className='mt-4'>
+																<div className='mb-4 flex flex-col gap-4'>
+																	<div className='flex items-center gap-4'>
+																		<div className='flex-1'>
+																			<Label htmlFor='newUrl'>Add URL to test</Label>
+																			<div className='flex gap-2'>
+																				<Input
+																					id='newUrl'
+																					value={newUrl}
+																					onChange={(e) => setNewUrl(e.target.value)}
+																					placeholder='Enter URL to test'
+																					className='flex-1'
+																				/>
+																				<Button onClick={handleAddUrl}>Add URL</Button>
+																			</div>
+																		</div>
+																		<div className='flex-1'>
+																			<Label htmlFor='urlSelect'>Select URL to test</Label>
+																			<select
+																				id='urlSelect'
+																				value={selectedUrl}
+																				onChange={(e) => handleUrlChange(e.target.value)}
+																				className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring bg-background text-foreground'>
+																				<option value=''>Select a URL</option>
+																				{urls.map((url) => (
+																					<option key={url} value={url}>
+																						{url}
+																					</option>
+																				))}
+																			</select>
+																		</div>
+																	</div>
+																	{selectedUrl && (
+																		<div className='text-sm text-muted-foreground'>
+																			Testing: <span className='font-medium'>{selectedUrl}</span>
+																		</div>
+																	)}
+																</div>
 																<p className='text-gray-600 mb-4'>
 																	Easy checks from{' '}
 																	<a
@@ -417,17 +512,19 @@ export default function BasicTestsPage() {
 																					have information read aloud
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['imageAlt'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'imageAlt',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -484,17 +581,19 @@ export default function BasicTestsPage() {
 																					among open tabs.
 																				</td>
 																				<td className='border p-2 align-top'>
-																					<textarea
-																						value={basicTestObservations['pageTitle'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'pageTitle',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -553,17 +652,19 @@ export default function BasicTestsPage() {
 																					understand and focus on topics
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['headings'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'headings',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -622,17 +723,19 @@ export default function BasicTestsPage() {
 																					trying to read content in bright light conditions
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['colorContrast'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'colorContrast',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -690,17 +793,19 @@ export default function BasicTestsPage() {
 																					sticks or head pointers • People using switch devices
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['skipLink'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'skipLink',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -758,17 +863,19 @@ export default function BasicTestsPage() {
 																					non-visual cues)
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['keyboardFocus'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'keyboardFocus',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-sm text-muted-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -826,17 +933,19 @@ export default function BasicTestsPage() {
 																					engines identify the language of content
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['language'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'language',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -891,17 +1000,19 @@ export default function BasicTestsPage() {
 																					viewing content on small screens or from a distance
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['zoom'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'zoom',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -962,17 +1073,19 @@ export default function BasicTestsPage() {
 																					who process written information better than audio
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['captions'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'captions',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1032,17 +1145,19 @@ export default function BasicTestsPage() {
 																					or search through the content
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['transcripts'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'transcripts',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1104,17 +1219,19 @@ export default function BasicTestsPage() {
 																					descriptions
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['audioDescription'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'audioDescription',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1177,17 +1294,19 @@ export default function BasicTestsPage() {
 																					who needs clear guidance
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['formLabels'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'formLabels',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1246,17 +1365,19 @@ export default function BasicTestsPage() {
 																					who wants to avoid form submission errors
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['requiredFields'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'requiredFields',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1316,17 +1437,19 @@ export default function BasicTestsPage() {
 																					relationships between data points
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['tables'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'tables',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1381,17 +1504,19 @@ export default function BasicTestsPage() {
 																					language • Users who scan content using headings and links
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['bodyText'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'bodyText',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1451,17 +1576,19 @@ export default function BasicTestsPage() {
 																					testers verifying accessibility implementation
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['screenReader'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'screenReader',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1533,17 +1660,19 @@ export default function BasicTestsPage() {
 																					encountering error states or authentication flows
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					<textarea
-																						value={basicTestObservations['otherTests'] || ''}
+																					<Textarea
+																						value={
+																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								'otherTests',
+																								checkId,
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
-																						rows={3}
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
+																						disabled={!selectedUrl}
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
