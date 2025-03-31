@@ -757,13 +757,13 @@ export default function WCAGCriteriaPage() {
 
 	const handleExport = () => {
 		// Create observations array for all URLs
-		const observationsWithDetails = Object.entries(observations).flatMap(([url, urlObservations]) =>
-			Object.entries(urlObservations)
+		const observationsWithDetails = Object.entries(observations).map(([url, urlObservations]) => {
+			// Filter and map observations for this URL
+			const urlObservationsList = Object.entries(urlObservations)
 				.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
 				.map(([criterion, observation]) => {
 					const criterionDetails = wcagCriteria.find((c) => c.criterion === criterion)
 					return {
-						url,
 						criterion,
 						observation,
 						category: criterionDetails?.category || '',
@@ -771,7 +771,13 @@ export default function WCAGCriteriaPage() {
 						description: criterionDetails?.description || '',
 					}
 				})
-		)
+
+			// Return URL section with its observations
+			return {
+				url,
+				observations: urlObservationsList,
+			}
+		})
 
 		const auditData = {
 			clientName,

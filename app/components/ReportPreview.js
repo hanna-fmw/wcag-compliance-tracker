@@ -307,15 +307,24 @@ export default function ReportPreview({ auditData, onClose }) {
 					<section className='report-section'>
 						<h2 className='report-heading'>Observations</h2>
 						<div className='observations-container'>
-							{auditData.observations.map((obs, index) => (
-								<div key={index} className='observation-card'>
-									<div className='observation-header'>
-										<h3 className='observation-title'>{obs.criterion}</h3>
-										{/* <span className='observation-level'>{obs.level}</span> */}
+							{auditData.observations.map((urlSection, urlIndex) => (
+								<div key={urlIndex} className='mb-8'>
+									<h3 className='report-heading text-lg font-semibold mt-6 mb-3 bg-gray-100 p-4 rounded-lg'>
+										URL: {urlSection.url}
+									</h3>
+									<div className='space-y-4'>
+										{urlSection.observations.map((obs, index) => (
+											<div key={index} className='observation-card'>
+												<div className='observation-header'>
+													<h3 className='observation-title'>{obs.criterion}</h3>
+													<span className='observation-level'>{obs.level}</span>
+												</div>
+												<p className='report-text'>{obs.description}</p>
+												<h4 className='observation-label'>Evaluation</h4>
+												<p className='report-text'>{obs.observation}</p>
+											</div>
+										))}
 									</div>
-									<p className='report-text'>{obs.description}</p>
-									<h4 className='observation-label'>Evaluation</h4>
-									<p className='report-text'>{obs.observation}</p>
 								</div>
 							))}
 						</div>
