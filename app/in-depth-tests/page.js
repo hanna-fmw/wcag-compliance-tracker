@@ -659,6 +659,8 @@ const wcagCriteria = [
 export default function WCAGCriteriaPage() {
 	const [clientName, setClientName] = useState('')
 	const [clientId, setClientId] = useState('')
+	const [urls, setUrls] = useState([])
+	const [selectedUrl, setSelectedUrl] = useState('')
 	const [observations, setObservations] = useState({})
 	const [dateCreated, setDateCreated] = useState(new Date().toISOString())
 	const [showPreview, setShowPreview] = useState(false)
@@ -678,19 +680,30 @@ export default function WCAGCriteriaPage() {
 	})
 	const [completedItems, setCompletedItems] = useState({})
 	const [expandedCells, setExpandedCells] = useState({})
+	const [newUrl, setNewUrl] = useState('')
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
 		const savedData = localStorage.getItem('inDepthTestsAuditData')
 		if (savedData) {
-			const { clientName, clientId, observations, dateCreated, executiveSummary, completedItems } =
-				JSON.parse(savedData)
+			const {
+				clientName,
+				clientId,
+				observations,
+				dateCreated,
+				executiveSummary,
+				completedItems,
+				urls,
+				selectedUrl,
+			} = JSON.parse(savedData)
 			setObservations(observations || {})
 			setDateCreated(dateCreated || new Date().toISOString())
 			setExecutiveSummary(executiveSummary || '')
 			setClientName(clientName || '')
 			setClientId(clientId || '')
 			setCompletedItems(completedItems || {})
+			setUrls(urls || [])
+			setSelectedUrl(selectedUrl || '')
 		}
 	}, [])
 
@@ -703,31 +716,62 @@ export default function WCAGCriteriaPage() {
 			dateCreated,
 			executiveSummary,
 			completedItems,
+			urls,
+			selectedUrl,
 		}
 		localStorage.setItem('inDepthTestsAuditData', JSON.stringify(auditData))
-	}, [observations, dateCreated, executiveSummary, clientName, clientId, completedItems])
+	}, [
+		observations,
+		dateCreated,
+		executiveSummary,
+		clientName,
+		clientId,
+		completedItems,
+		urls,
+		selectedUrl,
+	])
+
+	const handleAddUrl = () => {
+		if (newUrl && !urls.includes(newUrl)) {
+			setUrls([...urls, newUrl])
+			setSelectedUrl(newUrl)
+			setNewUrl('')
+		}
+	}
+
+	const handleUrlChange = (url) => {
+		setSelectedUrl(url)
+	}
 
 	const handleObservationChange = (criterion, value) => {
+		if (!selectedUrl) return
+
 		setObservations((prev) => ({
 			...prev,
-			[criterion]: value,
+			[selectedUrl]: {
+				...prev[selectedUrl],
+				[criterion]: value,
+			},
 		}))
 	}
 
 	const handleExport = () => {
-		// Filter out empty observations and create the observations array
-		const observationsWithDetails = Object.entries(observations)
-			.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
-			.map(([criterion, observation]) => {
-				const criterionDetails = wcagCriteria.find((c) => c.criterion === criterion)
-				return {
-					criterion,
-					observation,
-					category: criterionDetails?.category || '',
-					level: criterionDetails?.level || '',
-					description: criterionDetails?.description || '',
-				}
-			})
+		// Create observations array for all URLs
+		const observationsWithDetails = Object.entries(observations).flatMap(([url, urlObservations]) =>
+			Object.entries(urlObservations)
+				.filter(([_, observation]) => observation && observation.trim() !== '') // Only include non-empty observations
+				.map(([criterion, observation]) => {
+					const criterionDetails = wcagCriteria.find((c) => c.criterion === criterion)
+					return {
+						url,
+						criterion,
+						observation,
+						category: criterionDetails?.category || '',
+						level: criterionDetails?.level || '',
+						description: criterionDetails?.description || '',
+					}
+				})
+		)
 
 		const auditData = {
 			clientName,
@@ -750,6 +794,9 @@ export default function WCAGCriteriaPage() {
 			setClientName('')
 			setClientId('')
 			setCompletedItems({})
+			setUrls([])
+			setSelectedUrl('')
+			setNewUrl('')
 		}
 	}
 
@@ -928,6 +975,43 @@ export default function WCAGCriteriaPage() {
 														</button>
 														{expandedSections.testResults && (
 															<div className='mt-4'>
+																<div className='mb-4 flex flex-col gap-4'>
+																	<div className='flex items-center gap-4'>
+																		<div className='flex-1'>
+																			<Label htmlFor='newUrl'>Add URL to test</Label>
+																			<div className='flex gap-2'>
+																				<Input
+																					id='newUrl'
+																					value={newUrl}
+																					onChange={(e) => setNewUrl(e.target.value)}
+																					placeholder='Enter URL to test'
+																					className='flex-1'
+																				/>
+																				<Button onClick={handleAddUrl}>Add URL</Button>
+																			</div>
+																		</div>
+																		<div className='flex-1'>
+																			<Label htmlFor='urlSelect'>Select URL to test</Label>
+																			<select
+																				id='urlSelect'
+																				value={selectedUrl}
+																				onChange={(e) => handleUrlChange(e.target.value)}
+																				className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring bg-background text-foreground'>
+																				<option value=''>Select a URL</option>
+																				{urls.map((url) => (
+																					<option key={url} value={url}>
+																						{url}
+																					</option>
+																				))}
+																			</select>
+																		</div>
+																	</div>
+																	{selectedUrl && (
+																		<div className='text-sm text-muted-foreground'>
+																			Testing: <span className='font-medium'>{selectedUrl}</span>
+																		</div>
+																	)}
+																</div>
 																<div className='overflow-x-auto'>
 																	<table className='min-w-full border-collapse'>
 																		<thead>
@@ -1003,7 +1087,10 @@ export default function WCAGCriteriaPage() {
 																					</td>
 																					<td className='border p-2 w-[25%] text-left align-top text-sm text-muted-foreground'>
 																						<textarea
-																							value={observations[criterion.criterion] || ''}
+																							value={
+																								observations[selectedUrl]?.[criterion.criterion] ||
+																								''
+																							}
 																							onChange={(e) =>
 																								handleObservationChange(
 																									criterion.criterion,
@@ -1012,6 +1099,7 @@ export default function WCAGCriteriaPage() {
 																							}
 																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																							placeholder='Enter observations...'
+																							disabled={!selectedUrl}
 																						/>
 																					</td>
 																					<td className='border p-2 w-[15%] text-left align-top text-sm text-muted-foreground'>
