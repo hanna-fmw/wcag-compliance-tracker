@@ -8,7 +8,12 @@ export default function Instructions() {
 				<ul className='space-y-4 text-sm text-muted-foreground'>
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
-						Select Pages Homepage + 3-5 critical pages (e.g., contact, services, forms).
+						Select Pages Home page + 3-5 critical pages (e.g., contact, services, forms). See How
+						Many Pages to Include in an Audit? on Useful Info page. Also, go to "website
+						URL"/sitemap.xml. Copy paste the sitemap. Paste it into chatGPT with the following
+						prompt or similar: The following is the sitemap.xml for konnect.se - what pages should I
+						include in the accessibility report to get a representative sample of the site,
+						including any translated pages? Use the answer as a guideline.
 					</li>
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
@@ -18,13 +23,10 @@ export default function Instructions() {
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
 						Enter observations in the Observations column, eg. "The form is not accessible because
-						there is no label for the input field."
+						there is no label for the input field." See How to Check and Where to Check columns for
+						more information on how to check the criteria.
 					</li>
-					<li className='flex items-start'>
-						<span className='mr-2'>•</span>
-						See How to Check and Where to Check columns for more information on how to check the
-						criteria.
-					</li>
+
 					<li className='flex items-start'>
 						<span className='mr-2'>•</span>
 						Export the audit data to a PDF, HTML, or JSON file.
