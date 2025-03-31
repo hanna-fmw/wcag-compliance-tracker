@@ -898,7 +898,7 @@ export default function WCAGCriteriaPage() {
 																<p className='text-sm text-muted-foreground py-2'>
 																	The data you enter will remain in the table until you clear the
 																	data with the <span className='font-bold'>Clear Data</span>{' '}
-																	button. If needed, refer to the following guidelines:{' '}
+																	button. If needed, refer to the following guidelines (in Swedish):{' '}
 																	<Link
 																		className='text-blue-500 hover:text-blue-700 hover:underline'
 																		href='https://www.digg.se/webbriktlinjer/alla-webbriktlinjer'
@@ -906,14 +906,16 @@ export default function WCAGCriteriaPage() {
 																		rel='noopener noreferrer'>
 																		webbriktlinjer
 																	</Link>{' '}
-																	from Digg (myndigheten för digital förvaltning).
+																	from Digg (myndigheten för digital förvaltning) (You can search by
+																	Check Type number, i.e. search for 1.1.1 for info about Non-text
+																	Content.).
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold text-muted-foreground py-2'>
+																	<p className='text-sm font-bold py-2 text-purple-500'>
 																		Click to expand the audit table
 																	</p>
 																	<span
-																		className={`transform transition-transform text-gray-700 cursor-pointer ${
+																		className={`transform transition-transform text-purple-500 cursor-pointer ${
 																			expandedSections.testResults ? 'rotate-90' : ''
 																		}`}>
 																		▶

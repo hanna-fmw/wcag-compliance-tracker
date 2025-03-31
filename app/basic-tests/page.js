@@ -330,11 +330,11 @@ export default function BasicTestsPage() {
 																	from Digg (myndigheten för digital förvaltning).
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold text-muted-foreground py-2'>
+																	<p className='text-sm font-bold py-2 text-purple-500'>
 																		Click to expand the audit table
 																	</p>
 																	<span
-																		className={`transform transition-transform text-gray-700 cursor-pointer ${
+																		className={`transform transition-transform text-purple-500 cursor-pointer ${
 																			expandedSections.step2a ? 'rotate-90' : ''
 																		}`}>
 																		▶
