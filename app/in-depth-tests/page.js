@@ -666,6 +666,7 @@ export default function InDepthTestsPage() {
 	const [showPreview, setShowPreview] = useState(false)
 	const [previewData, setPreviewData] = useState(null)
 	const [executiveSummary, setExecutiveSummary] = useState('')
+	const [otherFindings, setOtherFindings] = useState('')
 	const [expandedSections, setExpandedSections] = useState({
 		testResults: false,
 		step1: false,
@@ -698,6 +699,7 @@ export default function InDepthTestsPage() {
 					completedItems,
 					urls,
 					selectedUrl,
+					otherFindings,
 				} = JSON.parse(savedData)
 				console.log('Parsed data:', {
 					clientName,
@@ -708,6 +710,7 @@ export default function InDepthTestsPage() {
 					completedItems,
 					urls,
 					selectedUrl,
+					otherFindings,
 				})
 				// Only set state if we have actual data
 				if (Object.keys(observations || {}).length > 0 || (urls && urls.length > 0)) {
@@ -719,6 +722,7 @@ export default function InDepthTestsPage() {
 					setCompletedItems(completedItems || {})
 					setUrls(urls || [])
 					setSelectedUrl(selectedUrl || '')
+					setOtherFindings(otherFindings || '')
 				}
 			} catch (error) {
 				console.error('Error parsing saved data:', error)
@@ -738,6 +742,7 @@ export default function InDepthTestsPage() {
 			completedItems,
 			urls,
 			selectedUrl,
+			otherFindings,
 		}
 		console.log('Data to save:', auditData)
 		// Only save if we have actual data
@@ -753,6 +758,7 @@ export default function InDepthTestsPage() {
 		completedItems,
 		urls,
 		selectedUrl,
+		otherFindings,
 	])
 
 	const handleAddUrl = () => {
@@ -819,6 +825,7 @@ export default function InDepthTestsPage() {
 			observations: observationsWithDetails,
 			dateCreated,
 			executiveSummary,
+			otherFindings,
 		}
 
 		setPreviewData(auditData)
@@ -838,6 +845,7 @@ export default function InDepthTestsPage() {
 			setUrls([])
 			setSelectedUrl('')
 			setNewUrl('')
+			setOtherFindings('')
 		}
 	}
 
@@ -1210,6 +1218,30 @@ export default function InDepthTestsPage() {
 													</div>
 												</div>
 											</div>
+										</CardContent>
+									</Card>
+								</div>
+								{/* Other Findings section */}
+								<div className='py-6'>
+									<Card>
+										<CardHeader>
+											<CardTitle>
+												<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+													Other Findings
+												</h3>
+											</CardTitle>
+											<p className='text-sm text-muted-foreground'>
+												Add any additional findings or comments about the accessibility audit that
+												don't fit into the specific criteria above.
+											</p>
+										</CardHeader>
+										<CardContent>
+											<Textarea
+												value={otherFindings}
+												onChange={(e) => setOtherFindings(e.target.value)}
+												className='min-h-[150px]'
+												placeholder='Enter any additional findings or comments here...'
+											/>
 										</CardContent>
 									</Card>
 								</div>

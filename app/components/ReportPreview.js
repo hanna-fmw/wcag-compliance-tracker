@@ -330,6 +330,15 @@ export default function ReportPreview({ auditData, onClose }) {
 						</div>
 					</section>
 
+					{auditData.otherFindings && (
+						<section className='report-section'>
+							<h2 className='report-heading'>Other Findings</h2>
+							<div className='report-text'>
+								<p className='executive-summary'>{auditData.otherFindings}</p>
+							</div>
+						</section>
+					)}
+
 					<section className='report-section'>
 						<h2 className='report-heading'>Next Steps & Recommended Actions</h2>
 						<p className='report-text'>
