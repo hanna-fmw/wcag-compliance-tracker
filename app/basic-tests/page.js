@@ -392,12 +392,22 @@ export default function BasicTestsPage() {
 																	</Link>{' '}
 																	from Digg (myndigheten för digital förvaltning).
 																</p>
+																<p className='text-sm text-muted-foreground py-2'>
+																	Also see, easy checks from{' '}
+																	<a
+																		href='https://www.w3.org/WAI/test-evaluate/easy-checks/'
+																		className=' text-sm text-blue-500 hover:text-blue-700 hover:underline'
+																		target='_blank'
+																		rel='noopener noreferrer'>
+																		W3C WAI Easy Checks
+																	</a>
+																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-purple-500'>
+																	<p className='text-sm font-bold py-2 text-blue-500'>
 																		Click to expand the audit table
 																	</p>
 																	<span
-																		className={`transform transition-transform text-purple-500 cursor-pointer ${
+																		className={`transform transition-transform text-blue-500 cursor-pointer ${
 																			expandedSections.step2a ? 'rotate-90' : ''
 																		}`}>
 																		▶
@@ -440,20 +450,11 @@ export default function BasicTestsPage() {
 																	</div>
 																	{selectedUrl && (
 																		<div className='text-sm text-muted-foreground'>
-																			Testing: <span className='font-medium'>{selectedUrl}</span>
+																			Testing:{' '}
+																			<span className='text-black font-medium'>{selectedUrl}</span>
 																		</div>
 																	)}
 																</div>
-																<p className='text-gray-600 mb-4'>
-																	Easy checks from{' '}
-																	<a
-																		href='https://www.w3.org/WAI/test-evaluate/easy-checks/'
-																		className='text-blue-500 hover:text-blue-700 hover:underline'
-																		target='_blank'
-																		rel='noopener noreferrer'>
-																		W3C WAI Easy Checks
-																	</a>
-																</p>
 
 																<div className='overflow-x-auto'>
 																	<table className='min-w-full border-collapse'>

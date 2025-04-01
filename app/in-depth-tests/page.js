@@ -972,11 +972,11 @@ export default function WCAGCriteriaPage() {
 																	Content.
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-purple-500'>
+																	<p className='text-sm font-bold py-2 text-blue-500'>
 																		Click to expand the audit table
 																	</p>
 																	<span
-																		className={`transform transition-transform text-purple-500 cursor-pointer ${
+																		className={`transform transition-transform text-blue-500 cursor-pointer ${
 																			expandedSections.testResults ? 'rotate-90' : ''
 																		}`}>
 																		▶
@@ -1023,7 +1023,8 @@ export default function WCAGCriteriaPage() {
 																	</div>
 																	{selectedUrl && (
 																		<div className='text-sm text-muted-foreground'>
-																			Testing: <span className='font-medium'>{selectedUrl}</span>
+																			Testing:{' '}
+																			<span className='text-black font-bold'>{selectedUrl}</span>
 																		</div>
 																	)}
 																</div>
