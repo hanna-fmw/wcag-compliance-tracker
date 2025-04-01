@@ -984,7 +984,9 @@ export default function WCAGCriteriaPage() {
 																<div className='mb-4 flex flex-col gap-4'>
 																	<div className='flex items-center gap-4'>
 																		<div className='flex-1'>
-																			<Label htmlFor='newUrl'>Add URL to test</Label>
+																			<Label htmlFor='newUrl' className='my-4'>
+																				Add URL to test
+																			</Label>
 																			<div className='flex gap-2'>
 																				<Input
 																					id='newUrl'
@@ -997,7 +999,9 @@ export default function WCAGCriteriaPage() {
 																			</div>
 																		</div>
 																		<div className='flex-1'>
-																			<Label htmlFor='urlSelect'>Select URL to test</Label>
+																			<Label htmlFor='urlSelect' className='my-4'>
+																				Select URL to test
+																			</Label>
 																			<select
 																				id='urlSelect'
 																				value={selectedUrl}
