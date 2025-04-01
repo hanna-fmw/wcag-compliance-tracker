@@ -435,7 +435,7 @@ export default function BasicTestsPage() {
 																	</a>
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-blue-500'>
+																	<p className='text-sm font-bold py-2 text-blue-500 cursor-pointer'>
 																		Click to expand the audit table
 																	</p>
 																	<span
@@ -452,7 +452,9 @@ export default function BasicTestsPage() {
 																<div className='mb-4 flex flex-col gap-4'>
 																	<div className='flex items-center gap-4'>
 																		<div className='flex-1'>
-																			<Label htmlFor='newUrl'>Add URL to test</Label>
+																			<Label htmlFor='newUrl' className='my-4'>
+																				Add URL to test
+																			</Label>
 																			<div className='flex gap-2'>
 																				<Input
 																					id='newUrl'

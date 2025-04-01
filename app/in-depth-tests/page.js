@@ -1007,7 +1007,7 @@ export default function InDepthTestsPage() {
 																	Content.
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-blue-500'>
+																	<p className='text-sm font-bold py-2 text-blue-500 cursor-pointer'>
 																		Click to expand the audit table
 																	</p>
 																	<span
