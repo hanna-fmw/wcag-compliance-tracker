@@ -268,9 +268,14 @@ export default function BasicTestsPage() {
 
 	// Add handler for toggling completed status
 	const toggleCompleted = (checkId) => {
+		if (!selectedUrl) return
+
 		setCompletedItems((prev) => ({
 			...prev,
-			[checkId]: !prev[checkId],
+			[selectedUrl]: {
+				...(prev[selectedUrl] || {}),
+				[checkId]: !(prev[selectedUrl]?.[checkId] || false),
+			},
 		}))
 	}
 
@@ -479,8 +484,13 @@ export default function BasicTestsPage() {
 																		</thead>
 																		<tbody className='text-sm'>
 																			<tr
+																				key='imageAlt'
 																				className={`border-b ${
-																					completedItems['imageAlt'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.imageAlt
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -492,8 +502,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['imageAlt'] || false}
-																								onCheckedChange={() => toggleCompleted('imageAlt')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.imageAlt
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.imageAlt)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -514,11 +530,13 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.imageAlt
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.imageAlt,
 																								e.target.value
 																							)
 																						}
@@ -549,8 +567,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='pageTitle'
 																				className={`border-b ${
-																					completedItems['pageTitle'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.pageTitle
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -562,8 +585,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['pageTitle'] || false}
-																								onCheckedChange={() => toggleCompleted('pageTitle')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.pageTitle
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.pageTitle)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -583,11 +612,13 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.pageTitle
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.pageTitle,
 																								e.target.value
 																							)
 																						}
@@ -618,8 +649,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='headings'
 																				className={`border-b ${
-																					completedItems['headings'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.headings
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -631,8 +667,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['headings'] || false}
-																								onCheckedChange={() => toggleCompleted('headings')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.headings
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.headings)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -654,11 +696,13 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.headings
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.headings,
 																								e.target.value
 																							)
 																						}
@@ -688,8 +732,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='colorContrast'
 																				className={`border-b ${
-																					completedItems['colorContrast'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.colorContrast
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -701,9 +750,15 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['colorContrast'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.colorContrast
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('colorContrast')
+																									toggleCompleted(
+																										checkTypeDisplayNames.colorContrast
+																									)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -725,17 +780,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.colorContrast
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.colorContrast,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -760,8 +818,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='skipLink'
 																				className={`border-b ${
-																					completedItems['skipLink'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.skipLink
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -773,8 +836,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['skipLink'] || false}
-																								onCheckedChange={() => toggleCompleted('skipLink')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.skipLink
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.skipLink)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -795,17 +864,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.skipLink
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.skipLink,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -828,8 +900,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='keyboardFocus'
 																				className={`border-b ${
-																					completedItems['keyboardFocus'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.keyboardFocus
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -841,9 +918,15 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['keyboardFocus'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.keyboardFocus
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('keyboardFocus')
+																									toggleCompleted(
+																										checkTypeDisplayNames.keyboardFocus
+																									)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -865,17 +948,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.keyboardFocus
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.keyboardFocus,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -901,8 +987,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='language'
 																				className={`border-b ${
-																					completedItems['language'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.language
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -914,8 +1005,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['language'] || false}
-																								onCheckedChange={() => toggleCompleted('language')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.language
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.language)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -935,17 +1032,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.language
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.language,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -968,8 +1068,11 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='zoom'
 																				className={`border-b ${
-																					completedItems['zoom'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[checkTypeDisplayNames.zoom]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -981,8 +1084,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['zoom'] || false}
-																								onCheckedChange={() => toggleCompleted('zoom')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.zoom
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.zoom)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -1002,17 +1111,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.zoom
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.zoom,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1039,8 +1151,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='captions'
 																				className={`border-b ${
-																					completedItems['captions'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.captions
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1052,8 +1169,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['captions'] || false}
-																								onCheckedChange={() => toggleCompleted('captions')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.captions
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.captions)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -1075,17 +1198,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.captions
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.captions,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1109,8 +1235,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='transcripts'
 																				className={`border-b ${
-																					completedItems['transcripts'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.transcripts
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1122,9 +1253,13 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['transcripts'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.transcripts
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('transcripts')
+																									toggleCompleted(checkTypeDisplayNames.transcripts)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1147,17 +1282,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.transcripts
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.transcripts,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1181,8 +1319,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='audioDescription'
 																				className={`border-b ${
-																					completedItems['audioDescription'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.audioDescription
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1195,10 +1338,14 @@ export default function BasicTestsPage() {
 																							</span>
 																							<Checkbox
 																								checked={
-																									completedItems['audioDescription'] || false
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.audioDescription
+																									] || false
 																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('audioDescription')
+																									toggleCompleted(
+																										checkTypeDisplayNames.audioDescription
+																									)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1221,17 +1368,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.audioDescription
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.audioDescription,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1257,8 +1407,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='formLabels'
 																				className={`border-b ${
-																					completedItems['formLabels'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.formLabels
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1270,9 +1425,13 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['formLabels'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.formLabels
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('formLabels')
+																									toggleCompleted(checkTypeDisplayNames.formLabels)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1296,17 +1455,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.formLabels
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.formLabels,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1329,8 +1491,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='requiredFields'
 																				className={`border-b ${
-																					completedItems['requiredFields'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.requiredFields
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1342,9 +1509,15 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['requiredFields'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.requiredFields
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('requiredFields')
+																									toggleCompleted(
+																										checkTypeDisplayNames.requiredFields
+																									)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1367,17 +1540,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.requiredFields
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.requiredFields,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1402,8 +1578,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='tables'
 																				className={`border-b ${
-																					completedItems['tables'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.tables
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1415,8 +1596,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['tables'] || false}
-																								onCheckedChange={() => toggleCompleted('tables')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.tables
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.tables)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -1439,17 +1626,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.tables
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.tables,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1472,8 +1662,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='bodyText'
 																				className={`border-b ${
-																					completedItems['bodyText'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.bodyText
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1485,8 +1680,14 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['bodyText'] || false}
-																								onCheckedChange={() => toggleCompleted('bodyText')}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.bodyText
+																									] || false
+																								}
+																								onCheckedChange={() =>
+																									toggleCompleted(checkTypeDisplayNames.bodyText)
+																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
 																						</div>
@@ -1506,17 +1707,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.bodyText
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.bodyText,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1541,8 +1745,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='screenReader'
 																				className={`border-b ${
-																					completedItems['screenReader'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.screenReader
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1554,9 +1763,15 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['screenReader'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.screenReader
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('screenReader')
+																									toggleCompleted(
+																										checkTypeDisplayNames.screenReader
+																									)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1578,17 +1793,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.screenReader
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.screenReader,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
@@ -1625,8 +1843,13 @@ export default function BasicTestsPage() {
 																			</tr>
 
 																			<tr
+																				key='otherTests'
 																				className={`border-b ${
-																					completedItems['otherTests'] ? 'bg-gray-100' : ''
+																					completedItems[selectedUrl]?.[
+																						checkTypeDisplayNames.otherTests
+																					]
+																						? 'bg-gray-100'
+																						: ''
 																				}`}>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<div className='flex flex-col items-center gap-2'>
@@ -1638,9 +1861,13 @@ export default function BasicTestsPage() {
 																								Done?
 																							</span>
 																							<Checkbox
-																								checked={completedItems['otherTests'] || false}
+																								checked={
+																									completedItems[selectedUrl]?.[
+																										checkTypeDisplayNames.otherTests
+																									] || false
+																								}
 																								onCheckedChange={() =>
-																									toggleCompleted('otherTests')
+																									toggleCompleted(checkTypeDisplayNames.otherTests)
 																								}
 																								className='data-[state=checked]:bg-gray-600 data-[state=checked]:border-gray-600'
 																							/>
@@ -1662,17 +1889,20 @@ export default function BasicTestsPage() {
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
 																						value={
-																							basicTestObservations[selectedUrl]?.[checkId] || ''
+																							basicTestObservations[selectedUrl]?.[
+																								checkTypeDisplayNames.otherTests
+																							] || ''
 																						}
 																						onChange={(e) =>
 																							handleBasicTestObservationChange(
-																								checkId,
+																								checkTypeDisplayNames.otherTests,
 																								e.target.value
 																							)
 																						}
 																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
+																						rows='4'
 																					/>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
