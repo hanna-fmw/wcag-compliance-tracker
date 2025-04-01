@@ -656,7 +656,7 @@ const wcagCriteria = [
 	},
 ].sort(compareCriteria)
 
-export default function WCAGCriteriaPage() {
+export default function InDepthTestsPage() {
 	const [clientName, setClientName] = useState('')
 	const [clientId, setClientId] = useState('')
 	const [urls, setUrls] = useState([])
@@ -684,31 +684,51 @@ export default function WCAGCriteriaPage() {
 
 	// Load saved data from localStorage on component mount
 	useEffect(() => {
+		console.log('=== Loading data from localStorage ===')
 		const savedData = localStorage.getItem('inDepthTestsAuditData')
+		console.log('Saved data:', savedData)
 		if (savedData) {
-			const {
-				clientName,
-				clientId,
-				observations,
-				dateCreated,
-				executiveSummary,
-				completedItems,
-				urls,
-				selectedUrl,
-			} = JSON.parse(savedData)
-			setObservations(observations || {})
-			setDateCreated(dateCreated || new Date().toISOString())
-			setExecutiveSummary(executiveSummary || '')
-			setClientName(clientName || '')
-			setClientId(clientId || '')
-			setCompletedItems(completedItems || {})
-			setUrls(urls || [])
-			setSelectedUrl(selectedUrl || '')
+			try {
+				const {
+					clientName,
+					clientId,
+					observations,
+					dateCreated,
+					executiveSummary,
+					completedItems,
+					urls,
+					selectedUrl,
+				} = JSON.parse(savedData)
+				console.log('Parsed data:', {
+					clientName,
+					clientId,
+					observations,
+					dateCreated,
+					executiveSummary,
+					completedItems,
+					urls,
+					selectedUrl,
+				})
+				// Only set state if we have actual data
+				if (Object.keys(observations || {}).length > 0 || (urls && urls.length > 0)) {
+					setObservations(observations || {})
+					setDateCreated(dateCreated || new Date().toISOString())
+					setExecutiveSummary(executiveSummary || '')
+					setClientName(clientName || '')
+					setClientId(clientId || '')
+					setCompletedItems(completedItems || {})
+					setUrls(urls || [])
+					setSelectedUrl(selectedUrl || '')
+				}
+			} catch (error) {
+				console.error('Error parsing saved data:', error)
+			}
 		}
 	}, [])
 
 	// Save data to localStorage whenever it changes
 	useEffect(() => {
+		console.log('=== Saving data to localStorage ===')
 		const auditData = {
 			clientName,
 			clientId,
@@ -719,7 +739,11 @@ export default function WCAGCriteriaPage() {
 			urls,
 			selectedUrl,
 		}
-		localStorage.setItem('inDepthTestsAuditData', JSON.stringify(auditData))
+		console.log('Data to save:', auditData)
+		// Only save if we have actual data
+		if (Object.keys(observations).length > 0 || urls.length > 0) {
+			localStorage.setItem('inDepthTestsAuditData', JSON.stringify(auditData))
+		}
 	}, [
 		observations,
 		dateCreated,
@@ -733,6 +757,7 @@ export default function WCAGCriteriaPage() {
 
 	const handleAddUrl = () => {
 		if (newUrl && !urls.includes(newUrl)) {
+			console.log('=== Adding new URL ===', newUrl)
 			setUrls([...urls, newUrl])
 			setSelectedUrl(newUrl)
 			setNewUrl('')
@@ -740,19 +765,28 @@ export default function WCAGCriteriaPage() {
 	}
 
 	const handleUrlChange = (url) => {
+		console.log('=== Changing URL ===', url)
 		setSelectedUrl(url)
 	}
 
 	const handleObservationChange = (criterion, value) => {
 		if (!selectedUrl) return
-
-		setObservations((prev) => ({
-			...prev,
-			[selectedUrl]: {
-				...prev[selectedUrl],
-				[criterion]: value,
-			},
-		}))
+		console.log('=== Updating observation ===', {
+			url: selectedUrl,
+			criterion,
+			value,
+		})
+		setObservations((prev) => {
+			const newObservations = {
+				...prev,
+				[selectedUrl]: {
+					...prev[selectedUrl],
+					[criterion]: value,
+				},
+			}
+			console.log('New observations state:', newObservations)
+			return newObservations
+		})
 	}
 
 	const handleExport = () => {
@@ -793,6 +827,7 @@ export default function WCAGCriteriaPage() {
 
 	const handleClearData = () => {
 		if (window.confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+			console.log('=== Clearing data ===')
 			localStorage.removeItem('inDepthTestsAuditData')
 			setObservations({})
 			setDateCreated(new Date().toISOString())

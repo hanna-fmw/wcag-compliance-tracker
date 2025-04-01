@@ -121,33 +121,53 @@ export default function BasicTestsPage() {
 	// Add new state for completed items after the other state declarations
 	const [completedItems, setCompletedItems] = useState({})
 
-	// Modify useEffect to include new fields
+	// Load saved data from localStorage on component mount
 	useEffect(() => {
+		console.log('=== Loading basic tests data from localStorage ===')
 		const savedData = localStorage.getItem('basicTestsAuditData')
+		console.log('Saved basic tests data:', savedData)
 		if (savedData) {
-			const {
-				clientName,
-				clientId,
-				observations,
-				dateCreated,
-				executiveSummary,
-				completedItems,
-				urls,
-				selectedUrl,
-			} = JSON.parse(savedData)
-			setBasicTestObservations(observations || {})
-			setDateCreated(dateCreated || new Date().toISOString())
-			setExecutiveSummary(executiveSummary || '')
-			setClientName(clientName || '')
-			setClientId(clientId || '')
-			setCompletedItems(completedItems || {})
-			setUrls(urls || [])
-			setSelectedUrl(selectedUrl || '')
+			try {
+				const {
+					clientName,
+					clientId,
+					observations,
+					dateCreated,
+					executiveSummary,
+					completedItems,
+					urls,
+					selectedUrl,
+				} = JSON.parse(savedData)
+				console.log('Parsed basic tests data:', {
+					clientName,
+					clientId,
+					observations,
+					dateCreated,
+					executiveSummary,
+					completedItems,
+					urls,
+					selectedUrl,
+				})
+				// Only set state if we have actual data
+				if (Object.keys(observations || {}).length > 0 || (urls && urls.length > 0)) {
+					setBasicTestObservations(observations || {})
+					setDateCreated(dateCreated || new Date().toISOString())
+					setExecutiveSummary(executiveSummary || '')
+					setClientName(clientName || '')
+					setClientId(clientId || '')
+					setCompletedItems(completedItems || {})
+					setUrls(urls || [])
+					setSelectedUrl(selectedUrl || '')
+				}
+			} catch (error) {
+				console.error('Error parsing saved basic tests data:', error)
+			}
 		}
 	}, [])
 
-	// Modify save effect to include new fields
+	// Save data to localStorage whenever it changes
 	useEffect(() => {
+		console.log('=== Saving basic tests data to localStorage ===')
 		const auditData = {
 			clientName,
 			clientId,
@@ -158,7 +178,11 @@ export default function BasicTestsPage() {
 			urls,
 			selectedUrl,
 		}
-		localStorage.setItem('basicTestsAuditData', JSON.stringify(auditData))
+		console.log('Basic tests data to save:', auditData)
+		// Only save if we have actual data
+		if (Object.keys(basicTestObservations).length > 0 || urls.length > 0) {
+			localStorage.setItem('basicTestsAuditData', JSON.stringify(auditData))
+		}
 	}, [
 		basicTestObservations,
 		dateCreated,
@@ -170,9 +194,9 @@ export default function BasicTestsPage() {
 		selectedUrl,
 	])
 
-	// Add URL management functions
 	const handleAddUrl = () => {
 		if (newUrl && !urls.includes(newUrl)) {
+			console.log('=== Adding new URL to basic tests ===', newUrl)
 			setUrls([...urls, newUrl])
 			setSelectedUrl(newUrl)
 			setNewUrl('')
@@ -180,10 +204,30 @@ export default function BasicTestsPage() {
 	}
 
 	const handleUrlChange = (url) => {
+		console.log('=== Changing URL in basic tests ===', url)
 		setSelectedUrl(url)
 	}
 
-	// Update the handleExport function to filter out empty observations
+	const handleBasicTestObservationChange = (checkId, value) => {
+		if (!selectedUrl) return
+		console.log('=== Updating basic test observation ===', {
+			url: selectedUrl,
+			checkId,
+			value,
+		})
+		setBasicTestObservations((prev) => {
+			const newObservations = {
+				...prev,
+				[selectedUrl]: {
+					...prev[selectedUrl],
+					[checkId]: value,
+				},
+			}
+			console.log('New basic test observations state:', newObservations)
+			return newObservations
+		})
+	}
+
 	const handleExport = () => {
 		// Create observations array for all URLs
 		const observationsWithDetails = Object.entries(basicTestObservations).map(
@@ -219,9 +263,9 @@ export default function BasicTestsPage() {
 		setShowPreview(true)
 	}
 
-	// Update clear data handler
 	const handleClearData = () => {
 		if (window.confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+			console.log('=== Clearing basic tests data ===')
 			localStorage.removeItem('basicTestsAuditData')
 			setBasicTestObservations({})
 			setDateCreated(new Date().toISOString())
@@ -251,18 +295,6 @@ export default function BasicTestsPage() {
 		setCheckedItems((prev) => ({
 			...prev,
 			[checkId]: !prev[checkId],
-		}))
-	}
-
-	const handleBasicTestObservationChange = (checkId, value) => {
-		if (!selectedUrl) return
-
-		setBasicTestObservations((prev) => ({
-			...prev,
-			[selectedUrl]: {
-				...prev[selectedUrl],
-				[checkId]: value,
-			},
 		}))
 	}
 
