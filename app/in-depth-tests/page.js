@@ -814,9 +814,14 @@ export default function WCAGCriteriaPage() {
 	}
 
 	const toggleCompleted = (checkId) => {
+		if (!selectedUrl) return
+
 		setCompletedItems((prev) => ({
 			...prev,
-			[checkId]: !prev[checkId],
+			[selectedUrl]: {
+				...(prev[selectedUrl] || {}),
+				[checkId]: !(prev[selectedUrl]?.[checkId] || false),
+			},
 		}))
 	}
 
@@ -1060,7 +1065,9 @@ export default function WCAGCriteriaPage() {
 																				<tr
 																					key={criterion.criterion}
 																					className={`border-b ${
-																						completedItems[criterion.criterion] ? 'bg-gray-100' : ''
+																						completedItems[selectedUrl]?.[criterion.criterion]
+																							? 'bg-gray-100'
+																							: ''
 																					}`}>
 																					<td className='border p-2 align-top text-foreground'>
 																						<div className='flex flex-col items-center gap-2'>
@@ -1073,7 +1080,9 @@ export default function WCAGCriteriaPage() {
 																								</span>
 																								<Checkbox
 																									checked={
-																										completedItems[criterion.criterion] || false
+																										completedItems[selectedUrl]?.[
+																											criterion.criterion
+																										] || false
 																									}
 																									onCheckedChange={() =>
 																										toggleCompleted(criterion.criterion)
