@@ -471,7 +471,7 @@ export default function BasicTestsPage() {
 																				id='urlSelect'
 																				value={selectedUrl}
 																				onChange={(e) => handleUrlChange(e.target.value)}
-																				className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring bg-background text-foreground'>
+																				className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring bg-background text-sm text-muted-foreground'>
 																				<option value=''>Select a URL</option>
 																				{urls.map((url) => (
 																					<option key={url} value={url}>
