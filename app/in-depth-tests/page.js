@@ -480,7 +480,7 @@ const wcagCriteria = [
 		howToCheck:
 			'1. Linear Navigation: Navigate through the webpage using the keyboard (e.g., Tab key) to ensure the focus moves in a logical order.\n2. Screen Readers: Use a screen reader to read through the page and verify that the reading order matches the visual order.\n3. Code Inspection: Check the HTML source code to ensure elements are arranged in a logical sequence that matches their visual presentation.',
 		toolMethod:
-			'Automated:\n- Use this plugin\n\nManual inspection:\n- Keyboard (e.g. tab key)\n- Screen reader\n- Browser dev. tool',
+			'Manual inspection:\n- Keyboard (e.g. tab key)\n- Screen reader\n- Browser dev. tool',
 		whereToCheck: 'Full screen',
 	},
 	{
@@ -651,7 +651,8 @@ const wcagCriteria = [
 			'Text should remain legible and functional even when spacing between characters, lines, words, or paragraphs is increased.',
 		howToCheck:
 			'1. Apply these settings:\n- Line height to at least 1.5 times the font size.\n- Paragraph spacing to at least 2 times the font size.\n- Letter spacing to at least 0.12 times the font size.\n- Word spacing to at least 0.16 times the font size.\n2. Ensure text does not overlap or get cut off and remains readable and functional with the new spacing.',
-		toolMethod: 'Use this plugin',
+		toolMethod:
+			'Text Spacing Editor plugin (https://chromewebstore.google.com/detail/text-spacing-editor/amnelgbfbdlfjeaobejkfmjjnmeddaoj?pli=1)',
 		whereToCheck: 'All text on the screen',
 	},
 ].sort(compareCriteria)
