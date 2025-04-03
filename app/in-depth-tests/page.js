@@ -10,7 +10,8 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
-
+import AuditSteps from '../components/AuditSteps'
+import ExecutiveSummaryStep from '../components/ExecutiveSummaryStep'
 // Add this sorting function before the wcagCriteria array
 function compareCriteria(a, b) {
 	// Extract numbers from criterion strings (e.g., "1.2.3" from "1.2.3 Audio Description")
@@ -903,26 +904,17 @@ export default function InDepthTestsPage() {
 				title='In-Depth Accessibility Tests'
 				description='A comprehensive guide for conducting thorough accessibility testing'
 			/>
-			<div className='container mx-auto p-4'>
-				<Instructions />
-			</div>
+
 			<div className='container mx-auto p-4'>
 				<div className='mb-6 flex flex-col gap-4 '>
 					<div className='py-6'>
-						<Card>
+						<Card className='bg-muted/50'>
 							<CardHeader>
 								<CardTitle>
 									<h2 className='text-2xl font-semibold leading-none tracking-tight py-4'>Audit</h2>
 								</CardTitle>
-								<div className='text-sm text-muted-foreground'>
-									<p className='py-2'>Go through the 4 steps below to complete the audit:</p>
-									<ul>
-										<li>Step 1. Enter client info</li>
-										<li>Step 2. Enter observations (comments and issues)</li>
-										<li>Step 3. Add a summary of findings</li>
-										<li>Step 4. Preview and export audit</li>
-									</ul>
-								</div>
+
+								<AuditSteps />
 								<p className='text-sm text-muted-foreground py-2'>
 									For each new audit, click <span className='font-bold'>Clear Data</span> to start
 									fresh and clear local storage.
@@ -940,7 +932,7 @@ export default function InDepthTestsPage() {
 											<CardHeader>
 												<CardTitle>
 													<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-														Step 1: Enter client info
+														Step 1: Enter Client Info
 													</h3>
 												</CardTitle>
 												<p className='text-sm text-muted-foreground'>
@@ -985,7 +977,7 @@ export default function InDepthTestsPage() {
 															<div className='max-w-[80%]'>
 																<CardTitle>
 																	<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-																		Step 2: Enter observations (comments and issues)
+																		Step 2: Enter Observations
 																	</h3>
 																</CardTitle>
 																<p className='text-sm text-muted-foreground py-2'>
@@ -1249,25 +1241,7 @@ export default function InDepthTestsPage() {
 								{/* Executive summary section */}
 								<div className='py-6'>
 									<Card>
-										<CardHeader>
-											<CardTitle>
-												<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
-													Step 3: Add a summary of findings
-												</h3>
-											</CardTitle>
-
-											<p className='text-sm text-muted-foreground'>
-												Enter a summary based on the observations you have entered in the table
-												below. This summary will appear in the PDF report and should highlight key
-												findings, major issues, and general recommendations. (The placeholder text
-												in the field below is just an example).
-											</p>
-											<p className='text-sm text-muted-foreground'>
-												Tip: Paste in all your observations into chatgpt and ask it to summarize it
-												for you, and then paste the summary in the Executive Summary field. (This
-												feature will be AI-powered in the future)
-											</p>
-										</CardHeader>
+										<ExecutiveSummaryStep />
 										<CardContent>
 											<Textarea
 												value={executiveSummary}
