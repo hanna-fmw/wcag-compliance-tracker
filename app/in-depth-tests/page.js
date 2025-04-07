@@ -273,6 +273,44 @@ export default function InDepthTestsPage() {
 		return criterion
 	})
 
+	// Add this function after the other state declarations
+	const collectObservationsForAI = () => {
+		const allObservations = []
+
+		// Iterate through each URL
+		Object.entries(observations).forEach(([url, urlObservations]) => {
+			// Iterate through each criterion for this URL
+			Object.entries(urlObservations).forEach(([criterion, observation]) => {
+				if (observation && observation.trim() !== '') {
+					allObservations.push({
+						url,
+						checkType: criterion,
+						observation,
+					})
+				}
+			})
+		})
+
+		console.log('Collected observations for AI:', allObservations)
+		return allObservations
+	}
+
+	// Add this function to handle AI generation
+	const handleGenerateAISummary = () => {
+		const observations = collectObservationsForAI()
+
+		if (observations.length === 0) {
+			alert('No observations found. Please add some observations before generating a summary.')
+			return
+		}
+
+		// For now, just show the collected data in console
+		console.log('Generating AI summary with observations:', observations)
+		alert('AI summary generation would happen here. Check console for collected observations.')
+
+		// TODO: Implement actual AI generation here
+	}
+
 	return (
 		<main className='flex flex-1 flex-col'>
 			<Hero
@@ -618,17 +656,28 @@ export default function InDepthTestsPage() {
 									<Card>
 										<ExecutiveSummaryStep />
 										<CardContent>
-											<Textarea
-												value={executiveSummary}
-												onChange={(e) => setExecutiveSummary(e.target.value)}
-												className='min-h-[150px]'
-												placeholder={`Enter your summary here. Example:
+											<div className='flex flex-col gap-4'>
+												<div className='flex justify-between items-center'>
+													<Label htmlFor='executiveSummary'>Executive Summary</Label>
+													<Button
+														variant='outline'
+														onClick={handleGenerateAISummary}
+														className='ml-2'>
+														Generate with AI
+													</Button>
+												</div>
+												<Textarea
+													value={executiveSummary}
+													onChange={(e) => setExecutiveSummary(e.target.value)}
+													className='min-h-[150px] text-sm text-muted-foreground'
+													placeholder={`Enter your summary here. Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
 • Several critical issues were identified...
 `}
-											/>
+												/>
+											</div>
 										</CardContent>
 									</Card>
 								</div>

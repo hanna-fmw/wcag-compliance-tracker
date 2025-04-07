@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import AuditSteps from '../components/AuditSteps'
 import ExecutiveSummaryStep from '../components/ExecutiveSummaryStep'
+
 // Add this mapping object at the top of the file, after the imports
 const checkTypeDisplayNames = {
 	imageAlt: 'Image Alternative Text',
@@ -318,6 +319,44 @@ export default function BasicTestsPage() {
 		}))
 	}
 
+	// Add this function after the other state declarations
+	const collectObservationsForAI = () => {
+		const allObservations = []
+
+		// Iterate through each URL
+		Object.entries(basicTestObservations).forEach(([url, urlObservations]) => {
+			// Iterate through each check type for this URL
+			Object.entries(urlObservations).forEach(([checkType, observation]) => {
+				if (observation && observation.trim() !== '') {
+					allObservations.push({
+						url,
+						checkType: checkTypeDisplayNames[checkType] || checkType,
+						observation,
+					})
+				}
+			})
+		})
+
+		console.log('Collected observations for AI:', allObservations)
+		return allObservations
+	}
+
+	// Add this function to handle AI generation
+	const handleGenerateAISummary = () => {
+		const observations = collectObservationsForAI()
+
+		if (observations.length === 0) {
+			alert('No observations found. Please add some observations before generating a summary.')
+			return
+		}
+
+		// For now, just show the collected data in console
+		console.log('Generating AI summary with observations:', observations)
+		alert('AI summary generation would happen here. Check console for collected observations.')
+
+		// TODO: Implement actual AI generation here
+	}
+
 	return (
 		<main className='flex flex-1 flex-col'>
 			<Hero
@@ -327,7 +366,7 @@ export default function BasicTestsPage() {
 			{/* <div className='container mx-auto p-4'>
 				<Instructions />
 			</div> */}
-			<div className='container mx-auto p-4'>
+			<div className='container mx-auto p-4 w-full'>
 				<div className='mb-6 flex flex-col gap-4'>
 					<div className='py-6'>
 						<Card className='bg-muted/50'>
@@ -553,13 +592,29 @@ export default function BasicTestsPage() {
 																					Alt Text
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
-																					Image alternative text ("alt text") is a short description
-																					that conveys the purpose of an image. Alternative text is
-																					used by people who do not see the image, including: •
-																					People who are blind and use a screen reader • People with
-																					low vision that magnify the screen and use text-to-speech
-																					• Some people with learning or reading disabilities who
-																					have information read aloud
+																					<ul>
+																						<li className='mb-2'>
+																							Image alternative text ("alt text") is a short
+																							description that conveys the purpose of an image.
+																						</li>
+																						<li>
+																							Alternative text is used by people who do not see the
+																							image, including:
+																							<ul>
+																								<li className='mb-2'>
+																									People who are blind and use a screen reader
+																								</li>
+																								<li className='mb-2'>
+																									People with low vision that magnify the screen and
+																									use text-to-speech
+																								</li>
+																								<li>
+																									Some people with learning or reading disabilities
+																									who have information read aloud
+																								</li>
+																							</ul>
+																						</li>
+																					</ul>
 																				</td>
 																				<td className='border p-2 align-top text-sm text-muted-foreground'>
 																					<Textarea
@@ -1998,17 +2053,28 @@ export default function BasicTestsPage() {
 									<Card>
 										<ExecutiveSummaryStep />
 										<CardContent>
-											<Textarea
-												value={executiveSummary}
-												onChange={(e) => setExecutiveSummary(e.target.value)}
-												className='min-h-[150px] text-sm text-muted-foreground'
-												placeholder={`Enter your summary here. Example:
+											<div className='flex flex-col gap-4'>
+												<div className='flex justify-between items-center'>
+													<Label htmlFor='executiveSummary'>Executive Summary</Label>
+													<Button
+														variant='outline'
+														onClick={handleGenerateAISummary}
+														className='ml-2'>
+														Generate with AI
+													</Button>
+												</div>
+												<Textarea
+													value={executiveSummary}
+													onChange={(e) => setExecutiveSummary(e.target.value)}
+													className='min-h-[150px] text-sm text-muted-foreground'
+													placeholder={`Enter your summary here. Example:
 
 Overall Evaluation:
 • The site demonstrates good accessibility practices in [areas]...
 • Several critical issues were identified...
 `}
-											/>
+												/>
+											</div>
 										</CardContent>
 									</Card>
 								</div>
