@@ -353,7 +353,7 @@ const wcagCriteria = [
 		description:
 			'Users can use the interface with a keyboard, unless it depends on a specific path of the user input. This should not require specific timing between keystrokes and cannot trap the keyboard focus.',
 		howToCheck:
-			'1. Check if your able to connect a keyboard device\n2. Use the Tab key to navigate through the webpage and ensure all interactive elements (links, buttons, form fields, etc.) can be accessed and operated with a keyboard.',
+			'1. Check if you are able to connect a keyboard device\n2. Use the Tab key to navigate through the webpage and ensure all interactive elements (links, buttons, form fields, etc.) can be accessed and operated with a keyboard.',
 		toolMethod: 'Manual Testing:\n- Keyboard',
 		whereToCheck: 'Applies to whole target website/app',
 	},
@@ -384,7 +384,7 @@ const wcagCriteria = [
 		category: 'Understandable',
 		level: 'A',
 		description:
-			'When focussing on an interactive element (like a form field), it should not automatically trigger an action or change the page.',
+			'When focusing on an interactive element (like a form field), it should not automatically trigger an action or change the page.',
 		howToCheck:
 			'Use the Tab key to navigate through the interactive elements (e.g., links, buttons, form fields). Confirm that focusing on these elements does not cause unexpected changes in content or behavior.',
 		toolMethod: '- Keyboard (Tab key)',

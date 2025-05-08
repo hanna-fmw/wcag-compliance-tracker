@@ -395,7 +395,7 @@ export default function InDepthTestsPage() {
 																</CardTitle>
 																<p className='text-sm text-muted-foreground py-2'>
 																	Go through each criterion in the{' '}
-																	<span className='font-bold'>Criterion</span> column and document
+																	<span className='font-bold'>Check Type</span> column and document
 																	your findings in the{' '}
 																	<span className='font-bold'>Observations</span> column. Write the
 																	issues and comments in a short and consistent way. Fill in only

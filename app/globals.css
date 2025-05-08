@@ -2,6 +2,12 @@
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+@font-face {
+	font-family: 'JubilatRegular'; /* Custom name you'll use in CSS */
+	src: url('/fonts/Jubilat-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
 
 body {
 	background-color: white;

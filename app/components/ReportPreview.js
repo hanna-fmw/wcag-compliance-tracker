@@ -88,8 +88,8 @@ export default function ReportPreview({ auditData, onClose }) {
 
 	return (
 		<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'>
-			<div className='bg-gray-200 text-black rounded-md max-w-4xl w-full max-h-[90vh] overflow-y-auto'>
-				<div className='p-4 border-b flex justify-between items-center bg-gray-600 text-white'>
+			<div className='bg-gray-900 text-[#212121] rounded-md max-w-4xl w-full max-h-[90vh] overflow-y-auto'>
+				<div className='p-4 border-b flex justify-between items-center bg-gray-900 text-white'>
 					<h1 className='text-xl font-semibold'>Report Preview</h1>
 					<button
 						onClick={onClose}
@@ -103,10 +103,11 @@ export default function ReportPreview({ auditData, onClose }) {
 						{`
 							/* Base styles for the report */
 							body, .report-container {
-								font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+								font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 								padding: 1rem;
 								line-height: 1.5;
-								color: #111827;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 								
 							}
 							
@@ -120,8 +121,8 @@ export default function ReportPreview({ auditData, onClose }) {
 							
 							/* Headings */
 							.report-heading {
-								font-size: 1.5rem;
-								font-weight: 600;
+								font-family: JubilatRegular;
+								font-size: 1rem;
 								line-height: 1;
 								letter-spacing: -0.025em;
 								padding: 1.25rem;
@@ -131,8 +132,8 @@ export default function ReportPreview({ auditData, onClose }) {
 							/* Text styles */
 							.report-text {
 								padding: 0.75rem 1.25rem;
-								font-size: 0.875rem;
-								color: #4b5563;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 							}
 							
 							/* Lists */
@@ -140,8 +141,8 @@ export default function ReportPreview({ auditData, onClose }) {
 								padding: 0.75rem 1.25rem;
 								margin-top: 0.75rem;
 								margin-bottom: 0.75rem;
-								font-size: 0.875rem;
-								color: #4b5563;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 							}
 							
 							.report-list li {
@@ -172,31 +173,29 @@ export default function ReportPreview({ auditData, onClose }) {
 							}
 							
 							.observation-title {
-								font-size: 1.125rem;
-								font-weight: 600;
+								font-size: 1rem;
 								line-height: 1;
 								letter-spacing: -0.025em;
 							}
 							
 							.observation-level {
-								font-size: 0.875rem;
-								color: #4b5563;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 							}
 							
 							.observation-description {
 								font-size: 0.875rem;
-								color: #4b5563;
+								color: #3d3d3d;
 								margin-bottom: 1rem;
 							}
 							
 							.observation-label {
-								font-weight: 600;
 								margin-bottom: 0.5rem;
 							}
 							
 							.observation-content {
-								font-size: 0.875rem;
-								color: #4b5563;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 								white-space: pre-wrap;
 							}
 
@@ -212,8 +211,8 @@ export default function ReportPreview({ auditData, onClose }) {
 							/* Executive Summary */
 							.executive-summary {
 								white-space: pre-wrap;
-								font-size: 0.875rem;
-								color: #4b5563;
+								font-size: 0.75rem;
+								color: #3d3d3d;
 							}
 
 							/* Space between observation cards */
@@ -221,17 +220,17 @@ export default function ReportPreview({ auditData, onClose }) {
 								margin-top: 1.5rem;
 							}
 
-							/* Subheadings in Review Process */
+							/* Subheadings in Review Process 
 							.text-lg.font-semibold {
-								font-size: 1.125rem;
-								font-weight: 600;
+								font-size: 1rem;
+								
 								margin-top: 1.5rem;
 								margin-bottom: 0.75rem;
-							}
+							}*/
 						`}
 					</style>
 
-					<section className='report-section'>
+					{/* <section className='report-section'>
 						<h1 className='report-heading'>WCAG Accessibility Audit Report</h1>
 
 						<h2 className='report-heading'>About the Audit</h2>
@@ -247,7 +246,7 @@ export default function ReportPreview({ auditData, onClose }) {
 							following date(s): {new Date(auditData.dateCreated).toLocaleDateString('sv-SE')}. The
 							website may have changed since that time.
 						</p>
-					</section>
+					</section> */}
 
 					<section className='report-section'>
 						<h2 className='report-heading'>Scope of the Audit</h2>
@@ -276,15 +275,13 @@ export default function ReportPreview({ auditData, onClose }) {
 							thorough assessment of potential barriers affecting users with disabilities.
 						</p>
 
-						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>Automated Testing</h3>
+						<h3 className='report-heading mt-6 mb-3'>Automated Testing</h3>
 						<p className='report-text'>
 							Automated tools can quickly scan a website for common accessibility issues. However,
 							they should always be complemented with manual testing.
 						</p>
 
-						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>
-							Manual Testing & Visual Inspection
-						</h3>
+						<h3 className='report-heading mt-6 mb-3'>Manual Testing & Visual Inspection</h3>
 						<ul className='report-list mb-4'>
 							<li>
 								Surface level checks to the text to catch readability issues, inconsistencies,
@@ -294,9 +291,7 @@ export default function ReportPreview({ auditData, onClose }) {
 							<li>Ensuring content structure follows a logical reading order</li>
 						</ul>
 
-						<h3 className='report-heading text-lg font-semibold mt-6 mb-3'>
-							Assistive Technology & Simulations
-						</h3>
+						<h3 className='report-heading mt-6 mb-3'>Assistive Technology & Simulations</h3>
 						<ul className='report-list mb-4'>
 							<li>Screen reader testing for navigation and content accessibility</li>
 							<li>Color blindness simulation tools to assess contrast and usability</li>
@@ -309,7 +304,7 @@ export default function ReportPreview({ auditData, onClose }) {
 						<div className='observations-container'>
 							{auditData.observations.map((urlSection, urlIndex) => (
 								<div key={urlIndex} className='mb-8'>
-									<h3 className='report-heading text-lg font-semibold mt-6 mb-3 bg-gray-100 p-4 rounded-lg'>
+									<h3 className='report-heading mt-6 mb-3 bg-gray-100 p-4 rounded-lg'>
 										URL: {urlSection.url}
 									</h3>
 									<div className='space-y-4'>
