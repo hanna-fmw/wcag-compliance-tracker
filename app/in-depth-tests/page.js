@@ -324,12 +324,12 @@ export default function InDepthTestsPage() {
 						<Card className='bg-muted/50'>
 							<CardHeader>
 								<CardTitle>
-									<h2 className='text-2xl font-semibold leading-none tracking-tight py-4'>Audit</h2>
+									<h2 className='text-2xl font-medium leading-none tracking-tight py-4'>Audit</h2>
 								</CardTitle>
 
 								<AuditSteps />
 								<p className='text-sm text-muted-foreground py-2'>
-									For each new audit, click <span className='font-bold'>Clear Data</span> to start
+									For each new audit, click <span className='font-medium'>Clear Data</span> to start
 									fresh and clear local storage.
 								</p>
 								<div className='flex justify-start gap-2 py-6'>
@@ -344,7 +344,7 @@ export default function InDepthTestsPage() {
 										<Card>
 											<CardHeader>
 												<CardTitle>
-													<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+													<h3 className='text-xl font-medium leading-none tracking-tight py-4'>
 														Step 1: Enter Client Info
 													</h3>
 												</CardTitle>
@@ -389,22 +389,22 @@ export default function InDepthTestsPage() {
 															className='flex justify-between items-start w-full text-left group'>
 															<div className='max-w-[80%]'>
 																<CardTitle>
-																	<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+																	<h3 className='text-xl font-medium leading-none tracking-tight py-4'>
 																		Step 2: Enter Observations
 																	</h3>
 																</CardTitle>
 																<p className='text-sm text-muted-foreground py-2'>
 																	Go through each criterion in the{' '}
-																	<span className='font-bold'>Check Type</span> column and document
-																	your findings in the{' '}
-																	<span className='font-bold'>Observations</span> column. Write the
-																	issues and comments in a short and consistent way. Fill in only
-																	where relevant; empty cells are allowed. If relevant, add page
-																	URL/page name in your observations.
+																	<span className='font-medium'>Check Type</span> column and
+																	document your findings in the{' '}
+																	<span className='font-medium'>Observations</span> column. Write
+																	the issues and comments in a short and consistent way. Fill in
+																	only where relevant; empty cells are allowed. If relevant, add
+																	page URL/page name in your observations.
 																</p>
 																<p className='text-sm text-muted-foreground py-2'>
 																	The data you enter will remain in the table until you clear the
-																	data with the <span className='font-bold'>Clear Data</span>{' '}
+																	data with the <span className='font-medium'>Clear Data</span>{' '}
 																	button.
 																</p>{' '}
 																<p className='text-sm text-muted-foreground py-2'>
@@ -421,7 +421,7 @@ export default function InDepthTestsPage() {
 																	Content.
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-blue-500 cursor-pointer'>
+																	<p className='text-sm font-medium py-2 text-blue-500 cursor-pointer'>
 																		Click to expand the audit table
 																	</p>
 																	<span
@@ -473,7 +473,7 @@ export default function InDepthTestsPage() {
 																	{selectedUrl && (
 																		<div className='text-sm text-muted-foreground'>
 																			Testing:{' '}
-																			<span className='text-black font-bold'>{selectedUrl}</span>
+																			<span className='text-black font-medium'>{selectedUrl}</span>
 																		</div>
 																	)}
 																</div>
@@ -481,10 +481,10 @@ export default function InDepthTestsPage() {
 																	<table className='min-w-full border-collapse'>
 																		<thead>
 																			<tr>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[5%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Status
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Check Type
 																				</th>
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
@@ -493,19 +493,19 @@ export default function InDepthTestsPage() {
 																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Level
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[300px]'>
 																					Description
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[300px]'>
 																					Observations
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[300px]'>
 																					How to Check
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[250px]'>
 																					Tool/Method
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[250px]'>
 																					Where to Check
 																				</th>
 																			</tr>
@@ -519,7 +519,7 @@ export default function InDepthTestsPage() {
 																							? 'bg-gray-100'
 																							: ''
 																					}`}>
-																					<td className='border p-2 align-top text-foreground'>
+																					<td className='border p-2 align-top text-foreground w-[5%]'>
 																						<div className='flex flex-col items-center gap-2'>
 																							<span className='text-xs text-muted-foreground'>
 																								#{index + 1}
@@ -542,19 +542,19 @@ export default function InDepthTestsPage() {
 																							</div>
 																						</div>
 																					</td>
-																					<td className='border p-2 w-[10%] text-left align-top font-medium'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{criterion.criterion}
 																					</td>
-																					<td className='border p-2 w-[8%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{criterion.category}
 																					</td>
-																					<td className='border p-2 w-[5%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{criterion.level}
 																					</td>
-																					<td className='border p-2 w-[15%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{criterion.description}
 																					</td>
-																					<td className='border p-2 w-[25%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						<textarea
 																							value={
 																								observations[selectedUrl]?.[criterion.criterion] ||
@@ -566,12 +566,12 @@ export default function InDepthTestsPage() {
 																									e.target.value
 																								)
 																							}
-																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																							className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																							placeholder='Enter observations...'
 																							disabled={!selectedUrl}
 																						/>
 																					</td>
-																					<td className='border p-2 w-[15%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{typeof criterion.howToCheck === 'object' ? (
 																							<div className='relative'>
 																								{expandedCells[
@@ -608,10 +608,10 @@ export default function InDepthTestsPage() {
 																							criterion.howToCheck
 																						)}
 																					</td>
-																					<td className='border p-2 w-[10%] text-left align-top text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top text-sm text-muted-foreground'>
 																						{criterion.toolMethod}
 																					</td>
-																					<td className='border p-2 w-[12%] text-left align-top whitespace-pre-line text-sm text-muted-foreground'>
+																					<td className='border p-2 text-left align-top whitespace-pre-line text-sm text-muted-foreground'>
 																						{criterion.whereToCheck}
 																					</td>
 																				</tr>
@@ -632,7 +632,7 @@ export default function InDepthTestsPage() {
 									<Card>
 										<CardHeader>
 											<CardTitle>
-												<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+												<h3 className='text-xl font-medium leading-none tracking-tight py-4'>
 													Other Findings
 												</h3>
 											</CardTitle>
@@ -684,12 +684,12 @@ Overall Evaluation:
 								<Card>
 									<CardHeader>
 										<CardTitle>
-											<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+											<h3 className='text-xl font-medium leading-none tracking-tight py-4'>
 												Step 4: Preview and export audit
 											</h3>
 										</CardTitle>
 										<p className='text-sm text-muted-foreground'>
-											When done, click <span className='font-bold'>Export Audit</span> to preview
+											When done, click <span className='font-medium'>Export Audit</span> to preview
 											the report and export it as a PDF, HTML or JSON.
 										</p>
 									</CardHeader>

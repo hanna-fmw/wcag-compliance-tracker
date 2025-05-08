@@ -5,7 +5,7 @@ export default function ExecutiveSummaryStep() {
 	return (
 		<CardHeader>
 			<CardTitle>
-				<h3 className='text-xl font-semibold leading-none tracking-tight py-4'>
+				<h3 className='text-xl font-medium leading-none tracking-tight py-4'>
 					Step 3: Add Executive Summary
 				</h3>
 			</CardTitle>

@@ -473,7 +473,7 @@ export default function BasicTestsPage() {
 																	</a>
 																</p>
 																<div className='flex items-center gap-4'>
-																	<p className='text-sm font-bold py-2 text-blue-500 cursor-pointer'>
+																	<p className='text-sm font-medium py-2 text-blue-500 cursor-pointer'>
 																		Click to expand the audit table
 																	</p>
 																	<span
@@ -532,25 +532,25 @@ export default function BasicTestsPage() {
 																	<table className='min-w-full border-collapse'>
 																		<thead>
 																			<tr>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[5%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Status
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50'>
 																					Check Type
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[20%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[320px]'>
 																					Description
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[25%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[320px]'>
 																					Observations
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[320px]'>
 																					How to Check
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[10%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[250px]'>
 																					Tool/Method
 																				</th>
-																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 w-[15%]'>
+																				<th className='border p-2 text-sm font-medium text-left align-top bg-muted/50 min-w-[250px]'>
 																					Where to Check
 																				</th>
 																			</tr>
@@ -629,7 +629,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																					/>
@@ -711,7 +711,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																					/>
@@ -795,7 +795,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																					/>
@@ -879,7 +879,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -963,7 +963,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1047,7 +1047,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1131,7 +1131,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1210,7 +1210,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1297,7 +1297,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1381,7 +1381,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1467,7 +1467,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1554,7 +1554,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1639,7 +1639,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1725,7 +1725,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1806,7 +1806,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1892,7 +1892,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
@@ -1988,7 +1988,7 @@ export default function BasicTestsPage() {
 																								e.target.value
 																							)
 																						}
-																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[100px] bg-background text-foreground'
+																						className='w-full p-2 border rounded-md focus:ring-2 focus:ring-ring focus:border-ring min-h-[120px] bg-background text-foreground'
 																						placeholder='Enter observations...'
 																						disabled={!selectedUrl}
 																						rows='4'
